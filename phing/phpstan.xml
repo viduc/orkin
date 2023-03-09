@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <target name="phpstan">
+        <if>
+            <isfalse value="${phpstan.xdebug}" />
+            <then>
+                <exec command="./${quality.folder}/vendor/bin/phpstan analyse
+                 --xdebug --level=${phpstan.level} --no-progress -q
+                 -b ./${quality.folder}/${reports.folder}/phpstan.neon
+                 -a ./${quality.folder}/vendor/autoload.php ${src}"
+                  dir=".." passthru="true">
+                </exec>
+            </then>
+            <else>
+                <exec command="./${quality.folder}/vendor/bin/phpstan analyse
+                 --level=${phpstan.level} --no-progress -q
+                 -b ./${quality.folder}/${reports.folder}/phpstan.neon
+                 -a ./${quality.folder}/vendor/autoload.php ${src}"
+                      dir=".." passthru="true">
+                </exec>
+            </else>
+        </if>
+        <echo msg="PhpStan OK ${line.separator}" level="warning"/>
+    </target>
+</project>

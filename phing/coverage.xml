@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <target name="coverage">
+        <if>
+            <and>
+                <istrue value="${phpunit.enable}" />
+                <istrue value="${kahlan.enable}" />
+            </and>
+            <then>
+                <exec executable="./vendor/bin/clover-merge" passthru="true" checkreturn="true" >
+                    <arg line="merge -o ./reports/coverage.xml"/>
+                    <arg line="./reports/clover-kahlan.xml"/>
+                    <arg line="./reports/clover.xml"/>
+                </exec>
+                <echo message="${line.separator}${line.separator}Phpunit and Kahlan coverage reports have been merged${line.separator}" level="warning"/>
+            </then>
+            <elseif>
+                <istrue value="${phpunit.enable}" />
+                <then>
+                    <copy file="./reports/clover.xml" tofile="./reports/coverage.xml" />
+                    <echo message="${line.separator}${line.separator}Phpunit coverage report has been copied${line.separator}" level="warning"/>
+                </then>
+            </elseif>
+            <elseif>
+                <istrue value="${kahlan.enable}" />
+                <then>
+                    <copy file="./reports/clover-kahlan.xml" tofile="./reports/coverage.xml" />
+                    <echo message="${line.separator}${line.separator}Kahlan coverage report has been copied${line.separator}" level="warning"/>
+                </then>
+            </elseif>
+        </if>
+
+        <echo msg="Coverage OK ${line.separator}" level="warning"/>
+    </target>
+</project>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <target name="phpmd">
+        <exec command="./${quality.folder}/vendor/bin/phpmd ${src} ${phpmd.reportType} ${phpmd.mode}
+            --reportfile ./${quality.folder}/reports/${phpmd.reportFile}"
+              dir=".." passthru="true" />
+
+        <echo msg="Phpmd OK ${line.separator}" level="warning"/>
+    </target>
+</project>

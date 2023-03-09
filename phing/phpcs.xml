@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <target name="phpcs">
+        <exec command="./${quality.folder}/vendor/bin/phpcs ${src} > ./${quality.folder}/reports/phpcs.txt"
+            dir=".." passthru="true" />
+        <if>
+            <istrue value="${phpcs.phpcb}" />
+            <then>
+                <phingcall target="phpcbf"/>
+            </then>
+        </if>
+
+        <echo msg="Phpcs OK ${line.separator}" level="warning"/>
+    </target>
+    <target name="phpcbf">
+        <exec command="./${quality.folder}/vendor/bin/phpcbf ${src} > ./${quality.folder}/reports/phpcbf.txt"
+              dir=".." passthru="true" />
+
+        <echo msg="Phpcbf OK ${line.separator}" level="warning"/>
+    </target>
+</project>
