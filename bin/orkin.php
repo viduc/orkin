@@ -1,0 +1,43 @@
+#!/usr/bin/php
+<?php
+/**
+ * ORKIN - Quality Tools for PHP
+ *
+ * Tristan Fleury <http://viduc.github.com/>
+ *
+ * Licence: GPL v3 https://opensource.org/licenses/gpl-3.0.html
+ */
+
+if (php_sapi_name() !== 'cli') {
+    exit;
+}
+
+$root_app = dirname(__DIR__);
+
+$level = 4;
+while (!is_file($root_app . '/vendor/autoload.php')) {
+    $root_app = dirname(__DIR__, $level);
+    $level--;
+}
+
+require $root_app . '/vendor/autoload.php';
+
+use Minicli\App;
+use Minicli\Command\CommandCall;
+use Minicli\Exception\CommandNotFoundException;
+
+$app = new App([
+    'app_path' => [
+        $root_app . '/vendor/viduc/orkin/Command',
+        '@minicli/command-help'
+    ],
+    'debug' => true,
+    'theme' => '\Unicorn'
+]);
+$input = new CommandCall($argv);
+
+try {
+    $app->runCommand($input->getRawArgs());
+} catch (CommandNotFoundException $e) {
+    $app->getPrinter()->error("commande ".$input->getRawArgs()[1] ." not found");
+}
