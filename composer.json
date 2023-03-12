@@ -28,7 +28,7 @@
         "minicli/command-help": "^0.1.0"
     },
     "autoload": {
-        "psr-4": { "Viduc\\Orkin\\": "Command/" },
+        "psr-4": { "Viduc\\Orkin\\": "app/" },
         "exclude-from-classmap": [
             "/tests/"
         ]

@@ -8,12 +8,12 @@ declare(strict_types=1);
  * Licence: GPL v3 https://opensource.org/licenses/gpl-3.0.html
  */
 
-namespace Viduc\Orkin;
+namespace Viduc\Orkin\Command\Orkin;
 
 use Minicli\Command\CommandController;
 use Minicli\Output\OutputHandler;
 
-class OrkinController extends CommandController
+class CreateController extends CommandController
 {
     public function handle(): void
     {
