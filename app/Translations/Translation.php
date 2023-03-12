@@ -22,6 +22,5 @@ class Translation
         $this->translator = new Translator($locale);
         $this->translator->addLoader('yaml', new YamlFileLoader());
         $this->translator->addResource('yaml', $this->configuration->baseDir.'Translations/messages.en.yaml', $locale);
-        var_dump($this->translator);
     }
 }
