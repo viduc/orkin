@@ -13,7 +13,7 @@ namespace Viduc\Orkin;
 use Minicli\Command\CommandController;
 use Minicli\Output\OutputHandler;
 
-class Orkin extends CommandController
+class OrkinController extends CommandController
 {
     public function handle(): void
     {
