@@ -18,7 +18,7 @@ class CreateController extends OrkinAbstract
     public function handle(): void
     {
         $this->getPrinter()->info(
-            'Configure quality tools for your php project',
+            __dir__,
             true
         );
         $this->getPrinter()->newline();
