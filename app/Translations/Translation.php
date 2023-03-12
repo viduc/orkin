@@ -21,8 +21,6 @@ class Translation
     {
         $this->translator = new Translator($locale);
         $this->translator->addLoader('yaml', new YamlFileLoader());
-        $this->translator->addResource('yaml', $this->configuration->baseDir.'vendor/viduc/orkin/Translations/messages.en.yaml', $locale);
-        var_dump($this->configuration->baseDir.'vendor/viduc/orkin/Translations/messages.en.yaml');
-        var_dump(__DIR__);
+        $this->translator->addResource('yaml', __DIR__.'/messages.en.yaml', $locale);
     }
 }
