@@ -12,6 +12,7 @@
         }
     ],
     "license": "GPL-3.0-or-later",
+    "bin": ["bin/orkin"],
     "require": {
         "php": ">=8.0",
         "phing/phing": "^2.17",
@@ -34,6 +35,5 @@
     },
     "autoload-dev": {
         "psr-4": { "Viduc\\Orkin\\Tests\\": "tests/" }
-    },
-    "bin": ["bin/orkin"]
+    }
 }
