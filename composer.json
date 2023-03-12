@@ -1,5 +1,19 @@
 {
+    "name": "viduc/orkin",
+    "description": "Orkin is a PHP library for creating and managing some quality tools.",
+    "type": "library",
+    "homepage": "https://viduc.github.com",
+    "authors": [
+        {
+            "name": "Tristan Fleury",
+            "email": "viduc@mail.fr",
+            "homepage": "https://viduc.github.com",
+            "role": "Developper - Créateur"
+        }
+    ],
+    "license": "GPL-3.0-or-later",
     "require": {
+        "php": ">=8.0",
         "phing/phing": "^2.17",
         "phpunit/phpunit": "^9",
         "kahlan/kahlan": "5.*",
@@ -9,5 +23,20 @@
         "squizlabs/php_codesniffer": "^3.7",
         "phpmd/phpmd": "^2.13",
         "phpstan/phpstan": "^1.10"
+    },
+    "autoload": {
+        "psr-4": { "Viduc\\Orkin\\": "src/" },
+        "exclude-from-classmap": [
+            "/tests/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": { "Viduc\\Orkin\\Tests\\": "tests/" }
+    },
+    "bin": ["bin/orkin"],
+    "scripts": {
+        "test": [
+            "phpunit --coverage-clover clover.xml"
+        ]
     }
 }
