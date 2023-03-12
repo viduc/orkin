@@ -17,6 +17,7 @@ use Minicli\Output\OutputHandler;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\Translation\Translator;
+use Viduc\Orkin\Configuration\Configuration;
 use Viduc\Orkin\Container\ContainerAbstract;
 use Viduc\Orkin\Translations\Translation;
 
@@ -27,6 +28,14 @@ abstract class OrkinAbstract extends CommandController
      */
     public Container $container;
 
+    /**
+     * @var Translation $translation
+     */
+    private Translation $translation;
+
+    /**
+     * @var Translator
+     */
     public Translator $translator;
 
     /**
@@ -35,25 +44,43 @@ abstract class OrkinAbstract extends CommandController
     public string $baseDir = '';
 
     /**
+     * @var string
+     */
+    public string $locale = 'en_US';
+
+    /**
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
     public function __construct()
     {
         $this->container = ContainerAbstract::getContainer();
-        $this->translator = $this->container->get('translation')->translator;
+        $this->translation = $this->container->get('translation');
+        $this->translator = $this->translation->translator;
         $this->baseDir = str_replace(
             'vendor/viduc/orkin/app/Command',
             '',
             __dir__
         );
     }
+
     /**
      * @return OutputHandler
      */
     public function getPrinter(): OutputHandler
     {
         return parent::getPrinter();
+    }
+
+    /**
+     * @return void
+     */
+    private function defineLocale(): void
+    {
+        $this->locale = $this->hasParam('locale') ?
+            $this->translation->defineLocale(
+                $this->getParam('locale')
+            ) : 'en_US';
     }
 
     /**

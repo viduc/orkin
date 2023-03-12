@@ -16,11 +16,37 @@ use Viduc\Orkin\Configuration\Configuration;
 
 class Translation
 {
+    const LOCALE = [
+        'fr' => 'fr_FR',
+        'en' => 'en_US'
+    ];
+
+    const DEFAULT_LOCALE = 'en_US';
+
+    /**
+     * @var Translator
+     */
     public Translator $translator;
-    public function __construct(public Configuration $configuration, string $locale = 'en_US')
+    public function __construct(string $locale = 'en_US')
     {
         $this->translator = new Translator($locale);
         $this->translator->addLoader('yaml', new YamlFileLoader());
-        $this->translator->addResource('yaml', __DIR__.'/messages.en.yaml', $locale);
+        $this->translator->addResource(
+            'yaml',
+            __DIR__.'/messages.en.yaml',
+            $locale
+        );
+    }
+
+    /**
+     * @param string $locale
+     * @return string
+     */
+    public function defineLocale(string $locale): string
+    {
+        return array_key_exists(
+            $locale,
+            self::LOCALE
+        ) ? self::LOCALE[$locale]: self::DEFAULT_LOCALE;
     }
 }
