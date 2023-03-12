@@ -8,22 +8,13 @@ declare(strict_types=1);
  * Licence: GPL v3 https://opensource.org/licenses/gpl-3.0.html
  */
 
-namespace Viduc\Orkin\Command\Orkin;
+namespace Viduc\Orkin\Command;
 
+use Minicli\Command\CommandController;
 use Minicli\Output\OutputHandler;
-use Viduc\Orkin\Command\OrkinAbstract;
 
-class CreateController extends OrkinAbstract
+abstract class OrkinAbstract  extends CommandController
 {
-    public function handle(): void
-    {
-        $this->getPrinter()->info(
-            'Configure quality tools for your php project',
-            true
-        );
-        $this->getPrinter()->newline();
-    }
-
     /**
      * @return OutputHandler
      */
