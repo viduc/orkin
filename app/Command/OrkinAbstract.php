@@ -57,7 +57,6 @@ abstract class OrkinAbstract extends CommandController
         $this->container = ContainerAbstract::getContainer();
         $this->translation = $this->container->get('translation');
         $this->translator = $this->translation->translator;
-        $this->defineLocale();
         $this->baseDir = str_replace(
             'vendor/viduc/orkin/app/Command',
             '',
@@ -76,7 +75,7 @@ abstract class OrkinAbstract extends CommandController
     /**
      * @return void
      */
-    private function defineLocale(): void
+    public function defineLocale(): void
     {
         $this->locale = $this->hasParam('locale') ?
             $this->translation->defineLocale(

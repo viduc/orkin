@@ -24,6 +24,7 @@ class CreateController extends OrkinAbstract
      */
     public function handle(): void
     {
+        $this->defineLocale();
         if (!$this->container->get('configuration')->isConfigurationAlreadyExist()) {
             $this->askUseDefaultConfiguration();
         }
