@@ -40,7 +40,7 @@ abstract class OrkinAbstract extends CommandController
     public function __construct()
     {
         $this->container = ContainerAbstract::getContainer();
-        $this->translator = $this->container->get('translator');
+        $this->translator = $this->container->get('translation');
         $this->baseDir = str_replace(
             'vendor/viduc/orkin/app/Command',
             '',
