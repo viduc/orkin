@@ -17,8 +17,11 @@ class CreateController extends OrkinAbstract
 {
     public function handle(): void
     {
+        if (!$this->container->get('configuration')->isConfigurationAlreadyExist()) {
+            $this->askUseDefaultConfiguration();
+        }
         $this->getPrinter()->info(
-            $this->container->get('configuration')->isConfigurationAlreadyExist()? 'okoko': 'pasokpasok',
+            'info',
             true
         );
         $this->getPrinter()->newline();
@@ -30,5 +33,15 @@ class CreateController extends OrkinAbstract
     public function getPrinter(): OutputHandler
     {
         return parent::getPrinter();
+    }
+
+    private function askUseDefaultConfiguration(): void
+    {
+        if ($this->getInputYesOrNo(
+            'Create',
+            'Do you want to create the project? (Y/n)'
+        )) {
+
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace Viduc\Orkin\Command;
 
 use League\Container\Container;
 use Minicli\Command\CommandController;
+use Minicli\Input;
 use Minicli\Output\OutputHandler;
 use Viduc\Orkin\Container\ContainerAbstract;
 
@@ -42,5 +43,28 @@ abstract class OrkinAbstract extends CommandController
     public function getPrinter(): OutputHandler
     {
         return parent::getPrinter();
+    }
+
+    /**
+     * @param string $identifier
+     * @param string $display
+     *
+     * @return bool
+     */
+    public function getInputYesOrNo(
+        string $identifier,
+        string $display = ''
+    ): bool {
+        $this->getPrinter()->display($display);
+        $value = null;
+        while ($value === null) {
+            $input = new Input($identifier.'? (Y/n) > ');
+            $value = $input->read();
+            $value = $value === '' ? 'y' : $value;
+            $value = in_array(strtolower($value), ['y', 'n']) ?
+                strtolower($value) === 'y' : null;
+        }
+
+        return $value == 'y';
     }
 }
