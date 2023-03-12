@@ -35,7 +35,7 @@ $app = new App([
     'theme' => '\Unicorn'
 ]);
 $input = new CommandCall($argv);
-
+var_dump($app);
 try {
     $app->runCommand($input->getRawArgs());
 } catch (CommandNotFoundException $e) {
