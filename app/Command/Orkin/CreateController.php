@@ -11,10 +11,17 @@ declare(strict_types=1);
 namespace Viduc\Orkin\Command\Orkin;
 
 use Minicli\Output\OutputHandler;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Viduc\Orkin\Command\OrkinAbstract;
 
 class CreateController extends OrkinAbstract
 {
+    /**
+     * @return void
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function handle(): void
     {
         if (!$this->container->get('configuration')->isConfigurationAlreadyExist()) {
@@ -38,8 +45,8 @@ class CreateController extends OrkinAbstract
     private function askUseDefaultConfiguration(): void
     {
         if ($this->getInputYesOrNo(
-            'Create',
-            'Do you want to create the project? (Y/n)'
+            'Configuration',
+            'Do you want use default configuration? (Y/n)'
         )) {
 
         }
