@@ -16,6 +16,19 @@ use Minicli\Output\OutputHandler;
 abstract class OrkinAbstract  extends CommandController
 {
     /**
+     * @var string
+     */
+    public string $baseDir = '';
+
+    public function __construct()
+    {
+        $this->baseDir = str_replace(
+            'vendor/viduc/orkin/app/Command/Orkin',
+            '',
+            __dir__
+        );
+    }
+    /**
      * @return OutputHandler
      */
     public function getPrinter(): OutputHandler

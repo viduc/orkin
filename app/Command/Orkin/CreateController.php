@@ -18,7 +18,7 @@ class CreateController extends OrkinAbstract
     public function handle(): void
     {
         $this->getPrinter()->info(
-            __dir__,
+            $this->baseDir,
             true
         );
         $this->getPrinter()->newline();
