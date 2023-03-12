@@ -19,6 +19,6 @@ class Translation
     public function __construct(string $locale = 'en_US')
     {
         $this->translator = new Translator($locale);
-        $this->translator->addLoader('yaml', new YamlFileLoader('.', $locale));
+        $this->translator->addLoader('yaml', new YamlFileLoader());
     }
 }
