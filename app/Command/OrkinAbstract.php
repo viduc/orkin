@@ -18,7 +18,7 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\Translation\Translator;
 use Viduc\Orkin\Container\ContainerAbstract;
-use Viduc\Orkin\Translation\Translation;
+use Viduc\Orkin\Translations\Translation;
 
 abstract class OrkinAbstract extends CommandController
 {

@@ -12,7 +12,7 @@ namespace Viduc\Orkin\Container;
 
 use League\Container\Container;
 use Viduc\Orkin\Configuration\Configuration;
-use Viduc\Orkin\Translation\Translation;
+use Viduc\Orkin\Translations\Translation;
 
 abstract class ContainerAbstract
 {
