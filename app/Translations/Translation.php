@@ -12,14 +12,15 @@ namespace Viduc\Orkin\Translations;
 
 use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Translation\Translator;
+use Viduc\Orkin\Configuration\Configuration;
 
 class Translation
 {
     public Translator $translator;
-    public function __construct(string $locale = 'en_US')
+    public function __construct(public Configuration $configuration, string $locale = 'en_US')
     {
         $this->translator = new Translator($locale);
         $this->translator->addLoader('yaml', new YamlFileLoader());
-        $this->translator->addResource('yaml', './Tanslations/messages.en.yaml', $locale);
+        $this->translator->addResource('yaml', $this->configuration->baseDir.'/Translations/messages.en.yaml', $locale);
     }
 }

@@ -27,6 +27,6 @@ abstract class ContainerAbstract
     static private function registerContainer(Container &$container): void
     {
         $container->add('configuration', Configuration::class);
-        $container->add('translation', Translation::class);
+        $container->add('translation', Translation::class)->addArguments([$container->get('configuration'), 'en_US']);
     }
 }
