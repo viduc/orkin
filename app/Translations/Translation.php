@@ -34,7 +34,12 @@ class Translation
         $this->translator->addResource(
             'yaml',
             __DIR__.'/messages.en.yaml',
-            $locale
+            'en_US'
+        );
+        $this->translator->addResource(
+            'yaml',
+            __DIR__.'/messages.fr.yaml',
+            'fr_FR'
         );
     }
 
