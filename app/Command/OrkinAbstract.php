@@ -14,6 +14,9 @@ use League\Container\Container;
 use Minicli\Command\CommandController;
 use Minicli\Input;
 use Minicli\Output\OutputHandler;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
+use Symfony\Component\Translation\Translator;
 use Viduc\Orkin\Container\ContainerAbstract;
 
 abstract class OrkinAbstract extends CommandController
@@ -23,14 +26,21 @@ abstract class OrkinAbstract extends CommandController
      */
     public Container $container;
 
+    public Translator $translator;
+
     /**
      * @var string
      */
     public string $baseDir = '';
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function __construct()
     {
         $this->container = ContainerAbstract::getContainer();
+        $this->translator = $this->container->get('translator');
         $this->baseDir = str_replace(
             'vendor/viduc/orkin/app/Command',
             '',

@@ -26,7 +26,8 @@
         "phpstan/phpstan": "^1.10",
         "minicli/minicli": "^3.2",
         "minicli/command-help": "^0.1.0",
-        "league/container": "^4.2"
+        "league/container": "^4.2",
+        "symfony/translation": "^6.2"
     },
     "autoload": {
         "psr-4": { "Viduc\\Orkin\\": "app/" },

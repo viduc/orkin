@@ -12,6 +12,7 @@ namespace Viduc\Orkin\Container;
 
 use League\Container\Container;
 use Viduc\Orkin\Configuration\Configuration;
+use Viduc\Orkin\Translation\Translation;
 
 abstract class ContainerAbstract
 {
@@ -26,5 +27,6 @@ abstract class ContainerAbstract
     static private function registerContainer(Container &$container): void
     {
         $container->add('configuration', Configuration::class);
+        $container->add('translation', Translation::class);
     }
 }
