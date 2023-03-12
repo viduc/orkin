@@ -23,7 +23,7 @@ abstract class OrkinAbstract  extends CommandController
     public function __construct()
     {
         $this->baseDir = str_replace(
-            'vendor/viduc/orkin/app/Command/Orkin',
+            'vendor/viduc/orkin/app/Command',
             '',
             __dir__
         );
