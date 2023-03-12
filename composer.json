@@ -35,10 +35,5 @@
     "autoload-dev": {
         "psr-4": { "Viduc\\Orkin\\Tests\\": "tests/" }
     },
-    "bin": ["bin/orkin"],
-    "scripts": {
-        "test": [
-            "phpunit --coverage-clover clover.xml"
-        ]
-    }
+    "bin": ["bin/orkin"]
 }
