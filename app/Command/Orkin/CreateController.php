@@ -18,7 +18,7 @@ class CreateController extends OrkinAbstract
     public function handle(): void
     {
         $this->getPrinter()->info(
-            $this->baseDir,
+            $this->container->get('configuration')->isConfigurationAlreadyExist(),
             true
         );
         $this->getPrinter()->newline();

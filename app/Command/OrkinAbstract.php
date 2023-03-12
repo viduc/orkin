@@ -10,11 +10,18 @@ declare(strict_types=1);
 
 namespace Viduc\Orkin\Command;
 
+use League\Container\Container;
 use Minicli\Command\CommandController;
 use Minicli\Output\OutputHandler;
+use Viduc\Orkin\Container\ContainerAbstract;
 
-abstract class OrkinAbstract  extends CommandController
+abstract class OrkinAbstract extends CommandController
 {
+    /**
+     * @var Container
+     */
+    public Container $container;
+
     /**
      * @var string
      */
@@ -22,6 +29,7 @@ abstract class OrkinAbstract  extends CommandController
 
     public function __construct()
     {
+        $this->container = ContainerAbstract::getContainer();
         $this->baseDir = str_replace(
             'vendor/viduc/orkin/app/Command',
             '',
