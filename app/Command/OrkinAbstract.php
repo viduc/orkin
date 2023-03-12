@@ -18,6 +18,7 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\Translation\Translator;
 use Viduc\Orkin\Container\ContainerAbstract;
+use Viduc\Orkin\Translation\Translation;
 
 abstract class OrkinAbstract extends CommandController
 {
@@ -40,7 +41,7 @@ abstract class OrkinAbstract extends CommandController
     public function __construct()
     {
         $this->container = ContainerAbstract::getContainer();
-        $this->translator = $this->container->get('translation');
+        $this->translator = $this->container->get('translation')->translator;
         $this->baseDir = str_replace(
             'vendor/viduc/orkin/app/Command',
             '',
