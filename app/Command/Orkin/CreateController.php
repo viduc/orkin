@@ -46,7 +46,7 @@ class CreateController extends OrkinAbstract
     {
         if ($this->getInputYesOrNo(
             'Configuration',
-            $this->translator->trans('create.default_configuration'),
+            $this->translator->trans('create default configuration'),
         )) {
 
         }

@@ -1,2 +1,1 @@
-create:
-  default_configuration: 'Do you want use default configuration? (Y/n)'
+create default configuration: Do you want use default configuration? (Y/n)
