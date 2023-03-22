@@ -10,18 +10,33 @@ declare(strict_types=1);
 
 namespace Viduc\Orkin\Services;
 
+use Symfony\Component\Filesystem\Filesystem;
 use Viduc\Orkin\Configuration\Configuration;
+use Viduc\Orkin\Constantes\Constantes;
 
 class ProjectService implements ServiceInterface
 {
-    public function __construct(public Configuration $configuration)
-    {
+    private string $root = '';
+    public function __construct(
+        public Configuration $configuration,
+        private Filesystem $filesystem
+    ) {
+        $this->root = Constantes::getRootDir();
     }
 
     public function create(): void
     {
-        FolderServiceAbstract::create(
-            $this->configuration->getQualityPath()
+        if ($this->configuration->isNewConfiguration()) {
+            $this->newProject();
+        }
+    }
+
+    private function newProject(): void
+    {
+        $this->filesystem->mirror(
+            $this->root.$this->configuration->getPhingFolder(),
+            $this->root.$this->configuration->getQualityPath().
+            DIRECTORY_SEPARATOR. Constantes::FOLDER_PHING
         );
     }
 }

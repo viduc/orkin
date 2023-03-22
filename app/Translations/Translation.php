@@ -12,8 +12,7 @@ namespace Viduc\Orkin\Translations;
 
 use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Translation\Translator;
-use Viduc\Orkin\Configuration\Configuration;
-
+//TODO revoir cette class
 class Translation
 {
     const LOCALE = [

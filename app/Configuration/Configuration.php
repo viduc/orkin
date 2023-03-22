@@ -10,12 +10,10 @@ declare(strict_types=1);
 
 namespace Viduc\Orkin\Configuration;
 
-use Symfony\Component\Serializer\Encoder\YamlEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Viduc\Orkin\Constantes\Constantes;
 use Viduc\Orkin\Factory\ConfigurationFactory;
 use Viduc\Orkin\Models\ConfigurationModel;
-use Viduc\Orkin\Services\FolderServiceAbstract;
 
 class Configuration
 {
@@ -38,10 +36,15 @@ class Configuration
         return $this->configurationModel->qualityPath;
     }
 
+    public function getPhingFolder(): string
+    {
+        return $this->configurationModel->phingFolder;
+    }
+
     public function persist(): void
     {
         file_put_contents(
-            FolderServiceAbstract::getRootDir().$this->factory->configFile,
+            Constantes::getRootDir().$this->factory->configFile,
             $this->serializer->serialize($this->configurationModel, 'yaml')
         );
     }

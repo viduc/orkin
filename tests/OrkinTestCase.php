@@ -11,32 +11,41 @@ declare(strict_types=1);
 namespace Viduc\Orkin\Tests;
 
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Serializer\Encoder\YamlEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
-use Viduc\Orkin\Services\FolderServiceAbstract;
+use Viduc\Orkin\Constantes\Constantes;
 
 class OrkinTestCase extends TestCase
 {
     public string $configFile = 'orkin/tests/execution/config_test.yml';
     public string $qualityPath = 'orkin/tests/execution/quality';
     public string $folderExecution = 'orkin/tests/execution';
+    public string $phingFolder = 'orkin/phing';
     public Serializer $serializer;
+    public Filesystem $filesystem;
 
-    public function setUp(): void
+    public function __construct()
     {
-        parent::setUp();
+        parent::__construct();
         $this->serializer = new Serializer(
             [new ObjectNormalizer()],
             [new YamlEncoder()]
         );
+        $this->filesystem = new Filesystem();
+    }
+
+    public function setUp(): void
+    {
+        parent::setUp();
         $this->cleanExecution();
     }
     public function cleanExecution(): void
     {
-        FolderServiceAbstract::delete(
-            FolderServiceAbstract::getRootDir().$this->folderExecution
+        $this->filesystem->remove(
+            Constantes::getRootDir().$this->folderExecution
         );
-        mkdir(FolderServiceAbstract::getRootDir().$this->folderExecution);
+        mkdir(Constantes::getRootDir().$this->folderExecution);
     }
 }

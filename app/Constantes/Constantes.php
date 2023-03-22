@@ -10,8 +10,24 @@ declare(strict_types=1);
 
 namespace Viduc\Orkin\Constantes;
 
-class Constantes
+abstract class Constantes
 {
+    /**
+     * @return string
+     */
+    static public function getRootDir(): string
+    {
+        $path = '';
+        foreach(array_diff(
+                    explode(DIRECTORY_SEPARATOR, __DIR__),
+                    Constantes::FOLDERS_EXCLUDE_BASE_DIR
+                ) as $folder) {
+            $path .= $folder.DIRECTORY_SEPARATOR;
+        }
+
+        return $path;
+    }
+
     const FOLDERS_EXCLUDE_BASE_DIR = [
         'vendor',
         'viduc',
@@ -20,6 +36,7 @@ class Constantes
         'Command',
         'Orkin',
         'Configuration',
+        'Constantes',
         'Container',
         'Factory',
         'Models',
@@ -29,8 +46,11 @@ class Constantes
     ];
 
     const CONFIG_FILE = 'orkin.yml';
+    const FOLDER_PHING = 'phing';
     const CONFIG_DEFAULT = [
         'newConfiguration' => true,
         'qualityPath' => 'quality',
+        'phingFolder' => self::FOLDER_PHING,
     ];
+
 }

@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace Viduc\Orkin\Tests\Configuration;
 
 use Viduc\Orkin\Configuration\Configuration;
+use Viduc\Orkin\Constantes\Constantes;
 use Viduc\Orkin\Factory\ConfigurationFactory;
-use Viduc\Orkin\Services\FolderServiceAbstract;
 use Viduc\Orkin\Tests\OrkinTestCase;
 
 class ConfigurationTest extends OrkinTestCase
@@ -34,7 +34,7 @@ class ConfigurationTest extends OrkinTestCase
     {
         $this->configuration->persist();
         $this->assertFileExists(
-            FolderServiceAbstract::getRootDir().$this->configFile
+            Constantes::getRootDir().$this->configFile
         );
     }
 }

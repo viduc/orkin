@@ -10,7 +10,9 @@ declare(strict_types=1);
 
 namespace Viduc\Orkin\Tests\Services;
 
+use Symfony\Component\Filesystem\Filesystem;
 use Viduc\Orkin\Configuration\Configuration;
+use Viduc\Orkin\Constantes\Constantes;
 use Viduc\Orkin\Factory\ConfigurationFactory;
 use Viduc\Orkin\Services\FolderServiceAbstract;
 use Viduc\Orkin\Services\ProjectService;
@@ -44,14 +46,18 @@ class ProjectServiceTest extends OrkinTestCase
         );
         $this->configuration->configurationModel->qualityPath = $this->qualityPath;
         $this->configuration->configurationModel->newConfiguration = true;
-        $this->createService = new ProjectService($this->configuration);
+        $this->configuration->configurationModel->phingFolder = $this->phingFolder;
+        $this->createService = new ProjectService(
+            $this->configuration,
+            new Filesystem()
+        );
     }
 
     public function testCreate()
     {
+        $qualityPath = Constantes::getRootDir().$this->qualityPath;
+        $this->assertDirectoryDoesNotExist($qualityPath);
         $this->createService->create();
-        $qualityPath = FolderServiceAbstract::getRootDir().$this->qualityPath;
         $this->assertDirectoryExists($qualityPath);
-        var_dump($this->configuration->persist());
     }
 }

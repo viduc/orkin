@@ -13,7 +13,6 @@ namespace Viduc\Orkin\Factory;
 use Symfony\Component\Serializer\Serializer;
 use Viduc\Orkin\Constantes\Constantes;
 use Viduc\Orkin\Models\ConfigurationModel;
-use Viduc\Orkin\Services\FolderServiceAbstract;
 
 class ConfigurationFactory implements FactoryInterface
 {
@@ -28,7 +27,7 @@ class ConfigurationFactory implements FactoryInterface
 
     public function create(): ConfigurationModel
     {
-        $path = FolderServiceAbstract::getRootDir().$this->configFile;
+        $path = Constantes::getRootDir().$this->configFile;
         return File_exists($path) ? $this->serializer->deserialize(
             file_get_contents($path),
             ConfigurationModel::class,

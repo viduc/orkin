@@ -11,6 +11,7 @@
 namespace Viduc\Orkin\Container;
 
 use League\Container\Container;
+use PHPUnit\Util\Filesystem;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\Serializer\Encoder\YamlEncoder;
@@ -51,12 +52,24 @@ abstract class ContainerAbstract
             [$container->get('objectNormalizer'), $container->get('yamlEncoder')]
         );
         $container->add(
+            'fileSystem',
+            Filesystem::class
+        );
+
+
+        $container->add(
             'configurationFactory',
             ConfigurationFactory::class
         );
         $container->add(
             'configuration', Configuration::class
-        )->addArgument($container->get('configurationFactory'));
+        )->addArguments(
+            [
+                $container->get('configurationFactory'),
+                $container->get('fileSystem')
+            ]
+        );
+
         $container->add(
             'translation',
             Translation::class

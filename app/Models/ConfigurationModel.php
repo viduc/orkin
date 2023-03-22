@@ -14,10 +14,12 @@ class ConfigurationModel implements ModelInterface
 {
     public bool $newConfiguration = true;
     public string $qualityPath = '';
+    public string $phingFolder = '';
 
     public function __construct(array $config = [])
     {
         $this->newConfiguration = $config['newConfiguration'] ?? true;
         $this->qualityPath = $config['qualityPath'] ?? '';
+        $this->phingFolder = $config['phingFolder'] ?? '';
     }
 }

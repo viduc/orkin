@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace Viduc\Orkin\Tests\Factory;
 
+use Viduc\Orkin\Constantes\Constantes;
 use Viduc\Orkin\Factory\ConfigurationFactory;
 use Viduc\Orkin\Models\ConfigurationModel;
-use Viduc\Orkin\Services\FolderServiceAbstract;
 use Viduc\Orkin\Tests\OrkinTestCase;
 
 class FactoryConfigurationTest extends OrkinTestCase
@@ -30,7 +30,7 @@ class FactoryConfigurationTest extends OrkinTestCase
         $this->assertTrue($this->configurationFactory->create()->newConfiguration);
         $model = new ConfigurationModel(['newConfiguration' => false]);
         file_put_contents(
-            FolderServiceAbstract::getRootDir().$this->configFile,
+            Constantes::getRootDir().$this->configFile,
             $this->serializer->serialize($model, 'yaml')
         );
         $this->assertFalse($this->configurationFactory->create()->newConfiguration);
