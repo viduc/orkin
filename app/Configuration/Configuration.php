@@ -1,31 +1,48 @@
 <?php
+declare(strict_types=1);
 /**
- * This file is part of the Api package.
+ * ORKIN - Quality Tools for PHP
  *
- * (c) GammaSoftware <http://www.winlassie.com/>
+ * Tristan Fleury <http://viduc.github.com/>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * Licence: GPL v3 https://opensource.org/licenses/gpl-3.0.html
  */
 
 namespace Viduc\Orkin\Configuration;
 
-use League\Container\Container;
+use Symfony\Component\Serializer\Encoder\YamlEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Viduc\Orkin\Factory\ConfigurationFactory;
+use Viduc\Orkin\Models\ConfigurationModel;
+use Viduc\Orkin\Services\FolderServiceAbstract;
 
 class Configuration
 {
-    public string $baseDir = '';
-    public function __construct()
-    {
-        $this->baseDir = str_replace(
-            ['vendor/viduc/orkin/app/', 'Command', 'Orkin', 'Configuration'],
-            '',
-            __dir__
-        );
+    public ConfigurationModel $configurationModel;
+
+    public function __construct(
+        private ConfigurationFactory $factory,
+        private Serializer $serializer
+    ) {
+        $this->configurationModel = $factory->create();
     }
 
-    public function isConfigurationAlreadyExist(): bool
+    public function isNewConfiguration(): bool
     {
-        return file_exists($this->baseDir . '.orkin.yaml');
+        return $this->configurationModel->newConfiguration;
+    }
+
+    public function getQualityPath(): string
+    {
+        return $this->configurationModel->qualityPath;
+    }
+
+    public function persist(): void
+    {
+        file_put_contents(
+            FolderServiceAbstract::getRootDir().$this->factory->configFile,
+            $this->serializer->serialize($this->configurationModel, 'yaml')
+        );
     }
 }

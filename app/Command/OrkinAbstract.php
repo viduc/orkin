@@ -41,12 +41,12 @@ abstract class OrkinAbstract extends CommandController
     /**
      * @var string
      */
-    public string $baseDir = '';
+    public string $locale = 'en_US';
 
     /**
-     * @var string
+     * @var Configuration
      */
-    public string $locale = 'en_US';
+    public Configuration $configuration;
 
     /**
      * @throws ContainerExceptionInterface
@@ -57,11 +57,7 @@ abstract class OrkinAbstract extends CommandController
         $this->container = ContainerAbstract::getContainer();
         $this->translation = $this->container->get('translation');
         $this->translator = $this->translation->translator;
-        $this->baseDir = str_replace(
-            'vendor/viduc/orkin/app/Command',
-            '',
-            __dir__
-        );
+        $this->configuration = $this->container->get('configuration');
     }
 
     /**
@@ -74,6 +70,8 @@ abstract class OrkinAbstract extends CommandController
 
     /**
      * @return void
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function defineLocale(): void
     {

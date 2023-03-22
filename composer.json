@@ -28,7 +28,10 @@
         "minicli/command-help": "^0.1.0",
         "league/container": "^4.2",
         "symfony/translation": "^6.2",
-        "symfony/yaml": "^6.2"
+        "symfony/yaml": "^6.2",
+      "ext-yaml": "*",
+        "symfony/serializer": "^6.2",
+        "symfony/property-access": "^6.2"
     },
     "autoload": {
         "psr-4": { "Viduc\\Orkin\\": "app/" },

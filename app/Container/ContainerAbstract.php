@@ -11,7 +11,13 @@
 namespace Viduc\Orkin\Container;
 
 use League\Container\Container;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
+use Symfony\Component\Serializer\Encoder\YamlEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use Viduc\Orkin\Configuration\Configuration;
+use Viduc\Orkin\Factory\ConfigurationFactory;
 use Viduc\Orkin\Translations\Translation;
 
 abstract class ContainerAbstract
@@ -24,9 +30,33 @@ abstract class ContainerAbstract
         return $container;
     }
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     static private function registerContainer(Container &$container): void
     {
-        $container->add('configuration', Configuration::class);
+        $container->add(
+            'yamlEncoder',
+            YamlEncoder::class
+        );
+        $container->add(
+            'objectNormalizer',
+            ObjectNormalizer::class
+        );
+        $container->add(
+            'serializer',
+            Serializer::class
+        )->addArguments(
+            [$container->get('objectNormalizer'), $container->get('yamlEncoder')]
+        );
+        $container->add(
+            'configurationFactory',
+            ConfigurationFactory::class
+        );
+        $container->add(
+            'configuration', Configuration::class
+        )->addArgument($container->get('configurationFactory'));
         $container->add(
             'translation',
             Translation::class
