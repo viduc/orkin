@@ -2,14 +2,14 @@
 <project>
     <target name="phpcsfixer-dryrun">
         <exec command="PHP_CS_FIXER_IGNORE_ENV=1 php ./${quality.folder}/vendor/bin/php-cs-fixer
-        fix ./wolie --dry-run --config=./${quality.folder}/phpcsfixer/php-cs-fixer.php
+        fix ./${src} --dry-run --config=./${quality.folder}/phing/php-cs-fixer.php
         --verbose > ./${quality.folder}/reports/phpcsfixer.txt"
             dir=".." passthru="true" checkreturn="true" />
         <echo msg="Php-cs-fixer OK ${line.separator}" level="warning"/>
     </target>
     <target name="phpcsfixer">
         <exec command="PHP_CS_FIXER_IGNORE_ENV=1 php ./${quality.folder}/vendor/bin/php-cs-fixer
-        fix ./wolie --config=./${quality.folder}/phpcsfixer/php-cs-fixer.php
+        fix ./${src} --config=./${quality.folder}/phing/php-cs-fixer.php
         --verbose > ./${quality.folder}/reports/phpcsfixer.txt"
               dir=".." passthru="true" checkreturn="true" />
         <echo msg="Php-cs-fixer OK ${line.separator}" level="warning"/>
