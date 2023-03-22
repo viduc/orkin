@@ -38,5 +38,10 @@ class ProjectService implements ServiceInterface
             $this->root.$this->configuration->getQualityPath().
             DIRECTORY_SEPARATOR. Constantes::FOLDER_PHING
         );
+        $this->filesystem->copy(
+            $this->root.$this->configuration->getPhingFile(),
+            $this->root.$this->configuration->getQualityPath().
+            DIRECTORY_SEPARATOR. Constantes::FILE_PHING
+        );
     }
 }

@@ -41,6 +41,11 @@ class Configuration
         return $this->configurationModel->phingFolder;
     }
 
+    public function getPhingFile(): string
+    {
+        return $this->configurationModel->phingFile;
+    }
+
     public function persist(): void
     {
         file_put_contents(

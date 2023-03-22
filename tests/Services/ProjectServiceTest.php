@@ -47,6 +47,7 @@ class ProjectServiceTest extends OrkinTestCase
         $this->configuration->configurationModel->qualityPath = $this->qualityPath;
         $this->configuration->configurationModel->newConfiguration = true;
         $this->configuration->configurationModel->phingFolder = $this->phingFolder;
+        $this->configuration->configurationModel->phingFile = $this->phingFile;
         $this->createService = new ProjectService(
             $this->configuration,
             new Filesystem()
@@ -59,5 +60,11 @@ class ProjectServiceTest extends OrkinTestCase
         $this->assertDirectoryDoesNotExist($qualityPath);
         $this->createService->create();
         $this->assertDirectoryExists($qualityPath);
+        $this->assertDirectoryExists(
+            $qualityPath.DIRECTORY_SEPARATOR.Constantes::FOLDER_PHING
+        );
+        $this->assertFileExists(
+            $qualityPath.DIRECTORY_SEPARATOR.Constantes::FILE_PHING
+        );
     }
 }

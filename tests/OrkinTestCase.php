@@ -23,6 +23,7 @@ class OrkinTestCase extends TestCase
     public string $qualityPath = 'orkin/tests/execution/quality';
     public string $folderExecution = 'orkin/tests/execution';
     public string $phingFolder = 'orkin/phing';
+    public string $phingFile = 'orkin/build.xml';
     public Serializer $serializer;
     public Filesystem $filesystem;
 

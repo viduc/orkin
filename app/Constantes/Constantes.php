@@ -47,10 +47,12 @@ abstract class Constantes
 
     const CONFIG_FILE = 'orkin.yml';
     const FOLDER_PHING = 'phing';
+    const FILE_PHING = 'build.xml';
     const CONFIG_DEFAULT = [
         'newConfiguration' => true,
         'qualityPath' => 'quality',
         'phingFolder' => self::FOLDER_PHING,
+        'phingFile' => self::FILE_PHING,
     ];
 
 }
