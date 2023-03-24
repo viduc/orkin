@@ -11,14 +11,16 @@
 namespace Viduc\Orkin\Container;
 
 use League\Container\Container;
-use PHPUnit\Util\Filesystem;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Serializer\Encoder\YamlEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Translation\Translator;
 use Viduc\Orkin\Configuration\Configuration;
 use Viduc\Orkin\Factory\ConfigurationFactory;
+use Viduc\Orkin\Services\ProjectService;
 use Viduc\Orkin\Translations\Translation;
 
 abstract class ContainerAbstract
@@ -49,30 +51,43 @@ abstract class ContainerAbstract
             'serializer',
             Serializer::class
         )->addArguments(
-            [$container->get('objectNormalizer'), $container->get('yamlEncoder')]
+            [
+                [$container->get('objectNormalizer')],
+                [$container->get('yamlEncoder')]
+            ]
         );
         $container->add(
             'fileSystem',
             Filesystem::class
         );
-
-
         $container->add(
             'configurationFactory',
             ConfigurationFactory::class
-        );
+        )->addArguments([$container->get('serializer')]);
         $container->add(
             'configuration', Configuration::class
         )->addArguments(
             [
                 $container->get('configurationFactory'),
+                $container->get('serializer')
+            ]
+        );
+        $container->add(
+            'projectService',
+            ProjectService::class
+        )->addArguments(
+            [
+                $container->get('configuration'),
                 $container->get('fileSystem')
             ]
         );
-
+        $container->add(
+            'translator',
+            Translator::class
+        )->addArguments(['en_US']);
         $container->add(
             'translation',
             Translation::class
-        )->addArguments(['en_US']);
+        )->addArguments([$container->get('translator')]);
     }
 }

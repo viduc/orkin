@@ -10,22 +10,12 @@ declare(strict_types=1);
 
 namespace Viduc\Orkin\Command\Orkin;
 
-use Minicli\Output\OutputHandler;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 use Viduc\Orkin\Command\OrkinAbstract;
-use Viduc\Orkin\Exceptions\FolderException;
-use Viduc\Orkin\Exceptions\NameException;
-use Viduc\Orkin\Services\FolderServiceAbstract;
 
 class CreateController extends OrkinAbstract
 {
     /**
      * @return void
-     * @throws ContainerExceptionInterface
-     * @throws FolderException
-     * @throws NameException
-     * @throws NotFoundExceptionInterface
      */
     public function handle(): void
     {
@@ -41,10 +31,7 @@ class CreateController extends OrkinAbstract
     }
 
     /**
-     * @throws NotFoundExceptionInterface
-     * @throws NameException
-     * @throws ContainerExceptionInterface
-     * @throws FolderException
+     * @return void
      */
     private function askUseDefaultConfiguration(): void
     {
@@ -57,9 +44,7 @@ class CreateController extends OrkinAbstract
                 $this->locale
             )
         )) {
-            FolderServiceAbstract::create(
-                $this->configuration->getQualityPath()
-            );
+            $this->projectService->create();
         }
     }
 }

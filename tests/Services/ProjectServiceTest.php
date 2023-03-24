@@ -14,7 +14,6 @@ use Symfony\Component\Filesystem\Filesystem;
 use Viduc\Orkin\Configuration\Configuration;
 use Viduc\Orkin\Constantes\Constantes;
 use Viduc\Orkin\Factory\ConfigurationFactory;
-use Viduc\Orkin\Services\FolderServiceAbstract;
 use Viduc\Orkin\Services\ProjectService;
 use Viduc\Orkin\Tests\OrkinTestCase;
 
@@ -56,7 +55,7 @@ class ProjectServiceTest extends OrkinTestCase
 
     public function testCreate()
     {
-        $qualityPath = Constantes::getRootDir().$this->qualityPath;
+        $qualityPath = Constantes::getProjectDir().$this->qualityPath;
         $this->assertDirectoryDoesNotExist($qualityPath);
         $this->createService->create();
         $this->assertDirectoryExists($qualityPath);

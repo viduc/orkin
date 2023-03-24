@@ -49,7 +49,7 @@ class Configuration
     public function persist(): void
     {
         file_put_contents(
-            Constantes::getRootDir().$this->factory->configFile,
+            Constantes::getProjectDir().$this->factory->configFile,
             $this->serializer->serialize($this->configurationModel, 'yaml')
         );
     }

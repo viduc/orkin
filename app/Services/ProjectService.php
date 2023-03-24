@@ -16,12 +16,14 @@ use Viduc\Orkin\Constantes\Constantes;
 
 class ProjectService implements ServiceInterface
 {
+    private string $project = '';
     private string $root = '';
     public function __construct(
         public Configuration $configuration,
         private Filesystem $filesystem
     ) {
-        $this->root = Constantes::getRootDir();
+        $this->project = Constantes::getProjectDir();
+        $this->root = Constantes::getOrkintDir();
     }
 
     public function create(): void
@@ -35,12 +37,12 @@ class ProjectService implements ServiceInterface
     {
         $this->filesystem->mirror(
             $this->root.$this->configuration->getPhingFolder(),
-            $this->root.$this->configuration->getQualityPath().
+            $this->project.$this->configuration->getQualityPath().
             DIRECTORY_SEPARATOR. Constantes::FOLDER_PHING
         );
         $this->filesystem->copy(
             $this->root.$this->configuration->getPhingFile(),
-            $this->root.$this->configuration->getQualityPath().
+            $this->project.$this->configuration->getQualityPath().
             DIRECTORY_SEPARATOR. Constantes::FILE_PHING
         );
     }

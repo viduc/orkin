@@ -15,12 +15,16 @@ abstract class Constantes
     /**
      * @return string
      */
-    static public function getRootDir(): string
+    static public function getProjectDir(): string
     {
         $path = '';
+        if (str_contains(__DIR__, 'vendor')) {
+            return explode('vendor', __DIR__)[0];
+        }
+        $dir = str_replace('vendor/viduc/orkin', '', __DIR__);
         foreach(array_diff(
-                    explode(DIRECTORY_SEPARATOR, __DIR__),
-                    Constantes::FOLDERS_EXCLUDE_BASE_DIR
+                    explode(DIRECTORY_SEPARATOR, $dir),
+                    self::FOLDERS_EXCLUDE_ROOT_DIR
                 ) as $folder) {
             $path .= $folder.DIRECTORY_SEPARATOR;
         }
@@ -28,13 +32,25 @@ abstract class Constantes
         return $path;
     }
 
-    const FOLDERS_EXCLUDE_BASE_DIR = [
-        'vendor',
-        'viduc',
-        'orkin',
+    /**
+     * @return string
+     */
+    static public function getOrkintDir(): string
+    {
+        $path = '';
+        foreach(array_diff(
+                    explode(DIRECTORY_SEPARATOR, __DIR__),
+                    Constantes::FOLDERS_EXCLUDE_ROOT_DIR
+                ) as $folder) {
+            $path .= $folder.DIRECTORY_SEPARATOR;
+        }
+
+        return $path;
+    }
+
+    const FOLDERS_EXCLUDE_ROOT_DIR = [
         'app',
         'Command',
-        'Orkin',
         'Configuration',
         'Constantes',
         'Container',

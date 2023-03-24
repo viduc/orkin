@@ -27,7 +27,7 @@ class ConfigurationFactory implements FactoryInterface
 
     public function create(): ConfigurationModel
     {
-        $path = Constantes::getRootDir().$this->configFile;
+        $path = Constantes::getProjectDir().$this->configFile;
         return File_exists($path) ? $this->serializer->deserialize(
             file_get_contents($path),
             ConfigurationModel::class,

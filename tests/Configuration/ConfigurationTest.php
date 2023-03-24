@@ -34,7 +34,7 @@ class ConfigurationTest extends OrkinTestCase
     {
         $this->configuration->persist();
         $this->assertFileExists(
-            Constantes::getRootDir().$this->configFile
+            Constantes::getProjectDir().$this->configFile
         );
     }
 }

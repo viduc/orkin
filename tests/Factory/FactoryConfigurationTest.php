@@ -30,7 +30,7 @@ class FactoryConfigurationTest extends OrkinTestCase
         $this->assertTrue($this->configurationFactory->create()->newConfiguration);
         $model = new ConfigurationModel(['newConfiguration' => false]);
         file_put_contents(
-            Constantes::getRootDir().$this->configFile,
+            Constantes::getProjectDir().$this->configFile,
             $this->serializer->serialize($model, 'yaml')
         );
         $this->assertFalse($this->configurationFactory->create()->newConfiguration);

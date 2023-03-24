@@ -19,11 +19,11 @@ use Viduc\Orkin\Constantes\Constantes;
 
 class OrkinTestCase extends TestCase
 {
-    public string $configFile = 'orkin/tests/execution/config_test.yml';
-    public string $qualityPath = 'orkin/tests/execution/quality';
-    public string $folderExecution = 'orkin/tests/execution';
-    public string $phingFolder = 'orkin/phing';
-    public string $phingFile = 'orkin/build.xml';
+    public string $configFile = 'tests/execution/config_test.yml';
+    public string $qualityPath = 'tests/execution/quality';
+    public string $folderExecution = 'tests/execution';
+    public string $phingFolder = 'phing';
+    public string $phingFile = 'build.xml';
     public Serializer $serializer;
     public Filesystem $filesystem;
 
@@ -45,8 +45,8 @@ class OrkinTestCase extends TestCase
     public function cleanExecution(): void
     {
         $this->filesystem->remove(
-            Constantes::getRootDir().$this->folderExecution
+            Constantes::getProjectDir().$this->folderExecution
         );
-        mkdir(Constantes::getRootDir().$this->folderExecution);
+        mkdir(Constantes::getProjectDir().$this->folderExecution);
     }
 }

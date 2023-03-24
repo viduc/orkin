@@ -12,7 +12,6 @@ namespace Viduc\Orkin\Translations;
 
 use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Translation\Translator;
-//TODO revoir cette class
 class Translation
 {
     const LOCALE = [
@@ -22,13 +21,8 @@ class Translation
 
     const DEFAULT_LOCALE = 'en_US';
 
-    /**
-     * @var Translator
-     */
-    public Translator $translator;
-    public function __construct(string $locale = 'en_US')
+    public function __construct(public Translator $translator)
     {
-        $this->translator = new Translator($locale);
         $this->translator->addLoader('yaml', new YamlFileLoader());
         $this->translator->addResource(
             'yaml',

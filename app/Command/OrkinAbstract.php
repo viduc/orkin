@@ -19,6 +19,7 @@ use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\Translation\Translator;
 use Viduc\Orkin\Configuration\Configuration;
 use Viduc\Orkin\Container\ContainerAbstract;
+use Viduc\Orkin\Services\ProjectService;
 use Viduc\Orkin\Translations\Translation;
 
 abstract class OrkinAbstract extends CommandController
@@ -48,6 +49,8 @@ abstract class OrkinAbstract extends CommandController
      */
     public Configuration $configuration;
 
+    public ProjectService $projectService;
+
     /**
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
@@ -58,6 +61,7 @@ abstract class OrkinAbstract extends CommandController
         $this->translation = $this->container->get('translation');
         $this->translator = $this->translation->translator;
         $this->configuration = $this->container->get('configuration');
+        $this->projectService = $this->container->get('projectService');
     }
 
     /**
@@ -70,8 +74,6 @@ abstract class OrkinAbstract extends CommandController
 
     /**
      * @return void
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
      */
     public function defineLocale(): void
     {
