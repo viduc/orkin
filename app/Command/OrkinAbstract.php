@@ -105,4 +105,26 @@ abstract class OrkinAbstract extends CommandController
 
         return $value == 'y';
     }
+
+    /**
+     * @param string $identifier
+     * @param string $display
+     *
+     * @return string
+     */
+    public function getInputString(
+        string $identifier,
+        string $display = ''
+    ): string {
+        if ('' !== $display) {
+            $this->getPrinter()->display($display);
+        }
+        $value = '';
+        while ('' === $value) {
+            $input = new Input($identifier.' > ');
+            $value = $input->read();
+        }
+
+        return $value;
+    }
 }

@@ -21,7 +21,11 @@ class CreateController extends OrkinAbstract
     {
         $this->defineLocale();
         if ($this->configuration->isNewConfiguration()) {
-            $this->askUseDefaultConfiguration();
+            if ($this->askUseDefaultConfiguration()) {
+                $this->projectService->create();
+            } else {
+                $this->askQualityFolderName();
+            }
         }
         $this->getPrinter()->info(
             'info',
@@ -31,11 +35,11 @@ class CreateController extends OrkinAbstract
     }
 
     /**
-     * @return void
+     * @return bool
      */
-    private function askUseDefaultConfiguration(): void
+    private function askUseDefaultConfiguration(): bool
     {
-        if ($this->getInputYesOrNo(
+        return $this->getInputYesOrNo(
             'ConfigurationModel',
             $this->translator->trans(
                 'create default configuration',
@@ -43,8 +47,19 @@ class CreateController extends OrkinAbstract
                 'messages',
                 $this->locale
             )
-        )) {
-            $this->projectService->create();
-        }
+        );
+    }
+
+    private function askQualityFolderName(): void
+    {
+        var_dump($this->getInputString(
+            'qualityFolderName',
+            $this->translator->trans(
+                'name quality folder'
+                [],
+                'messages',
+                $this->locale
+            )
+        ));
     }
 }
