@@ -35,8 +35,8 @@ class PhpcsfixerTools extends ToolsAbstract
         ModelInterface $model
     ): array
     {
-        $properties['phpcsfixer.enable'] = $model->isUsed ? '1': '0';
-        $properties['phpcsfixer.dryrun'] = $model->dryRun ? '1': '0';
+        $properties['phpcsfixer.enable'] = $model->isUsed;
+        $properties['phpcsfixer.dryrun'] = $model->dryRun;
 
         return $properties;
     }

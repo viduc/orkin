@@ -36,7 +36,7 @@ class PhpunitTools extends ToolsAbstract
         ModelInterface $model
     ): array
     {
-        $properties['phpunit.enable'] = $model->isUsed ? '1': '0';
+        $properties['phpunit.enable'] = $model->isUsed;
         $properties['phpunit.folderTest'] = $model->folderTest;
 
         return $properties;

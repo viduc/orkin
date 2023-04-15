@@ -40,9 +40,9 @@ class PhpstanTools extends ToolsAbstract
         ModelInterface $model
     ): array
     {
-        $properties['phpstan.enable'] = $model->isUsed ? '1': '0';
+        $properties['phpstan.enable'] = $model->isUsed;
         $properties['phpstan.level'] = $model->level;
-        $properties['phpstan.xdebug'] = $model->xdebug ? '1': '0';
+        $properties['phpstan.xdebug'] = $model->xdebug;
 
         return $properties;
     }

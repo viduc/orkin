@@ -30,7 +30,7 @@ class PhplocTools extends ToolsAbstract
         ModelInterface $model
     ): array
     {
-        $properties['phploc.enable'] = $model->isUsed ? '1': '0';
+        $properties['phploc.enable'] = $model->isUsed;
 
         return $properties;
     }

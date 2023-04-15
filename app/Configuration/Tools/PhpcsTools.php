@@ -35,8 +35,8 @@ class PhpcsTools extends ToolsAbstract
         ModelInterface $model
     ): array
     {
-        $properties['phpcs.enable'] = $model->isUsed ? '1': '0';
-        $properties['phpcs.phpcb'] = $model->phpcb ? '1': '0';
+        $properties['phpcs.enable'] = $model->isUsed;
+        $properties['phpcs.phpcb'] = $model->phpcb;
 
         return $properties;
     }

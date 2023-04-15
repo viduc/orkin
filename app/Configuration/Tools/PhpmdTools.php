@@ -46,7 +46,7 @@ class PhpmdTools extends ToolsAbstract
         ModelInterface $model
     ): array
     {
-        $properties['phpmd.enable'] = $model->isUsed ? '1': '0';
+        $properties['phpmd.enable'] = $model->isUsed;
         $properties['phpmd.mode'] = $model->mode;
         $properties['phpmd.reportType'] = $model->reportType;
         $properties['phpmd.reportFile'] = $model->reportFile;

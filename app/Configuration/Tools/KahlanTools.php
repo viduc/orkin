@@ -51,7 +51,7 @@ class KahlanTools extends ToolsAbstract
         ModelInterface $model
     ): array
     {
-        $properties['kahlan.enable'] = $model->isUsed ? '1': '0';
+        $properties['kahlan.enable'] = $model->isUsed;
         $properties['kahlan.spec'] = $model->folderSpec;
         $properties['kahlan.reporter.console'] = $model->reporterConsole;
         $properties['kahlan.reporter.coverage'] = $model->reporterCoverage;
