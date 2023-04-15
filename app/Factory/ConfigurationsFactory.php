@@ -28,8 +28,6 @@ class ConfigurationsFactory implements FactoryInterface
     function create(array $params = []): ModelInterface
     {
         switch ($params['model']) {
-            case 'phpunit':
-                return new PhpunitModel();
             case 'kahlan':
                 return new KahlanModel();
             case 'phpcsfixer':
@@ -42,6 +40,8 @@ class ConfigurationsFactory implements FactoryInterface
                 return new PhpstanModel();
             case 'phploc':
                 return new PhplocModel();
+            default:
+                return new PhpunitModel();
         }
     }
 }

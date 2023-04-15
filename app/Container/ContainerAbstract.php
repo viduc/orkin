@@ -19,8 +19,6 @@ use Symfony\Component\Serializer\Encoder\YamlEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Translation\Translator;
-use Viduc\Orkin\Command\Configuration\ManualController;
-use Viduc\Orkin\Command\Orkin\CreateController;
 use Viduc\Orkin\Configuration\Configuration;
 use Viduc\Orkin\Configuration\Manual;
 use Viduc\Orkin\Factory\ConfigurationFactory;

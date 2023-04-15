@@ -32,11 +32,6 @@ abstract class OrkinAbstract extends CommandController
     public Container $container;
 
     /**
-     * @var Translation $translation
-     */
-    private Translation $translation;
-
-    /**
      * @var Translator
      */
     public Translator $translator;
@@ -66,8 +61,7 @@ abstract class OrkinAbstract extends CommandController
     public function __construct()
     {
         $this->container = ContainerAbstract::getContainer();
-        $this->translation = $this->container->get('translation');
-        $this->translator = $this->translation->translator;
+        $this->translator = $this->container->get('translation')->translator;
         $this->configuration = $this->container->get('configuration');
         $this->projectService = $this->container->get('projectService');
         $this->questions = $this->container->get('questions');

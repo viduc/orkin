@@ -35,7 +35,7 @@ class ToolsFactory implements FactoryInterface
     public function create(array $params = []): ModelInterface
     {
         switch ($params['tool']) {
-            case 'phpunit':
+            default:
                 return new PhpunitTools(
                     $this->answers,
                     $this->configurationsFactory,

@@ -26,7 +26,7 @@ class Manual
 
     public function __construct(
         public Answers     $answers,
-        private Translation $translation,
+        Translation $translation,
         private ToolsFactory $toolsFactory,
         private ConfigurationFactory $configurationFactory
     ) {
