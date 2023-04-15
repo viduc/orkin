@@ -88,7 +88,7 @@ abstract class OrkinAbstract extends CommandController
     public function defineLocale(): void
     {
         $this->locale = $this->hasParam('locale') ?
-            $this->translation->defineLocale(
+            $this->container->get('translation')->defineLocale(
                 $this->getParam('locale')
             ) : 'en_US';
     }
