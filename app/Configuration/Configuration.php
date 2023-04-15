@@ -85,10 +85,10 @@ class Configuration
             foreach($config as $i=>$v){
                 if(is_array($v)){
                     foreach($v as $t=>$m){
-                        $fileContent .= "$i[$t] = ".(is_numeric($m) ? $m : '"'.$m.'"').PHP_EOL;
+                        $fileContent .= "$i[$t] = ".$m.PHP_EOL;
                     }
                 }
-                else $fileContent .= "$i = ".(is_numeric($v) ? $v : '"'.$v.'"').PHP_EOL;
+                else $fileContent .= "$i = ".$v.PHP_EOL;
             }
         }
 
