@@ -62,13 +62,52 @@ abstract class Constantes
     ];
 
     const CONFIG_FILE = 'orkin.yml';
-    const FOLDER_PHING = 'phing';
     const FILE_PHING = 'build.xml';
+    const FOLDER_PHING = 'phing';
+    const FOLDER_QUALITY = 'quality';
+    const FOLDER_REPORTS = 'reports';
+    const FOLDER_SRC = 'src';
+    const BUILD_PROPERTIES = 'build.properties';
+    const LIST_TOOLS = [
+        'phpunit',
+        'kahlan',
+        'phpcsfixer',
+        'phpcs',
+        'phpmd',
+        'phpstan',
+        'phploc',
+    ];
     const CONFIG_DEFAULT = [
         'newConfiguration' => true,
-        'qualityPath' => 'quality',
+        'qualityPath' => self::FOLDER_QUALITY,
         'phingFolder' => self::FOLDER_PHING,
         'phingFile' => self::FILE_PHING,
+        'reportsFolder' => self::FOLDER_REPORTS,
+        'src' => self::FOLDER_SRC,
+    ];
+    const CONFIG_KAHLAN = [
+        'folderSpec' => 'spec',
+        'reporterConsole' => 'dot',
+        'reporterCoverage' => 'tap',
+        'coverageLevel' => 4,
+    ];
+    const CONFIG_PHPCSFIXER = [
+        'dryrun' => true,
+    ];
+    const CONFIG_PHPCS = [
+        'phpcb' => true,
+    ];
+    const CONFIG_PHPMD = [
+        'mode' => 'cleancode',
+        'reportType' => 'text',
+        'reportFile' => 'phpmd.txt',
+    ];
+    const CONFIG_PHPSTAN = [
+        'level' => 7,
+        'xdebug' => false,
     ];
 
+    const CONFIG_PHPUNIT = [
+        'folderTest' => 'tests'
+    ];
 }

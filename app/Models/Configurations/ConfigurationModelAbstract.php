@@ -7,11 +7,15 @@ declare(strict_types=1);
  *
  * Licence: GPL v3 https://opensource.org/licenses/gpl-3.0.html
  */
-namespace Viduc\Orkin\Factory;
+
+namespace Viduc\Orkin\Models\Configurations;
 
 use Viduc\Orkin\Models\ModelInterface;
 
-interface FactoryInterface
+abstract class ConfigurationModelAbstract implements ModelInterface
 {
-    function create(array $params = []): ModelInterface;
+    /**
+     * @var bool
+     */
+    public bool $isUsed;
 }

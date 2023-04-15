@@ -1,11 +1,11 @@
 <?php
+declare(strict_types=1);
 /**
- * This file is part of the Api package.
+ * ORKIN - Quality Tools for PHP
  *
- * (c) GammaSoftware <http://www.winlassie.com/>
+ * Tristan Fleury <http://viduc.github.com/>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * Licence: GPL v3 https://opensource.org/licenses/gpl-3.0.html
  */
 
 namespace Viduc\Orkin\Factory;
@@ -25,7 +25,7 @@ class ConfigurationFactory implements FactoryInterface
     {
     }
 
-    public function create(): ConfigurationModel
+    final public function create(array $params = []): ConfigurationModel
     {
         $path = Constantes::getProjectDir().$this->configFile;
         return File_exists($path) ? $this->serializer->deserialize(

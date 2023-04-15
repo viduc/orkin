@@ -28,13 +28,6 @@ class ProjectService implements ServiceInterface
 
     public function create(): void
     {
-        if ($this->configuration->isNewConfiguration()) {
-            $this->newProject();
-        }
-    }
-
-    private function newProject(): void
-    {
         $this->filesystem->mirror(
             $this->root.$this->configuration->getPhingFolder(),
             $this->project.$this->configuration->getQualityPath().

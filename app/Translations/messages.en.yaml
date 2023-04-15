@@ -1,2 +1,23 @@
 create default configuration: Do you want use default configuration? (Y/n)
 name quality folder: 'Give a name to the quality folder (default: quality)'
+name src folder: 'Give the name of the source folder (default: src)'
+name report folder: 'Give a name to the reports folder (default: reports)'
+phpunit use: 'Do you want use phpunit? (Y/n)'
+phpunit folder: 'Specify the name of the test folder (default: tests)'
+kahlan use : 'Do you want use kahlan? (Y/n)'
+kahlan spec: 'Specify the name of the spec folder (default: spec)'
+kahlan reporter console: "Specify the display format for the console (default: dot)"
+kahlan reporter coverage: "Specify the display format for the coverage (default: tap)"
+kahlan coverage level: "Specify the level of coverage (default: 4)"
+phpcsfixer use: 'Do you want use Phpcsfixer? (Y/n)'
+phpcsfixer dryrun: 'Do you want use dryrun mode with phpcsfixer? (Y/n)'
+phpcs use: 'Do you want use Phpcs? (Y/n)'
+phpcs phpcb: 'Do you want use Phpcscb with phpcb? (Y/n)'
+phpmd use: 'Do you want use Phpmd? (Y/n)'
+phpmd mode: 'Specify the mode to use with phpmd (default: cleancode)'
+phpmd report type: 'Specify the type of report to use with phpmd (default: text)'
+phpmd report file: 'Specify the name of report file to use with phpmd (default: phpmd.txt)'
+phpstan use: 'Do you want use Phpstan? (Y/n)'
+phpstan level: "Specify the level of phpstan (default: 7)"
+phpstan xdebug: 'Do you want use xdebug with Phpstan? (Y/n)'
+phploc use: 'Do you want use Phploc? (Y/n)'

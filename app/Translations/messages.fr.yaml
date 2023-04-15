@@ -1,2 +1,23 @@
 create default configuration: Voulez vous utiliser la configuration par défaut? (Y/n)
 name quality folder: 'Donnez un nom pour le dossier quality (default: quality)'
+name src folder: 'Donnez le nom du dossier source (default: src)'
+name report folder: 'Donnez un nom pour le dossier reports (default: reports)'
+phpunit use: 'Voulez vous utiliser phpunit? (Y/n)'
+phpunit folder: 'Précisez le nom du dossier de test (default: tests)'
+kahlan use : 'Voulez vous utiliser kahlan? (Y/n)'
+kahlan spec: 'Précisez le nom du dossier de spec (default: spec)'
+kahlan reporter console: "Précisez le format d'affichage pour la console (default: dot)"
+kahlan reporter coverage: "Précisez le format d'affichage pour le coverage (default: tap)"
+kahlan coverage level: "Précisez le niveau de couverture (default: 4)"
+phpcsfixer use: 'Voulez vous utiliser Phpcsfixer? (Y/n)'
+phpcsfixer dryrun: 'Voulez vous utiliser le mode dryrun avec phpcsfixer? (Y/n)'
+phpcs use: 'Voulez vous utiliser Phpcs? (Y/n)'
+phpcs phpcb: 'Voulez vous utiliser Phpcb avec phpcs? (Y/n)'
+phpmd use: 'Voulez vous utiliser Phpmd? (Y/n)'
+phpmd mode: 'Spécifiez le mode à utiliser avec phpmd (default: cleancode)'
+phpmd report type: 'Spécifiez le type de report à utiliser avec phpmd (default: text)'
+phpmd report file: 'Spécifiez le nom du fichier pour le report à utiliser avec phpmd (default: phpmd.txt)'
+phpstan use: 'Voulez vous utiliser Phpstan? (Y/n)'
+phpstan level: "Précisez le niveau de phpstan (default: 7)"
+phpstan xdebug: 'Voulez vous utiliser xdebug avec Phpstan? (Y/n)'
+phploc use: 'Voulez vous utiliser Phploc? (Y/n)'

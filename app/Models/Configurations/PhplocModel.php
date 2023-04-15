@@ -7,11 +7,11 @@ declare(strict_types=1);
  *
  * Licence: GPL v3 https://opensource.org/licenses/gpl-3.0.html
  */
-namespace Viduc\Orkin\Factory;
 
-use Viduc\Orkin\Models\ModelInterface;
+namespace Viduc\Orkin\Models\Configurations;
 
-interface FactoryInterface
+use Viduc\Orkin\Constantes\Constantes;
+
+class PhplocModel extends ConfigurationModelAbstract
 {
-    function create(array $params = []): ModelInterface;
 }

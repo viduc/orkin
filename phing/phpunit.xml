@@ -6,7 +6,7 @@
             <arg line="--coverage-clover ./${reports.folder}/clover.xml" />
             <arg line="--whitelist ../${src}" />
             <arg line="--testdox-text ./${reports.folder}/phpunit.txt" />
-            <arg line="../${phpunit.folder.tests}" />
+            <arg line="../${phpunit.folderTest}" />
         </exec>
 
         <echo msg="PHPUnit OK ${line.separator}" level="warning"/>

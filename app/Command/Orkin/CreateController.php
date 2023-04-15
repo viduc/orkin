@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Viduc\Orkin\Command\Orkin;
 
 use Viduc\Orkin\Command\OrkinAbstract;
+use Viduc\Orkin\Constantes\Constantes;
 
 class CreateController extends OrkinAbstract
 {
@@ -19,14 +20,19 @@ class CreateController extends OrkinAbstract
      */
     public function handle(): void
     {
-        $this->defineLocale();
+        parent::handle();
+        $this->questions->printer = $this->getPrinter();
         if ($this->configuration->isNewConfiguration()) {
-            if ($this->askUseDefaultConfiguration()) {
-                $this->projectService->create();
-            } else {
-                $this->askQualityFolderName();
-            }
+            !$this->askUseDefaultConfiguration() ?
+                $this->createManualConfiguration() :
+                $this->createDefaultConfiguration();
+            $this->configuration->configurationModel->newConfiguration = false;
+            $this->projectService->configuration->configurationModel =
+                $this->configuration->configurationModel;
+            $this->projectService->create();
+            $this->configuration->configureProperties();
         }
+        $this->configuration->persist();
         $this->getPrinter()->info(
             'info',
             true
@@ -39,8 +45,8 @@ class CreateController extends OrkinAbstract
      */
     private function askUseDefaultConfiguration(): bool
     {
-        return $this->getInputYesOrNo(
-            'ConfigurationModel',
+        return $this->questions->getInputYesOrNo(
+            'Default configuration',
             $this->translator->trans(
                 'create default configuration',
                 [],
@@ -50,16 +56,20 @@ class CreateController extends OrkinAbstract
         );
     }
 
-    private function askQualityFolderName(): void
+    private function createDefaultConfiguration(): void
     {
-        var_dump($this->getInputString(
-            'qualityFolderName',
-            $this->translator->trans(
-                'name quality folder'
-                [],
-                'messages',
-                $this->locale
-            )
-        ));
+        foreach (Constantes::LIST_TOOLS as $tool) {
+            $this->configuration->configurationModel->{$tool.'Model'} =
+                $this->configurationsFactory->create(['model' => $tool]);
+        }
     }
+
+    private function createManualConfiguration(): void
+    {
+        $this->manual->locale = $this->locale;
+        $this->manual->answers = $this->questions;
+        $this->manual->create();
+        $this->configuration->configurationModel = $this->manual->configurationModel;
+    }
+
 }
