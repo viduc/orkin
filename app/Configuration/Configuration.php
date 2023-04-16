@@ -95,7 +95,7 @@ class Configuration
         file_put_contents($file, $fileContent, LOCK_EX);
     }
 
-    private function formatValue(mixed $value): string
+    private function formatValue(mixed $value): string|int
     {
         if (is_bool($value)) {
             return $value ? 'true' : 'false';
