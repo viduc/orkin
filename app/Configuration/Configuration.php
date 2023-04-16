@@ -85,13 +85,22 @@ class Configuration
             foreach($config as $i=>$v){
                 if(is_array($v)){
                     foreach($v as $t=>$m){
-                        $fileContent .= "$i[$t] = ".$m.PHP_EOL;
+                        $fileContent .= "$i[$t] = ".$this->formatValue($m).PHP_EOL;
                     }
                 }
-                else $fileContent .= "$i = ".$v.PHP_EOL;
+                else $fileContent .= "$i = ".$this->formatValue($m).PHP_EOL;
             }
         }
 
         file_put_contents($file, $fileContent, LOCK_EX);
+    }
+
+    private function formatValue(mixed $value): string
+    {
+        if (is_bool($value)) {
+            return $value ? 'true' : 'false';
+        }
+
+        return $value;
     }
 }
