@@ -88,7 +88,7 @@ class Configuration
                         $fileContent .= "$i[$t] = ".$this->formatValue($m).PHP_EOL;
                     }
                 }
-                else $fileContent .= "$i = ".$this->formatValue($m).PHP_EOL;
+                else $fileContent .= "$i = ".$this->formatValue($v).PHP_EOL;
             }
         }
 
