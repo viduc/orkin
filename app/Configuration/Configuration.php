@@ -58,8 +58,8 @@ class Configuration
 
     public function configureProperties(): void
     {
-        $propertiesFile = Constantes::getProjectDir().$this->getQualityPath()
-            .DIRECTORY_SEPARATOR. Constantes::FOLDER_PHING.DIRECTORY_SEPARATOR
+        $propertiesFile = Constantes::getProjectDir()
+            .Constantes::FOLDER_PHING.DIRECTORY_SEPARATOR
             .Constantes::BUILD_PROPERTIES;
         $buildProperties = parse_ini_file($propertiesFile);
         $buildProperties["quality.folder"] = $this->getQualityPath();
