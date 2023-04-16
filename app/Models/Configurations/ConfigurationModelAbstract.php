@@ -17,5 +17,5 @@ abstract class ConfigurationModelAbstract implements ModelInterface
     /**
      * @var bool
      */
-    public bool $isUsed;
+    public bool $isUsed = true;
 }
