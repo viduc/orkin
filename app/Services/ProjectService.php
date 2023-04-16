@@ -16,7 +16,7 @@ use Viduc\Orkin\Constantes\Constantes;
 
 class ProjectService implements ServiceInterface
 {
-    private string $project = '';
+    public string $project = '';
     private string $root = '';
     public function __construct(
         public Configuration $configuration,

@@ -14,34 +14,41 @@ use Symfony\Component\Filesystem\Filesystem;
 use Viduc\Orkin\Configuration\Configuration;
 use Viduc\Orkin\Constantes\Constantes;
 use Viduc\Orkin\Factory\ConfigurationFactory;
+use Viduc\Orkin\Factory\ToolsFactory;
 use Viduc\Orkin\Services\ProjectService;
 use Viduc\Orkin\Tests\OrkinTestCase;
 
 class ProjectServiceTest extends OrkinTestCase
 {
     /**
-     * @var ProjectService
+     * @var ProjectService|null
      */
-    private ProjectService $createService;
+    private ?ProjectService $createService;
 
     /**
-     * @var ConfigurationFactory
+     * @var ConfigurationFactory|null
      */
-    private ConfigurationFactory $configurationFactory;
+    private ?ConfigurationFactory $configurationFactory;
 
     /**
-     * @var Configuration
+     * @var Configuration|null
      */
-    private Configuration $configuration;
+    private ?Configuration $configuration;
+    /**
+     * @var ToolsFactory|null
+     */
+    private ?ToolsFactory $toolsFactory;
 
     public function setUp(): void
     {
         parent::setUp();
         $this->configurationFactory = new ConfigurationFactory($this->serializer);
         $this->configurationFactory->configFile = $this->configFile;
+        $this->toolsFactory = $this->createMock(ToolsFactory::class);
         $this->configuration = new Configuration(
             $this->configurationFactory,
-            $this->serializer
+            $this->serializer,
+            $this->toolsFactory
         );
         $this->configuration->configurationModel->qualityPath = $this->qualityPath;
         $this->configuration->configurationModel->newConfiguration = true;
@@ -53,9 +60,10 @@ class ProjectServiceTest extends OrkinTestCase
         );
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $qualityPath = Constantes::getProjectDir().$this->qualityPath;
+        $this->createService->project = $qualityPath;
         $this->assertDirectoryDoesNotExist($qualityPath);
         $this->createService->create();
         $this->assertDirectoryExists($qualityPath);

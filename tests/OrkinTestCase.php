@@ -42,6 +42,12 @@ class OrkinTestCase extends TestCase
         parent::setUp();
         $this->cleanExecution();
     }
+
+    public function tearDown(): void
+    {
+        parent::tearDown();
+        $this->cleanExecution();
+    }
     public function cleanExecution(): void
     {
         $this->filesystem->remove(
