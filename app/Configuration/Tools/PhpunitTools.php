@@ -22,6 +22,10 @@ class PhpunitTools extends ToolsAbstract
             'phpunit',
             'phpunit use'
         );
+        $phpunit->isUsed = $this->useTool(
+            'phpunit checkreturn',
+            'phpunit checkreturn'
+        );
         $phpunit->folderTest = $phpunit->isUsed ? $this->answer(
             'Phpunit folder test',
             'phpunit folder',
@@ -38,7 +42,7 @@ class PhpunitTools extends ToolsAbstract
     {
         $properties['phpunit.enable'] = $model->isUsed;
         $properties['phpunit.folderTest'] = $model->folderTest;
-
+        $properties['phpunit.checkreturn'] = $model->checkreturn;
         return $properties;
     }
 }

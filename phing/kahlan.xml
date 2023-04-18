@@ -2,7 +2,7 @@
 <project>
     <target name="kahlan">
         <exec executable="./${quality.folder}/vendor/bin/kahlan"
-              dir=".." passthru="true" checkreturn="true" >
+              dir=".." passthru="true" checkreturn="${kahlan.checkreturn}" >
             <arg line="--reporter=${kahlan.reporter.console}"/>
             <arg line="--reporter=${kahlan.reporter.coverage}:./${quality.folder}/${reports.folder}/kahlan.txt"/>
             <arg line="--src=./${src}"/>

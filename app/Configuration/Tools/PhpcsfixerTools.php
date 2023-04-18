@@ -22,6 +22,10 @@ class PhpcsfixerTools extends ToolsAbstract
             'phpcsfixer',
             'phpcsfixer use'
         );
+        $phpcsfixer->isUsed = $this->useTool(
+            'phpcsfixer checkreturn',
+            'phpcsfixer checkreturn'
+        );
         $phpcsfixer->dryRun = $phpcsfixer->isUsed ? $this->useTool(
             'Phpcsfixer dryrun',
             'phpcsfixer dryrun'
@@ -37,6 +41,7 @@ class PhpcsfixerTools extends ToolsAbstract
     {
         $properties['phpcsfixer.enable'] = $model->isUsed;
         $properties['phpcsfixer.dryrun'] = $model->dryRun;
+        $properties['phpcsfixer.checkreturn'] = $model->checkreturn;
 
         return $properties;
     }

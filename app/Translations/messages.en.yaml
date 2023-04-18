@@ -3,13 +3,16 @@ name quality folder: 'Give a name to the quality folder (default: quality)'
 name src folder: 'Give the name of the source folder (default: src)'
 name report folder: 'Give a name to the reports folder (default: reports)'
 phpunit use: 'Do you want use phpunit? (Y/n)'
+phpunit checkreturn: 'Do you want use checkreturn mode with phpunit? (Y/n)'
 phpunit folder: 'Specify the name of the test folder (default: tests)'
 kahlan use : 'Do you want use kahlan? (Y/n)'
+kahlan checkreturn: 'Do you want use checkreturn mode with kahlan? (Y/n)'
 kahlan spec: 'Specify the name of the spec folder (default: spec)'
 kahlan reporter console: "Specify the display format for the console (default: dot)"
 kahlan reporter coverage: "Specify the display format for the coverage (default: tap)"
 kahlan coverage level: "Specify the level of coverage (default: 4)"
 phpcsfixer use: 'Do you want use Phpcsfixer? (Y/n)'
+phpcsfixer checkreturn: 'Do you want use checkreturn mode with phpcsfixer? (Y/n)'
 phpcsfixer dryrun: 'Do you want use dryrun mode with phpcsfixer? (Y/n)'
 phpcs use: 'Do you want use Phpcs? (Y/n)'
 phpcs phpcb: 'Do you want use Phpcscb with phpcb? (Y/n)'

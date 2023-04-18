@@ -22,6 +22,10 @@ class KahlanTools extends ToolsAbstract
             'kahlan',
             'kahlan use'
         );
+        $kahlan->isUsed = $this->useTool(
+            'kahlan checkreturn',
+            'kahlan checkreturn'
+        );
         $kahlan->folderSpec = $kahlan->isUsed ? $this->answer(
             'Kahlan folder spec',
             'kahlan spec',
@@ -52,6 +56,7 @@ class KahlanTools extends ToolsAbstract
     ): array
     {
         $properties['kahlan.enable'] = $model->isUsed;
+        $properties['kahlan.checkreturn'] = $model->checkreturn;
         $properties['kahlan.spec'] = $model->folderSpec;
         $properties['kahlan.reporter.console'] = $model->reporterConsole;
         $properties['kahlan.reporter.coverage'] = $model->reporterCoverage;

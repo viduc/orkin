@@ -90,9 +90,11 @@ abstract class Constantes
         'reporterConsole' => 'dot',
         'reporterCoverage' => 'tap',
         'coverageLevel' => 4,
+        'checkreturn' => 'true',
     ];
     const CONFIG_PHPCSFIXER = [
         'dryrun' => true,
+        'checkreturn' => 'true',
     ];
     const CONFIG_PHPCS = [
         'phpcb' => true,
@@ -108,6 +110,7 @@ abstract class Constantes
     ];
 
     const CONFIG_PHPUNIT = [
-        'folderTest' => 'tests'
+        'folderTest' => 'tests',
+        'checkreturn' => 'true',
     ];
 }

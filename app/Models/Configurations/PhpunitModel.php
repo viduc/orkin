@@ -15,4 +15,6 @@ use Viduc\Orkin\Constantes\Constantes;
 class PhpunitModel extends ConfigurationModelAbstract
 {
     public string $folderTest = Constantes::CONFIG_PHPUNIT['folderTest'];
+
+    public string $checkreturn = Constantes::CONFIG_PHPUNIT['checkreturn'];
 }

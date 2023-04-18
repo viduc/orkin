@@ -18,4 +18,6 @@ class KahlanModel extends ConfigurationModelAbstract
     public string $reporterConsole = CONSTANTES::CONFIG_KAHLAN['reporterConsole'];
     public string $reporterCoverage = CONSTANTES::CONFIG_KAHLAN['reporterCoverage'];
     public int $coverageLevel = CONSTANTES::CONFIG_KAHLAN['coverageLevel'];
+
+    public string $checkreturn = Constantes::CONFIG_KAHLAN['checkreturn'];
 }

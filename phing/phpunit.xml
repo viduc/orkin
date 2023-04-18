@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <target name="phpunit">
-        <exec executable="./vendor/bin/phpunit" passthru="true" checkreturn="true" >
+        <exec executable="./vendor/bin/phpunit" passthru="true" checkreturn="${phpunit.checkreturn}" >
             <arg line="--bootstrap ../vendor/autoload.php" />
             <arg line="--coverage-clover ./${reports.folder}/clover.xml" />
             <arg line="--whitelist ../${src}" />
