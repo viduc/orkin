@@ -41,3 +41,9 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
+
+    - name: Install quality
+      run: cd quality && composer install --prefer-dist --no-progress
+
+    - name: Run quality
+      run: cd quality && composer run-script quality
