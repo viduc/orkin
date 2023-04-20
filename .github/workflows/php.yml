@@ -54,4 +54,4 @@ jobs:
         coverageLocations: |
           ${{github.workspace}}/quality/reports/clover.xml:clover
       env:
-        CC_TEST_REPORTER_ID: 82e286a808716fef6218819da09cb6ab4c910bb7b1550bea1e748502c025
+        CC_TEST_REPORTER_ID: de2f1c81f112639d9a66edd1084d51b4e02c2498b9ddab935bad89499da9e0cd

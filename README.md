@@ -14,6 +14,9 @@ STATUT
 [![Latest Stable Version](http://poser.pugx.org/viduc/orkin/v)](https://packagist.org/packages/viduc/orkin)
 [![Latest Unstable Version](http://poser.pugx.org/viduc/orkin/v/unstable)](https://packagist.org/packages/viduc/orkin)
 [![Total Downloads](http://poser.pugx.org/viduc/orkin/downloads)](https://packagist.org/packages/viduc/orkin)
+[![Maintainability](https://api.codeclimate.com/v1/badges/0e4654bced125386dbc4/maintainability)](https://codeclimate.com/github/viduc/orkin/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0e4654bced125386dbc4/test_coverage)](https://codeclimate.com/github/viduc/orkin/test_coverage)
+
 -------
 
 Copyright [2023] [Tristan FLeury]
