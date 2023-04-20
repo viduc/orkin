@@ -47,3 +47,11 @@ jobs:
 
     - name: Run quality
       run: cd quality && composer run-script quality
+
+    - name: Publish code coverage
+      uses: paambaati/codeclimate-action@v3.2.0
+      with:
+        coverageLocations: |
+          ${{github.workspace}}/quality/reports/clover.xml:clover
+      env:
+        CC_TEST_REPORTER_ID: 82e286a808716fef6218819da09cb6ab4c910bb7b1550bea1e748502c025
