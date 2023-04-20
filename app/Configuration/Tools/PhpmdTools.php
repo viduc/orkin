@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * This file is part of the orkin Application.
@@ -26,17 +27,17 @@ class PhpmdTools extends ToolsAbstract
             'Phpmd mode',
             'phpmd mode',
             $phpmd->mode
-        ): $phpmd->mode;
+        ) : $phpmd->mode;
         $phpmd->mode = $phpmd->isUsed ? $this->answer(
             'Phpmd report type',
             'phpmd report type',
             $phpmd->mode
-        ): $phpmd->mode;
+        ) : $phpmd->mode;
         $phpmd->reportFile = $phpmd->isUsed ? $this->answer(
             'Phpmd report file',
             'phpmd report file',
             $phpmd->reportFile
-        ): $phpmd->reportFile;
+        ) : $phpmd->reportFile;
 
         return $phpmd;
     }
@@ -44,8 +45,7 @@ class PhpmdTools extends ToolsAbstract
     final public function setPropertiesConfiguration(
         array $properties,
         ModelInterface $model
-    ): array
-    {
+    ): array {
         $properties['phpmd.enable'] = $model->isUsed;
         $properties['phpmd.mode'] = $model->mode;
         $properties['phpmd.reportType'] = $model->reportType;

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="orkin">
+    <property file="phing/build.properties" />
+    <import file="phing/header.xml" />
+    <import file="phing/workspace.xml" />
+    <import file="phing/phpunit.xml" />
+    <import file="phing/kahlan.xml" />
+    <import file="phing/coverage.xml" />
+    <import file="phing/phpcsfixer.xml" />
+    <import file="phing/phpcs.xml" />
+    <import file="phing/phpmd.xml" />
+    <import file="phing/phpstan.xml" />
+    <import file="phing/phploc.xml" />
+    <target name="orkin">
+        <phingcall target="header"/>
+        <phingcall target="workspace"/>
+        <if>
+            <istrue value="${phpunit.enable}" />
+            <then><phingcall target="phpunit"/></then>
+        </if>
+        <if>
+            <istrue value="${kahlan.enable}" />
+            <then><phingcall target="kahlan"/></then>
+        </if>
+        <phingcall target="coverage"/>
+        <if>
+            <istrue value="${phpcsfixer.enable}" />
+            <then>
+                <if>
+                    <istrue value="${phpcsfixer.dryrun}" />
+                    <then><phingcall target="phpcsfixer-dryrun"/></then>
+                    <else>
+                        <phingcall target="phpcsfixer"/>
+                    </else>
+                </if>
+            </then>
+        </if>
+        <if>
+            <istrue value="${phpcs.enable}" />
+            <then><phingcall target="phpcs"/></then>
+        </if>
+        <if>
+            <istrue value="${phpmd.enable}" />
+            <then><phingcall target="phpmd"/></then>
+        </if>
+        <if>
+            <istrue value="${phpstan.enable}" />
+            <then><phingcall target="phpstan"/></then>
+        </if>
+        <if>
+            <istrue value="${phploc.enable}" />
+            <then><phingcall target="phploc"/></then>
+        </if>
+    </target>
+</project>

@@ -31,7 +31,7 @@ use Viduc\Orkin\Translations\Translation;
 
 abstract class ContainerAbstract
 {
-    static public function getContainer(): Container
+    public static function getContainer(): Container
     {
         $container = new Container();
         self::registerContainer($container);
@@ -43,14 +43,14 @@ abstract class ContainerAbstract
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    static private function registerContainer(Container &$container): void
+    private static function registerContainer(Container &$container): void
     {
         $container->add('yamlEncoder', YamlEncoder::class);
-        $container->add('objectNormalizer',ObjectNormalizer::class);
-        $container->add('fileSystem',Filesystem::class);
-        $container->add('inputFactory',InputFactory::class);
-        $container->add('outputHandler',OutputHandler::class);
-        $container->add('configurationsFactory',ConfigurationsFactory::class);
+        $container->add('objectNormalizer', ObjectNormalizer::class);
+        $container->add('fileSystem', Filesystem::class);
+        $container->add('inputFactory', InputFactory::class);
+        $container->add('outputHandler', OutputHandler::class);
+        $container->add('configurationsFactory', ConfigurationsFactory::class);
 
         $container->add(
             'translator',
@@ -66,7 +66,7 @@ abstract class ContainerAbstract
         )->addArguments(
             [
                 [$container->get('objectNormalizer')],
-                [$container->get('yamlEncoder')]
+                [$container->get('yamlEncoder')],
             ]
         );
 
@@ -99,7 +99,7 @@ abstract class ContainerAbstract
             [
                 $container->get('configurationFactory'),
                 $container->get('serializer'),
-                $container->get('toolsFactory')
+                $container->get('toolsFactory'),
             ]
         );
         $container->add(
@@ -108,7 +108,7 @@ abstract class ContainerAbstract
         )->addArguments(
             [
                 $container->get('configuration'),
-                $container->get('fileSystem')
+                $container->get('fileSystem'),
             ]
         );
         $container->add(

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * This file is part of the orkin Application.
@@ -30,7 +31,7 @@ class PhpunitTools extends ToolsAbstract
             'Phpunit folder test',
             'phpunit folder',
             $phpunit->folderTest
-        ): $phpunit->folderTest;
+        ) : $phpunit->folderTest;
 
         return $phpunit;
     }
@@ -38,11 +39,11 @@ class PhpunitTools extends ToolsAbstract
     final public function setPropertiesConfiguration(
         array $properties,
         ModelInterface $model
-    ): array
-    {
+    ): array {
         $properties['phpunit.enable'] = $model->isUsed;
         $properties['phpunit.folderTest'] = $model->folderTest;
         $properties['phpunit.checkreturn'] = $model->checkreturn;
+
         return $properties;
     }
 }

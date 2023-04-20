@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 /**
- * ORKIN - Quality Tools for PHP
+ * ORKIN - Quality Tools for PHP.
  *
  * Tristan Fleury <http://viduc.github.com/>
  *
@@ -15,9 +16,6 @@ use Viduc\Orkin\Constantes\Constantes;
 
 class CreateController extends OrkinAbstract
 {
-    /**
-     * @return void
-     */
     public function handle(): void
     {
         parent::handle();
@@ -40,9 +38,6 @@ class CreateController extends OrkinAbstract
         $this->getPrinter()->newline();
     }
 
-    /**
-     * @return bool
-     */
     private function askUseDefaultConfiguration(): bool
     {
         return $this->questions->getInputYesOrNo(
@@ -71,5 +66,4 @@ class CreateController extends OrkinAbstract
         $this->manual->create();
         $this->configuration->configurationModel = $this->manual->configurationModel;
     }
-
 }

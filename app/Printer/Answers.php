@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 /**
- * ORKIN - Quality Tools for PHP
+ * ORKIN - Quality Tools for PHP.
  *
  * Tristan Fleury <http://viduc.github.com/>
  *
@@ -18,40 +19,28 @@ class Answers
     public function __construct(
         public OutputHandler $printer,
         private InputFactory $inputFactory
-    ){
+    ) {
     }
 
-    /**
-     * @param string $identifier
-     * @param string $display
-     *
-     * @return bool
-     */
     final public function getInputYesOrNo(
         string $identifier,
         string $display = ''
     ): bool {
         $this->printer->display($display);
         $value = null;
-        while ($value === null) {
+        while (null === $value) {
             $input = $this->inputFactory->create(
                 ['message' => $identifier.'? (Y/n) > ']
             );
             $value = $input->read();
-            $value = $value === '' ? 'y' : $value;
+            $value = '' === $value ? 'y' : $value;
             $value = in_array(strtolower($value), ['y', 'n']) ?
-                strtolower($value) === 'y' : null;
+                'y' === strtolower($value) : null;
         }
 
-        return $value == 'y';
+        return 'y' == $value;
     }
 
-    /**
-     * @param string $identifier
-     * @param string $display
-     *
-     * @return string
-     */
     final public function getInputString(
         string $identifier,
         string $display = '',

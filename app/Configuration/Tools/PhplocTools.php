@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * This file is part of the orkin Application.
@@ -22,14 +23,14 @@ class PhplocTools extends ToolsAbstract
             'phploc',
             'phploc use'
         );
+
         return $phploc;
     }
 
     final public function setPropertiesConfiguration(
         array $properties,
         ModelInterface $model
-    ): array
-    {
+    ): array {
         $properties['phploc.enable'] = $model->isUsed;
 
         return $properties;

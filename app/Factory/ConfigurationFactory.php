@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 /**
- * ORKIN - Quality Tools for PHP
+ * ORKIN - Quality Tools for PHP.
  *
  * Tristan Fleury <http://viduc.github.com/>
  *
@@ -16,9 +17,6 @@ use Viduc\Orkin\Models\ConfigurationModel;
 
 class ConfigurationFactory implements FactoryInterface
 {
-    /**
-     * @var string
-     */
     public string $configFile = Constantes::CONFIG_FILE;
 
     public function __construct(public Serializer $serializer)
@@ -28,10 +26,11 @@ class ConfigurationFactory implements FactoryInterface
     final public function create(array $params = []): ConfigurationModel
     {
         $path = Constantes::getProjectDir().$this->configFile;
-        return File_exists($path) ? $this->serializer->deserialize(
+
+        return file_exists($path) ? $this->serializer->deserialize(
             file_get_contents($path),
             ConfigurationModel::class,
             'yaml'
-        ): new ConfigurationModel(Constantes::CONFIG_DEFAULT);
+        ) : new ConfigurationModel(Constantes::CONFIG_DEFAULT);
     }
 }

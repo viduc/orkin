@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 /**
- * ORKIN - Quality Tools for PHP
+ * ORKIN - Quality Tools for PHP.
  *
  * Tristan Fleury <http://viduc.github.com/>
  *
@@ -12,5 +13,4 @@ namespace Viduc\Orkin\Validators;
 
 abstract class ValidatorAbstract implements ValidatorInterface
 {
-
 }

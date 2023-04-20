@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <target name="phpcsfixer-dryrun">
+        <exec command="PHP_CS_FIXER_IGNORE_ENV=1 php ./${quality.folder}/vendor/bin/php-cs-fixer
+        fix ./${src} --dry-run --config=./${quality.folder}/phing/php-cs-fixer.php
+        --verbose > ./${quality.folder}/reports/phpcsfixer.txt"
+            dir=".." passthru="true" checkreturn="${phpcsfixer.checkreturn}" />
+        <echo msg="Php-cs-fixer OK ${line.separator}" level="warning"/>
+    </target>
+    <target name="phpcsfixer">
+        <exec command="PHP_CS_FIXER_IGNORE_ENV=1 php ./${quality.folder}/vendor/bin/php-cs-fixer
+        fix ./${src} --config=./${quality.folder}/phing/php-cs-fixer.php
+        --verbose > ./${quality.folder}/reports/phpcsfixer.txt"
+              dir=".." passthru="true" checkreturn="${phpcsfixer.checkreturn}" />
+        <echo msg="Php-cs-fixer OK ${line.separator}" level="warning"/>
+    </target>
+</project>

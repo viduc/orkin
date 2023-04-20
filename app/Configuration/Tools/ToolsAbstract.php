@@ -1,12 +1,14 @@
 <?php
+
 declare(strict_types=1);
 /**
- * ORKIN - Quality Tools for PHP
+ * ORKIN - Quality Tools for PHP.
  *
  * Tristan Fleury <http://viduc.github.com/>
  *
  * Licence: GPL v3 https://opensource.org/licenses/gpl-3.0.html
  */
+
 namespace Viduc\Orkin\Configuration\Tools;
 
 use Symfony\Component\Translation\Translator;
@@ -18,6 +20,7 @@ use Viduc\Orkin\Translations\Translation;
 abstract class ToolsAbstract implements ModelInterface
 {
     private Translator $translator;
+
     public function __construct(
         public Answers $answers,
         public ConfigurationsFactory $configurationsFactory,
@@ -26,9 +29,11 @@ abstract class ToolsAbstract implements ModelInterface
     ) {
         $this->translator = $translation->translator;
     }
+
     abstract public function configure(): ModelInterface;
 
-    final public function useTool(string $indentifier, string $translateId): bool {
+    final public function useTool(string $indentifier, string $translateId): bool
+    {
         return $this->answers->getInputYesOrNo(
             $indentifier,
             $this->translator->trans(
@@ -68,9 +73,8 @@ abstract class ToolsAbstract implements ModelInterface
                 $translateId,
                 (string) $default
             );
-        }
-        while(!is_numeric($response));
+        } while (!is_numeric($response));
 
-        return (int)$response;
+        return (int) $response;
     }
 }

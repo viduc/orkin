@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * This file is part of the orkin Application.
@@ -26,11 +27,11 @@ class PhpstanTools extends ToolsAbstract
             'Phpstan level',
             'phpstan level',
             $phpstan->level
-        ): $phpstan->level;
+        ) : $phpstan->level;
         $phpstan->xdebug = $phpstan->isUsed ? $this->useTool(
             'Phpstan xdebug',
             'phpstan xdebug'
-        ): $phpstan->xdebug;
+        ) : $phpstan->xdebug;
 
         return $phpstan;
     }
@@ -38,8 +39,7 @@ class PhpstanTools extends ToolsAbstract
     final public function setPropertiesConfiguration(
         array $properties,
         ModelInterface $model
-    ): array
-    {
+    ): array {
         $properties['phpstan.enable'] = $model->isUsed;
         $properties['phpstan.level'] = $model->level;
         $properties['phpstan.xdebug'] = $model->xdebug;

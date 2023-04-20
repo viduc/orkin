@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <target name="phpunit">
+        <exec executable="./vendor/bin/phpunit" passthru="true" checkreturn="${phpunit.checkreturn}" >
+            <arg line="--bootstrap ../vendor/autoload.php" />
+            <arg line="--coverage-clover ./${reports.folder}/clover.xml" />
+            <arg line="--whitelist ../${src}" />
+            <arg line="--testdox-text ./${reports.folder}/phpunit.txt" />
+            <arg line="../${phpunit.folderTest}" />
+        </exec>
+
+        <echo msg="PHPUnit OK ${line.separator}" level="warning"/>
+    </target>
+</project>

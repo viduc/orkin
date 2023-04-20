@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <target name="phploc">
+        <exec command="php ./phploc/phploc.phar
+         ./${src} > ./${quality.folder}/reports/phploc.txt"
+          dir=".." passthru="true">
+        </exec>
+        <echo msg="Phploc OK ${line.separator}" level="warning"/>
+    </target>
+</project>

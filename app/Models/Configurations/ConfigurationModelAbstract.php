@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 /**
- * ORKIN - Quality Tools for PHP
+ * ORKIN - Quality Tools for PHP.
  *
  * Tristan Fleury <http://viduc.github.com/>
  *
@@ -14,8 +15,5 @@ use Viduc\Orkin\Models\ModelInterface;
 
 abstract class ConfigurationModelAbstract implements ModelInterface
 {
-    /**
-     * @var bool
-     */
     public bool $isUsed = true;
 }

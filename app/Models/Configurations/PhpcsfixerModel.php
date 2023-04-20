@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 /**
- * ORKIN - Quality Tools for PHP
+ * ORKIN - Quality Tools for PHP.
  *
  * Tristan Fleury <http://viduc.github.com/>
  *
@@ -15,4 +16,6 @@ use Viduc\Orkin\Constantes\Constantes;
 class PhpcsfixerModel extends ConfigurationModelAbstract
 {
     public bool $dryRun = CONSTANTES::CONFIG_PHPCSFIXER['dryrun'];
+
+    public string $checkreturn = Constantes::CONFIG_PHPCSFIXER['checkreturn'];
 }

@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 /**
- * ORKIN - Quality Tools for PHP
+ * ORKIN - Quality Tools for PHP.
  *
  * Tristan Fleury <http://viduc.github.com/>
  *
@@ -9,8 +10,6 @@ declare(strict_types=1);
  */
 
 namespace Viduc\Orkin\Models\Configurations;
-
-use Viduc\Orkin\Constantes\Constantes;
 
 class PhplocModel extends ConfigurationModelAbstract
 {

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * This file is part of the orkin Application.
@@ -30,22 +31,22 @@ class KahlanTools extends ToolsAbstract
             'Kahlan folder spec',
             'kahlan spec',
             $kahlan->folderSpec
-        ): $kahlan->folderSpec;
+        ) : $kahlan->folderSpec;
         $kahlan->reporterConsole = $kahlan->isUsed ? $this->answer(
             'Kahlan reporter console',
             'kahlan reporter console',
             $kahlan->reporterConsole
-        ): $kahlan->reporterConsole;
+        ) : $kahlan->reporterConsole;
         $kahlan->reporterCoverage = $kahlan->isUsed ? $this->answer(
             'Kahlan reporter coverage',
             'kahlan reporter coverage',
             $kahlan->reporterCoverage
-        ): $kahlan->reporterCoverage;
+        ) : $kahlan->reporterCoverage;
         $kahlan->coverageLevel = $kahlan->isUsed ? $this->answerInteger(
             'Kahlan coverage level',
             'kahlan coverage level',
             $kahlan->coverageLevel
-        ): $kahlan->coverageLevel;
+        ) : $kahlan->coverageLevel;
 
         return $kahlan;
     }
@@ -53,8 +54,7 @@ class KahlanTools extends ToolsAbstract
     final public function setPropertiesConfiguration(
         array $properties,
         ModelInterface $model
-    ): array
-    {
+    ): array {
         $properties['kahlan.enable'] = $model->isUsed;
         $properties['kahlan.checkreturn'] = $model->checkreturn;
         $properties['kahlan.spec'] = $model->folderSpec;

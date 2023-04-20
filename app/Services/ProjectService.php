@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 /**
- * ORKIN - Quality Tools for PHP
+ * ORKIN - Quality Tools for PHP.
  *
  * Tristan Fleury <http://viduc.github.com/>
  *
@@ -18,6 +19,7 @@ class ProjectService implements ServiceInterface
 {
     public string $project = '';
     private string $root = '';
+
     public function __construct(
         public Configuration $configuration,
         private Filesystem $filesystem
@@ -34,7 +36,7 @@ class ProjectService implements ServiceInterface
         );
         $this->filesystem->copy(
             $this->root.$this->configuration->getPhingFile(),
-            $this->project.DIRECTORY_SEPARATOR. Constantes::FILE_PHING
+            $this->project.DIRECTORY_SEPARATOR.Constantes::FILE_PHING
         );
     }
 }

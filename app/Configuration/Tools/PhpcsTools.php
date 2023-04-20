@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * This file is part of the orkin Application.
@@ -25,7 +26,7 @@ class PhpcsTools extends ToolsAbstract
         $phpcs->phpcb = $phpcs->isUsed ? $this->useTool(
             'Phcs phpcb',
             'phpcs phpcb'
-        ): $phpcs->phpcb;
+        ) : $phpcs->phpcb;
 
         return $phpcs;
     }
@@ -33,8 +34,7 @@ class PhpcsTools extends ToolsAbstract
     final public function setPropertiesConfiguration(
         array $properties,
         ModelInterface $model
-    ): array
-    {
+    ): array {
         $properties['phpcs.enable'] = $model->isUsed;
         $properties['phpcs.phpcb'] = $model->phpcb;
 

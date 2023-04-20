@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 /**
- * ORKIN - Quality Tools for PHP
+ * ORKIN - Quality Tools for PHP.
  *
  * Tristan Fleury <http://viduc.github.com/>
  *
@@ -22,28 +23,15 @@ use Viduc\Orkin\Container\ContainerAbstract;
 use Viduc\Orkin\Factory\ConfigurationsFactory;
 use Viduc\Orkin\Printer\Answers;
 use Viduc\Orkin\Services\ProjectService;
-use Viduc\Orkin\Translations\Translation;
 
 abstract class OrkinAbstract extends CommandController
 {
-    /**
-     * @var Container
-     */
     public Container $container;
 
-    /**
-     * @var Translator
-     */
     public Translator $translator;
 
-    /**
-     * @var string
-     */
     public string $locale = 'en_US';
 
-    /**
-     * @var Configuration
-     */
     public Configuration $configuration;
 
     public ProjectService $projectService;
@@ -74,17 +62,11 @@ abstract class OrkinAbstract extends CommandController
         $this->defineLocale();
     }
 
-    /**
-     * @return OutputHandler
-     */
     public function getPrinter(): OutputHandler
     {
         return parent::getPrinter();
     }
 
-    /**
-     * @return void
-     */
     public function defineLocale(): void
     {
         $this->locale = $this->hasParam('locale') ?

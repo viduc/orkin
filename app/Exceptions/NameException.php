@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 /**
- * ORKIN - Quality Tools for PHP
+ * ORKIN - Quality Tools for PHP.
  *
  * Tristan Fleury <http://viduc.github.com/>
  *
@@ -12,9 +13,8 @@ namespace Viduc\Orkin\Exceptions;
 
 /**
  * 100 -> 'Name must not be empty'
- * 101 -> "The target is invalid"
+ * 101 -> "The target is invalid".
  */
 class NameException extends ExceptionAbstract
 {
-
 }

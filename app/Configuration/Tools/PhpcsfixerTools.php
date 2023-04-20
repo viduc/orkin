@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * This file is part of the orkin Application.
@@ -29,7 +30,7 @@ class PhpcsfixerTools extends ToolsAbstract
         $phpcsfixer->dryRun = $phpcsfixer->isUsed ? $this->useTool(
             'Phpcsfixer dryrun',
             'phpcsfixer dryrun'
-        ): $phpcsfixer->dryRun;
+        ) : $phpcsfixer->dryRun;
 
         return $phpcsfixer;
     }
@@ -37,8 +38,7 @@ class PhpcsfixerTools extends ToolsAbstract
     final public function setPropertiesConfiguration(
         array $properties,
         ModelInterface $model
-    ): array
-    {
+    ): array {
         $properties['phpcsfixer.enable'] = $model->isUsed;
         $properties['phpcsfixer.dryrun'] = $model->dryRun;
         $properties['phpcsfixer.checkreturn'] = $model->checkreturn;

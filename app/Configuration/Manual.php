@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 /**
- * ORKIN - Quality Tools for PHP
+ * ORKIN - Quality Tools for PHP.
  *
  * Tristan Fleury <http://viduc.github.com/>
  *
@@ -25,7 +26,7 @@ class Manual
     public ConfigurationModel $configurationModel;
 
     public function __construct(
-        public Answers     $answers,
+        public Answers $answers,
         Translation $translation,
         private ToolsFactory $toolsFactory,
         private ConfigurationFactory $configurationFactory

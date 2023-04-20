@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <target name="workspace">
+        <exec command="if [ -d '${reports.folder}' ]; then echo 'true'; else echo 'false'; fi;" outputProperty="output.IS_DIRECTORY_EXISTS"/>
+        <if>
+            <istrue value="${output.IS_DIRECTORY_EXISTS}" />
+            <then>
+                <delete dir="${reports.folder}" includeemptydirs="true" failonerror="true" />
+                <echo msg="The ${reports.folder} folder has been deleted ${line.separator}" level="warning"/>
+            </then>
+        </if>
+        <mkdir dir="${reports.folder}" />
+        <echo msg="The ${reports.folder} folder has been created ${line.separator}" level="warning"/>
+    </target>
+</project>

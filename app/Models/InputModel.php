@@ -6,5 +6,4 @@ use Minicli\Input;
 
 class InputModel extends Input implements ModelInterface
 {
-
 }

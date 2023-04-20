@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <target name="kahlan">
+        <exec executable="./${quality.folder}/vendor/bin/kahlan"
+              dir=".." passthru="true" checkreturn="${kahlan.checkreturn}" >
+            <arg line="--reporter=${kahlan.reporter.console}"/>
+            <arg line="--reporter=${kahlan.reporter.coverage}:./${quality.folder}/${reports.folder}/kahlan.txt"/>
+            <arg line="--src=./${src}"/>
+            <arg line="--spec=./${kahlan.spec}"/>
+            <arg line="--coverage=${kahlan.reporter.coverage.level}"/>
+            <arg line="--clover=./${quality.folder}/${reports.folder}/clover-kahlan.xml" />
+        </exec>
+
+        <echo msg="Kahlan OK ${line.separator}" level="warning"/>
+    </target>
+</project>

@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 /**
- * ORKIN - Quality Tools for PHP
+ * ORKIN - Quality Tools for PHP.
  *
  * Tristan Fleury <http://viduc.github.com/>
  *
@@ -12,14 +13,15 @@ namespace Viduc\Orkin\Translations;
 
 use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Translation\Translator;
+
 class Translation
 {
-    const LOCALE = [
+    public const LOCALE = [
         'fr' => 'fr_FR',
-        'en' => 'en_US'
+        'en' => 'en_US',
     ];
 
-    const DEFAULT_LOCALE = 'en_US';
+    public const DEFAULT_LOCALE = 'en_US';
 
     public function __construct(public Translator $translator)
     {
@@ -36,15 +38,11 @@ class Translation
         );
     }
 
-    /**
-     * @param string $locale
-     * @return string
-     */
     public function defineLocale(string $locale): string
     {
         return array_key_exists(
             $locale,
             self::LOCALE
-        ) ? self::LOCALE[$locale]: self::DEFAULT_LOCALE;
+        ) ? self::LOCALE[$locale] : self::DEFAULT_LOCALE;
     }
 }

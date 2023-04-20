@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 /**
- * ORKIN - Quality Tools for PHP
+ * ORKIN - Quality Tools for PHP.
  *
  * Tristan Fleury <http://viduc.github.com/>
  *
@@ -62,9 +63,9 @@ class Configuration
             .Constantes::FOLDER_PHING.DIRECTORY_SEPARATOR
             .Constantes::BUILD_PROPERTIES;
         $buildProperties = parse_ini_file($propertiesFile);
-        $buildProperties["quality.folder"] = $this->getQualityPath();
-        $buildProperties["src"] = $this->configurationModel->srcFolder;
-        $buildProperties["reports.folder"] = $this->configurationModel->reportsFolder;
+        $buildProperties['quality.folder'] = $this->getQualityPath();
+        $buildProperties['src'] = $this->configurationModel->srcFolder;
+        $buildProperties['reports.folder'] = $this->configurationModel->reportsFolder;
 
         foreach (Constantes::LIST_TOOLS as $tool) {
             $buildProperties = $this->toolsFactory->create(
@@ -75,20 +76,21 @@ class Configuration
             );
         }
 
-        $this->writeIniFile($buildProperties,$propertiesFile);
+        $this->writeIniFile($buildProperties, $propertiesFile);
     }
 
     private function writeIniFile(array $config, string $file): void
     {
         $fileContent = '';
         if (!empty($config)) {
-            foreach($config as $i=>$v){
-                if(is_array($v)){
-                    foreach($v as $t=>$m){
+            foreach ($config as $i => $v) {
+                if (is_array($v)) {
+                    foreach ($v as $t => $m) {
                         $fileContent .= "$i[$t] = ".$this->formatValue($m).PHP_EOL;
                     }
+                } else {
+                    $fileContent .= "$i = ".$this->formatValue($v).PHP_EOL;
                 }
-                else $fileContent .= "$i = ".$this->formatValue($v).PHP_EOL;
             }
         }
 
