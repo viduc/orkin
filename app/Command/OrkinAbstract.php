@@ -19,7 +19,7 @@ use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\Translation\Translator;
 use Viduc\Orkin\Configuration\Configuration;
 use Viduc\Orkin\Configuration\Manual;
-use Viduc\Orkin\Container\ContainerAbstract;
+use Viduc\Orkin\Container\OrkinContainer;
 use Viduc\Orkin\Factory\ConfigurationsFactory;
 use Viduc\Orkin\Printer\Answers;
 use Viduc\Orkin\Services\ProjectService;
@@ -48,7 +48,8 @@ abstract class OrkinAbstract extends CommandController
      */
     public function __construct()
     {
-        $this->container = ContainerAbstract::getContainer();
+        $container = new OrkinContainer();
+        $this->container = $container->getContainer();
         $this->translator = $this->container->get('translation')->translator;
         $this->configuration = $this->container->get('configuration');
         $this->projectService = $this->container->get('projectService');

@@ -48,7 +48,7 @@ abstract class Constantes
         'Command',
         'Configuration',
         'Constantes',
-        'Container',
+        'OrkinContainer',
         'Factory',
         'Models',
         'Translations',
@@ -103,7 +103,6 @@ abstract class Constantes
         'level' => 7,
         'xdebug' => false,
     ];
-
     public const CONFIG_PHPUNIT = [
         'folderTest' => 'tests',
         'checkreturn' => 'true',
