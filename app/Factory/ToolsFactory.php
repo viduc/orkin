@@ -38,54 +38,29 @@ class ToolsFactory implements FactoryInterface
     {
         switch ($params['tool']) {
         default:
-            return new PhpunitTools(
-                $this->answers,
-                $this->configurationsFactory,
-                $this->translation,
-                $this->locale
-            );
+            return $this->instanciate('PhpunitTools');
         case 'kahlan':
-            return new KahlanTools(
-                $this->answers,
-                $this->configurationsFactory,
-                $this->translation,
-                $this->locale
-            );
+            return $this->instanciate('KahlanTools');
         case 'phpcsfixer':
-            return new PhpcsfixerTools(
-                $this->answers,
-                $this->configurationsFactory,
-                $this->translation,
-                $this->locale
-            );
+            return $this->instanciate('PhpcsfixerTools');
         case 'phpcs':
-            return new PhpcsTools(
-                $this->answers,
-                $this->configurationsFactory,
-                $this->translation,
-                $this->locale
-            );
+            return $this->instanciate('PhpcsTools');
         case 'phpmd':
-            return new PhpmdTools(
-                $this->answers,
-                $this->configurationsFactory,
-                $this->translation,
-                $this->locale
-            );
+            return $this->instanciate('PhpmdTools');
         case 'phpstan':
-            return new PhpstanTools(
-                $this->answers,
-                $this->configurationsFactory,
-                $this->translation,
-                $this->locale
-            );
+            return $this->instanciate('PhpstanTools');
         case 'phploc':
-            return new PhplocTools(
-                $this->answers,
-                $this->configurationsFactory,
-                $this->translation,
-                $this->locale
-            );
+            return $this->instanciate('PhplocTools');
         }
+    }
+
+    private function instanciate(string $tool): mixed
+    {
+        return new $tool(
+            $this->answers,
+            $this->configurationsFactory,
+            $this->translation,
+            $this->locale
+        );
     }
 }
