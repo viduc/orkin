@@ -11,10 +11,10 @@ declare(strict_types=1);
 
 namespace Viduc\Orkin\Models\Configurations;
 
-use Viduc\Orkin\Constantes\Constantes;
+use Viduc\Orkin\Constantes\ToolsConstantes;
 
 class PhpstanModel extends ConfigurationModelAbstract
 {
-    public int $level = CONSTANTES::CONFIG_PHPSTAN['level'];
-    public bool $xdebug = CONSTANTES::CONFIG_PHPSTAN['xdebug'];
+    public int $level = ToolsConstantes::CONFIG_PHPSTAN['level'];
+    public bool $xdebug = ToolsConstantes::CONFIG_PHPSTAN['xdebug'];
 }

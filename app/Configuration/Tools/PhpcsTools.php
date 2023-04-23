@@ -16,21 +16,6 @@ use Viduc\Orkin\Models\ModelInterface;
 
 class PhpcsTools extends ToolsAbstract
 {
-    final public function configure(): ModelInterface
-    {
-        $phpcs = $this->configurationsFactory->create(['model' => 'phpcs']);
-        $phpcs->isUsed = $this->useTool(
-            'phpcs',
-            'phpcs use'
-        );
-        $phpcs->phpcb = $phpcs->isUsed ? $this->useTool(
-            'Phcs phpcb',
-            'phpcs phpcb'
-        ) : $phpcs->phpcb;
-
-        return $phpcs;
-    }
-
     final public function setPropertiesConfiguration(
         array $properties,
         ModelInterface $model

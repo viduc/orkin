@@ -16,26 +16,6 @@ use Viduc\Orkin\Models\ModelInterface;
 
 class PhpstanTools extends ToolsAbstract
 {
-    final public function configure(): ModelInterface
-    {
-        $phpstan = $this->configurationsFactory->create(['model' => 'phpstan']);
-        $phpstan->isUsed = $this->useTool(
-            'phpstan',
-            'phpstan use'
-        );
-        $phpstan->level = $phpstan->isUsed ? $this->answerInteger(
-            'Phpstan level',
-            'phpstan level',
-            $phpstan->level
-        ) : $phpstan->level;
-        $phpstan->xdebug = $phpstan->isUsed ? $this->useTool(
-            'Phpstan xdebug',
-            'phpstan xdebug'
-        ) : $phpstan->xdebug;
-
-        return $phpstan;
-    }
-
     final public function setPropertiesConfiguration(
         array $properties,
         ModelInterface $model

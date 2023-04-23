@@ -11,11 +11,11 @@ declare(strict_types=1);
 
 namespace Viduc\Orkin\Models\Configurations;
 
-use Viduc\Orkin\Constantes\Constantes;
+use Viduc\Orkin\Constantes\ToolsConstantes;
 
 class PhpcsfixerModel extends ConfigurationModelAbstract
 {
-    public bool $dryRun = CONSTANTES::CONFIG_PHPCSFIXER['dryrun'];
+    public bool $dryRun = ToolsConstantes::CONFIG_PHPCSFIXER['dryrun'];
 
-    public string $checkreturn = Constantes::CONFIG_PHPCSFIXER['checkreturn'];
+    public string $checkreturn = ToolsConstantes::CONFIG_PHPCSFIXER['checkreturn'];
 }

@@ -13,6 +13,7 @@ namespace Viduc\Orkin\Configuration;
 
 use Symfony\Component\Translation\Translator;
 use Viduc\Orkin\Constantes\Constantes;
+use Viduc\Orkin\Constantes\ToolsConstantes;
 use Viduc\Orkin\Factory\ConfigurationFactory;
 use Viduc\Orkin\Factory\ToolsFactory;
 use Viduc\Orkin\Models\ConfigurationModel;
@@ -43,7 +44,7 @@ class Manual
         $this->configurationModel->srcFolder = $this->srcFolderName();
         $this->configurationModel->reportsFolder = $this->reportFolderName();
 
-        foreach (Constantes::LIST_TOOLS as $tool) {
+        foreach (ToolsConstantes::LIST_TOOLS as $tool) {
             $this->configurationModel->{$tool.'Model'} = $this->toolsFactory->create(
                 ['tool' => $tool]
             )->configure($tool);

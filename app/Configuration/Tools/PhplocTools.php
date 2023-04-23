@@ -16,17 +16,6 @@ use Viduc\Orkin\Models\ModelInterface;
 
 class PhplocTools extends ToolsAbstract
 {
-    final public function configure(): ModelInterface
-    {
-        $phploc = $this->configurationsFactory->create(['model' => 'phploc']);
-        $phploc->isUsed = $this->useTool(
-            'phploc',
-            'phploc use'
-        );
-
-        return $phploc;
-    }
-
     final public function setPropertiesConfiguration(
         array $properties,
         ModelInterface $model

@@ -13,6 +13,7 @@ namespace Viduc\Orkin\Command\Orkin;
 
 use Viduc\Orkin\Command\OrkinAbstract;
 use Viduc\Orkin\Constantes\Constantes;
+use Viduc\Orkin\Constantes\ToolsConstantes;
 
 class CreateController extends OrkinAbstract
 {
@@ -53,7 +54,7 @@ class CreateController extends OrkinAbstract
 
     private function createDefaultConfiguration(): void
     {
-        foreach (Constantes::LIST_TOOLS as $tool) {
+        foreach (ToolsConstantes::LIST_TOOLS as $tool) {
             $this->configuration->configurationModel->{$tool.'Model'} =
                 $this->configurationsFactory->create(['model' => $tool]);
         }

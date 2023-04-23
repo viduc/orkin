@@ -16,32 +16,6 @@ use Viduc\Orkin\Models\ModelInterface;
 
 class PhpmdTools extends ToolsAbstract
 {
-    final public function configure(): ModelInterface
-    {
-        $phpmd = $this->configurationsFactory->create(['model' => 'phpmd']);
-        $phpmd->isUsed = $this->useTool(
-            'phpmd',
-            'phpmd use'
-        );
-        $phpmd->mode = $phpmd->isUsed ? $this->answer(
-            'Phpmd mode',
-            'phpmd mode',
-            $phpmd->mode
-        ) : $phpmd->mode;
-        $phpmd->mode = $phpmd->isUsed ? $this->answer(
-            'Phpmd report type',
-            'phpmd report type',
-            $phpmd->mode
-        ) : $phpmd->mode;
-        $phpmd->reportFile = $phpmd->isUsed ? $this->answer(
-            'Phpmd report file',
-            'phpmd report file',
-            $phpmd->reportFile
-        ) : $phpmd->reportFile;
-
-        return $phpmd;
-    }
-
     final public function setPropertiesConfiguration(
         array $properties,
         ModelInterface $model

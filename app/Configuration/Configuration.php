@@ -13,6 +13,7 @@ namespace Viduc\Orkin\Configuration;
 
 use Symfony\Component\Serializer\Serializer;
 use Viduc\Orkin\Constantes\Constantes;
+use Viduc\Orkin\Constantes\ToolsConstantes;
 use Viduc\Orkin\Factory\ConfigurationFactory;
 use Viduc\Orkin\Factory\ToolsFactory;
 use Viduc\Orkin\FileSystem\IniFile;
@@ -69,7 +70,7 @@ class Configuration
         $buildProperties['src'] = $this->configurationModel->srcFolder;
         $buildProperties['reports.folder'] = $this->configurationModel->reportsFolder;
 
-        foreach (Constantes::LIST_TOOLS as $tool) {
+        foreach (ToolsConstantes::LIST_TOOLS as $tool) {
             $buildProperties = $this->toolsFactory->create(
                 ['tool' => $tool]
             )->setPropertiesConfiguration(

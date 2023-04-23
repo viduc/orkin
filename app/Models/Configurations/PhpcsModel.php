@@ -11,9 +11,9 @@ declare(strict_types=1);
 
 namespace Viduc\Orkin\Models\Configurations;
 
-use Viduc\Orkin\Constantes\Constantes;
+use Viduc\Orkin\Constantes\ToolsConstantes;
 
 class PhpcsModel extends ConfigurationModelAbstract
 {
-    public bool $phpcb = CONSTANTES::CONFIG_PHPCS['phpcb'];
+    public bool $phpcb = ToolsConstantes::CONFIG_PHPCS['phpcb'];
 }

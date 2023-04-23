@@ -11,14 +11,14 @@ declare(strict_types=1);
 
 namespace Viduc\Orkin\Models\Configurations;
 
-use Viduc\Orkin\Constantes\Constantes;
+use Viduc\Orkin\Constantes\ToolsConstantes;
 
 class KahlanModel extends ConfigurationModelAbstract
 {
-    public string $folderSpec = CONSTANTES::CONFIG_KAHLAN['folderSpec'];
-    public string $reporterConsole = CONSTANTES::CONFIG_KAHLAN['reporterConsole'];
-    public string $reporterCoverage = CONSTANTES::CONFIG_KAHLAN['reporterCoverage'];
-    public int $coverageLevel = CONSTANTES::CONFIG_KAHLAN['coverageLevel'];
+    public string $folderSpec = ToolsConstantes::CONFIG_KAHLAN['folderSpec'];
+    public string $reporterConsole = ToolsConstantes::CONFIG_KAHLAN['reporterConsole'];
+    public string $reporterCoverage = ToolsConstantes::CONFIG_KAHLAN['reporterCoverage'];
+    public int $coverageLevel = ToolsConstantes::CONFIG_KAHLAN['coverageLevel'];
 
-    public string $checkreturn = Constantes::CONFIG_KAHLAN['checkreturn'];
+    public string $checkreturn = ToolsConstantes::CONFIG_KAHLAN['checkreturn'];
 }

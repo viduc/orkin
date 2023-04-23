@@ -11,11 +11,11 @@ declare(strict_types=1);
 
 namespace Viduc\Orkin\Models\Configurations;
 
-use Viduc\Orkin\Constantes\Constantes;
+use Viduc\Orkin\Constantes\ToolsConstantes;
 
 class PhpmdModel extends ConfigurationModelAbstract
 {
-    public string $mode = CONSTANTES::CONFIG_PHPMD['mode'];
-    public string $reportType = CONSTANTES::CONFIG_PHPMD['reportType'];
-    public string $reportFile = CONSTANTES::CONFIG_PHPMD['reportFile'];
+    public string $mode = ToolsConstantes::CONFIG_PHPMD['mode'];
+    public string $reportType = ToolsConstantes::CONFIG_PHPMD['reportType'];
+    public string $reportFile = ToolsConstantes::CONFIG_PHPMD['reportFile'];
 }

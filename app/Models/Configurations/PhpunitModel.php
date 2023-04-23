@@ -11,11 +11,11 @@ declare(strict_types=1);
 
 namespace Viduc\Orkin\Models\Configurations;
 
-use Viduc\Orkin\Constantes\Constantes;
+use Viduc\Orkin\Constantes\ToolsConstantes;
 
 class PhpunitModel extends ConfigurationModelAbstract
 {
-    public string $folderTest = Constantes::CONFIG_PHPUNIT['folderTest'];
+    public string $folderTest = ToolsConstantes::CONFIG_PHPUNIT['folderTest'];
 
-    public string $checkreturn = Constantes::CONFIG_PHPUNIT['checkreturn'];
+    public string $checkreturn = ToolsConstantes::CONFIG_PHPUNIT['checkreturn'];
 }

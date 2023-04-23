@@ -13,6 +13,7 @@ namespace Viduc\Orkin\Configuration\Tools;
 
 use Symfony\Component\Translation\Translator;
 use Viduc\Orkin\Constantes\Constantes;
+use Viduc\Orkin\Constantes\ToolsConstantes;
 use Viduc\Orkin\Factory\ConfigurationsFactory;
 use Viduc\Orkin\Models\ModelInterface;
 use Viduc\Orkin\Printer\Answers;
@@ -54,12 +55,16 @@ abstract class ToolsAbstract implements ModelInterface
      */
     private function getConfigTool(string $tool): array
     {
-        switch ($tool) {
-            case 'kahlan':
-                return Constantes::CONFIGURE_KAHLAN_TOOL;
-        }
-
-        return [];
+        return match ($tool) {
+            'kahlan' => ToolsConstantes::CONFIGURE_KAHLAN_TOOL,
+            'phpcsfixer' => ToolsConstantes::CONFIGURE_PHPCSFIXER_TOOL,
+            'phpcs' => ToolsConstantes::CONFIGURE_PHPCS_TOOL,
+            'phploc' => ToolsConstantes::CONFIGURE_PHPLOC_TOOL,
+            'phpmd' => ToolsConstantes::CONFIGURE_PHPMD_TOOL,
+            'phpstan' => ToolsConstantes::CONFIGURE_PHPSTAN_TOOL,
+            'phpunit' => ToolsConstantes::CONFIGURE_PHPUNIT_TOOL,
+            default => [],
+        };
     }
 
     /**
@@ -74,29 +79,29 @@ abstract class ToolsAbstract implements ModelInterface
         array $config
     ): void {
         switch ($config['type']) {
-            case Constantes::TYPE_USE_TOOL:
+            case ToolsConstantes::TYPE_USE_TOOL:
                 $this->toolModel->$attribute = $this->useTool(
-                    $tool.$config['identifier'],
-                    $tool.$config['translate'],
+                    $tool.' '.$config['identifier'],
+                    $tool.' '.$config['translate'],
                 );
                 break;
-            case Constantes::TYPE_USE_TOOL_STRING:
+            case ToolsConstantes::TYPE_USE_TOOL_STRING:
                 $this->toolModel->$attribute = $this->useTool(
-                    $tool.$config['identifier'],
-                    $tool.$config['translate'],
+                    $tool.' '.$config['identifier'],
+                    $tool.' '.$config['translate'],
                 ) ? 'true' : 'false';
                 break;
-            case Constantes::TYPE_ANSWER:
+            case ToolsConstantes::TYPE_ANSWER:
                 $this->toolModel->$attribute = $this->answer(
-                    $tool.$config['identifier'],
-                    $tool.$config['translate'],
+                    $tool.' '.$config['identifier'],
+                    $tool.' '.$config['translate'],
                     $this->toolModel->$attribute,
                 );
                 break;
-            case Constantes::TYPE_ANSWER_INTEGER:
+            case ToolsConstantes::TYPE_ANSWER_INTEGER:
                 $this->toolModel->$attribute = $this->answerInteger(
-                    $tool.$config['identifier'],
-                    $tool.$config['translate'],
+                    $tool.' '.$config['identifier'],
+                    $tool.' '.$config['translate'],
                     $this->toolModel->$attribute,
                 );
         }

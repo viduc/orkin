@@ -16,25 +16,6 @@ use Viduc\Orkin\Models\ModelInterface;
 
 class PhpcsfixerTools extends ToolsAbstract
 {
-    final public function configure(string $tool): ModelInterface
-    {
-        $phpcsfixer = $this->configurationsFactory->create(['model' => 'phpcsfixer']);
-        $phpcsfixer->isUsed = $this->useTool(
-            'phpcsfixer',
-            'phpcsfixer use'
-        );
-        $phpcsfixer->checkreturn = $this->useTool(
-            'phpcsfixer checkreturn',
-            'phpcsfixer checkreturn'
-        ) ? 'true' : 'false';
-        $phpcsfixer->dryRun = $phpcsfixer->isUsed ? $this->useTool(
-            'Phpcsfixer dryrun',
-            'phpcsfixer dryrun'
-        ) : $phpcsfixer->dryRun;
-
-        return $phpcsfixer;
-    }
-
     final public function setPropertiesConfiguration(
         array $properties,
         ModelInterface $model
