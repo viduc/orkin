@@ -22,6 +22,7 @@ use Viduc\Orkin\Factory\ConfigurationFactory;
 use Viduc\Orkin\Factory\ConfigurationsFactory;
 use Viduc\Orkin\Factory\InputFactory;
 use Viduc\Orkin\Factory\ToolsFactory;
+use Viduc\Orkin\FileSystem\IniFile;
 use Viduc\Orkin\Printer\Answers;
 use Viduc\Orkin\Services\ProjectService;
 use Viduc\Orkin\Translations\Translation;
@@ -74,6 +75,11 @@ abstract class ContainerConstantes
         'class' => InputFactory::class,
         'dependencies' => []
     ];
+    public const INI_FILE = [
+        'id' => 'iniFile',
+        'class' => IniFile::class,
+        'dependencies' => []
+    ];
 
     public const SERIALIZER = [
         'id' => 'serializer',
@@ -110,7 +116,8 @@ abstract class ContainerConstantes
         'dependencies' => [
             'configurationFactory',
             'serializer',
-            'toolsFactory'
+            'toolsFactory',
+            'iniFile'
         ]
     ];
     public const PROJECT_SERVICE = [

@@ -15,6 +15,7 @@ use Symfony\Component\Serializer\Serializer;
 use Viduc\Orkin\Constantes\Constantes;
 use Viduc\Orkin\Factory\ConfigurationFactory;
 use Viduc\Orkin\Factory\ToolsFactory;
+use Viduc\Orkin\FileSystem\IniFile;
 use Viduc\Orkin\Models\ConfigurationModel;
 
 class Configuration
@@ -24,7 +25,8 @@ class Configuration
     public function __construct(
         private ConfigurationFactory $factory,
         private Serializer $serializer,
-        private ToolsFactory $toolsFactory
+        private ToolsFactory $toolsFactory,
+        private IniFile $iniFile
     ) {
         $this->configurationModel = $factory->create();
     }
@@ -76,33 +78,6 @@ class Configuration
             );
         }
 
-        $this->writeIniFile($buildProperties, $propertiesFile);
-    }
-
-    private function writeIniFile(array $config, string $file): void
-    {
-        $fileContent = '';
-        if (!empty($config)) {
-            foreach ($config as $i => $v) {
-                if (is_array($v)) {
-                    foreach ($v as $t => $m) {
-                        $fileContent .= "$i[$t] = ".$this->formatValue($m).PHP_EOL;
-                    }
-                } else {
-                    $fileContent .= "$i = ".$this->formatValue($v).PHP_EOL;
-                }
-            }
-        }
-
-        file_put_contents($file, $fileContent, LOCK_EX);
-    }
-
-    private function formatValue(mixed $value): string|int
-    {
-        if (is_bool($value)) {
-            return $value ? 'true' : 'false';
-        }
-
-        return $value;
+        $this->iniFile->writeIniFile($buildProperties, $propertiesFile);
     }
 }
