@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Viduc\Orkin\Factory;
 
+use Viduc\Orkin\Models\Configurations\ConfigurationModelAbstract;
 use Viduc\Orkin\Models\Configurations\KahlanModel;
 use Viduc\Orkin\Models\Configurations\PhpcsfixerModel;
 use Viduc\Orkin\Models\Configurations\PhpcsModel;
@@ -18,11 +19,14 @@ use Viduc\Orkin\Models\Configurations\PhplocModel;
 use Viduc\Orkin\Models\Configurations\PhpmdModel;
 use Viduc\Orkin\Models\Configurations\PhpstanModel;
 use Viduc\Orkin\Models\Configurations\PhpunitModel;
-use Viduc\Orkin\Models\ModelInterface;
 
 class ConfigurationsFactory implements FactoryInterface
 {
-    public function create(array $params = []): ModelInterface
+    /**
+     * @param array $params
+     * @return ConfigurationModelAbstract
+     */
+    public function create(array $params = []): ConfigurationModelAbstract
     {
         switch ($params['model']) {
         case 'kahlan':

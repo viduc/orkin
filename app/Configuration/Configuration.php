@@ -32,26 +32,41 @@ class Configuration
         $this->configurationModel = $factory->create();
     }
 
+    /**
+     * @return bool
+     */
     public function isNewConfiguration(): bool
     {
         return $this->configurationModel->newConfiguration;
     }
 
+    /**
+     * @return string
+     */
     public function getQualityPath(): string
     {
         return $this->configurationModel->qualityPath;
     }
 
+    /**
+     * @return string
+     */
     public function getPhingFolder(): string
     {
         return $this->configurationModel->phingFolder;
     }
 
+    /**
+     * @return string
+     */
     public function getPhingFile(): string
     {
         return $this->configurationModel->phingFile;
     }
 
+    /**
+     * @return void
+     */
     public function persist(): void
     {
         file_put_contents(
@@ -60,6 +75,9 @@ class Configuration
         );
     }
 
+    /**
+     * @return void
+     */
     public function configureProperties(): void
     {
         $propertiesFile = Constantes::getProjectDir()

@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Viduc\Orkin\Configuration\Tools;
 
 use Symfony\Component\Translation\Translator;
-use Viduc\Orkin\Constantes\Constantes;
 use Viduc\Orkin\Constantes\ToolsConstantes;
 use Viduc\Orkin\Factory\ConfigurationsFactory;
+use Viduc\Orkin\Models\Configurations\ConfigurationModelAbstract;
 use Viduc\Orkin\Models\ModelInterface;
 use Viduc\Orkin\Printer\Answers;
 use Viduc\Orkin\Translations\Translation;
@@ -22,8 +22,7 @@ use Viduc\Orkin\Translations\Translation;
 abstract class ToolsAbstract implements ModelInterface
 {
     private Translator $translator;
-
-    public ModelInterface $toolModel;
+    public ConfigurationModelAbstract $toolModel;
 
     public function __construct(
         public Answers $answers,
@@ -36,9 +35,9 @@ abstract class ToolsAbstract implements ModelInterface
 
     /**
      * @param string $tool
-     * @return ModelInterface
+     * @return ConfigurationModelAbstract
      */
-    public function configure(string $tool): ModelInterface
+    public function configure(string $tool): ConfigurationModelAbstract
     {
         $this->toolModel = $this->configurationsFactory->create(['model' => $tool]);
 
@@ -79,26 +78,26 @@ abstract class ToolsAbstract implements ModelInterface
         array $config
     ): void {
         switch ($config['type']) {
-            case ToolsConstantes::TYPE_USE_TOOL:
+            case ToolsConstantes::TYPE_USE_TOOL && $this->toolModel->isUsed:
                 $this->toolModel->$attribute = $this->useTool(
                     $tool.' '.$config['identifier'],
                     $tool.' '.$config['translate'],
                 );
                 break;
-            case ToolsConstantes::TYPE_USE_TOOL_STRING:
+            case ToolsConstantes::TYPE_USE_TOOL_STRING && $this->toolModel->isUsed:
                 $this->toolModel->$attribute = $this->useTool(
                     $tool.' '.$config['identifier'],
                     $tool.' '.$config['translate'],
                 ) ? 'true' : 'false';
                 break;
-            case ToolsConstantes::TYPE_ANSWER:
+            case ToolsConstantes::TYPE_ANSWER && $this->toolModel->isUsed:
                 $this->toolModel->$attribute = $this->answer(
                     $tool.' '.$config['identifier'],
                     $tool.' '.$config['translate'],
                     $this->toolModel->$attribute,
                 );
                 break;
-            case ToolsConstantes::TYPE_ANSWER_INTEGER:
+            case ToolsConstantes::TYPE_ANSWER_INTEGER && $this->toolModel->isUsed:
                 $this->toolModel->$attribute = $this->answerInteger(
                     $tool.' '.$config['identifier'],
                     $tool.' '.$config['translate'],

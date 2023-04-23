@@ -12,11 +12,13 @@ declare(strict_types=1);
 namespace Viduc\Orkin\Command\Orkin;
 
 use Viduc\Orkin\Command\OrkinAbstract;
-use Viduc\Orkin\Constantes\Constantes;
 use Viduc\Orkin\Constantes\ToolsConstantes;
 
 class CreateController extends OrkinAbstract
 {
+    /**
+     * @return void
+     */
     public function handle(): void
     {
         parent::handle();
@@ -39,6 +41,9 @@ class CreateController extends OrkinAbstract
         $this->getPrinter()->newline();
     }
 
+    /**
+     * @return bool
+     */
     private function askUseDefaultConfiguration(): bool
     {
         return $this->questions->getInputYesOrNo(
@@ -52,6 +57,9 @@ class CreateController extends OrkinAbstract
         );
     }
 
+    /**
+     * @return void
+     */
     private function createDefaultConfiguration(): void
     {
         foreach (ToolsConstantes::LIST_TOOLS as $tool) {
@@ -60,6 +68,9 @@ class CreateController extends OrkinAbstract
         }
     }
 
+    /**
+     * @return void
+     */
     private function createManualConfiguration(): void
     {
         $this->manual->locale = $this->locale;

@@ -36,6 +36,9 @@ class Manual
         $this->configurationModel = $this->configurationFactory->create();
     }
 
+    /**
+     * @return void
+     */
     final public function create(): void
     {
         $this->toolsFactory->locale = $this->locale;
@@ -51,6 +54,9 @@ class Manual
         }
     }
 
+    /**
+     * @return string
+     */
     private function qualityFolderName(): string
     {
         return $this->answers->getInputString(
@@ -65,6 +71,9 @@ class Manual
         );
     }
 
+    /**
+     * @return string
+     */
     private function srcFolderName(): string
     {
         return $this->answers->getInputString(
@@ -79,6 +88,9 @@ class Manual
         );
     }
 
+    /**
+     * @return string
+     */
     private function reportFolderName(): string
     {
         return $this->answers->getInputString(
