@@ -14,6 +14,7 @@ use Viduc\Orkin\Configuration\Configuration;
 use Viduc\Orkin\Constantes\Constantes;
 use Viduc\Orkin\Factory\ConfigurationFactory;
 use Viduc\Orkin\Factory\ToolsFactory;
+use Viduc\Orkin\FileSystem\IniFile;
 use Viduc\Orkin\Tests\OrkinTestCase;
 
 class ConfigurationTest extends OrkinTestCase
@@ -21,16 +22,19 @@ class ConfigurationTest extends OrkinTestCase
     private Configuration $configuration;
     private ConfigurationFactory $configurationFactory;
     private ToolsFactory $toolsFactory;
+    private IniFile $iniFile;
     public function setUp(): void
     {
         parent::setUp();
         $this->configurationFactory = new ConfigurationFactory($this->serializer);
         $this->configurationFactory->configFile = $this->configFile;
         $this->toolsFactory = $this->createMock(ToolsFactory::class);
+        $this->iniFile = $this->createMock(IniFile::class);
         $this->configuration = new Configuration(
             $this->configurationFactory,
             $this->serializer,
-            $this->toolsFactory
+            $this->toolsFactory,
+            $this->iniFile
         );
     }
 
