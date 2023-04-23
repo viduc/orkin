@@ -45,4 +45,22 @@ class ConfigurationTest extends OrkinTestCase
             Constantes::getProjectDir().$this->configFile
         );
     }
+
+    public function testIsNewConfiguration(): void
+    {
+        $this->assertTrue($this->configuration->isNewConfiguration());
+    }
+
+    public function testGetQualityPath(): void
+    {
+        $this->assertEquals(
+            Constantes::FOLDER_QUALITY,
+            $this->configuration->getQualityPath()
+        );
+    }
+
+    /*public function testConfigureProperties(): void
+    {
+
+    }*/
 }

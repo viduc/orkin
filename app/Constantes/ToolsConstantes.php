@@ -11,6 +11,14 @@ declare(strict_types=1);
 
 namespace Viduc\Orkin\Constantes;
 
+use Viduc\Orkin\Models\Configurations\KahlanModel;
+use Viduc\Orkin\Models\Configurations\PhpcsfixerModel;
+use Viduc\Orkin\Models\Configurations\PhpcsModel;
+use Viduc\Orkin\Models\Configurations\PhplocModel;
+use Viduc\Orkin\Models\Configurations\PhpmdModel;
+use Viduc\Orkin\Models\Configurations\PhpstanModel;
+use Viduc\Orkin\Models\Configurations\PhpunitModel;
+
 class ToolsConstantes
 {
     public const LIST_TOOLS = [
@@ -22,6 +30,17 @@ class ToolsConstantes
         'phpstan',
         'phploc',
     ];
+
+    public const LIST_TOOLS_MODEL = [
+        'phpunit' => PhpunitModel::class,
+        'kahlan' => KahlanModel::class,
+        'phpcsfixer' => PhpcsfixerModel::class,
+        'phpcs' => PhpcsModel::class,
+        'phpmd' => PhpmdModel::class,
+        'phpstan' => PhpstanModel::class,
+        'phploc' => PhplocModel::class,
+    ];
+
     public const TYPE_USE_TOOL = 'useTool';
     public const TYPE_USE_TOOL_STRING = 'useToolString';
     public const TYPE_ANSWER = 'answer';
