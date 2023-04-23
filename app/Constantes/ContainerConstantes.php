@@ -36,6 +36,7 @@ abstract class ContainerConstantes
         self::OBJECT_NORMALIZER,
         self::CONFIGURATIONS_FACTORY,
         self::INPUT_FACTORY,
+        self::INI_FILE,
         self::SERIALIZER,
         self::TRANSLATION,
         self::CONFIGURATION_FACTORY,
