@@ -31,16 +31,6 @@ class ToolsConstantes
         'phploc',
     ];
 
-    public const LIST_TOOLS_MODEL = [
-        'phpunit' => PhpunitModel::class,
-        'kahlan' => KahlanModel::class,
-        'phpcsfixer' => PhpcsfixerModel::class,
-        'phpcs' => PhpcsModel::class,
-        'phpmd' => PhpmdModel::class,
-        'phpstan' => PhpstanModel::class,
-        'phploc' => PhplocModel::class,
-    ];
-
     public const TYPE_USE_TOOL = 'useTool';
     public const TYPE_USE_TOOL_STRING = 'useToolString';
     public const TYPE_ANSWER = 'answer';
