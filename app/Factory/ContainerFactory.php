@@ -16,6 +16,10 @@ use Viduc\Orkin\Models\ContainerModel;
 
 class ContainerFactory implements FactoryInterface
 {
+    /**
+     * @param array $params
+     * @return ContainerModel
+     */
     public function create(array $params = []): ContainerModel
     {
         if (!isset($params['name'])) {
@@ -37,6 +41,9 @@ class ContainerFactory implements FactoryInterface
         return new ContainerModel($params['name'], $params['class'], $params['dependencies']);
     }
 
+    /**
+     * @return array
+     */
     public function assembly(): array
     {
         $containers = [];

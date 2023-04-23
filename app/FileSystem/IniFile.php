@@ -13,6 +13,11 @@ namespace Viduc\Orkin\FileSystem;
 
 class IniFile
 {
+    /**
+     * @param array $config
+     * @param string $file
+     * @return void
+     */
     public function writeIniFile(array $config, string $file): void
     {
         $fileContent = '';
@@ -25,6 +30,12 @@ class IniFile
         file_put_contents($file, $fileContent, LOCK_EX);
     }
 
+    /**
+     * @param string $content
+     * @param string $index
+     * @param array $value
+     * @return string
+     */
     private function addArrayContent(
         string $content,
         string $index,
@@ -37,6 +48,10 @@ class IniFile
         return $content;
     }
 
+    /**
+     * @param mixed $value
+     * @return string|int
+     */
     private function formatValue(mixed $value): string|int
     {
         if (is_bool($value)) {

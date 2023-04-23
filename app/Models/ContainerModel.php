@@ -25,11 +25,19 @@ class ContainerModel implements ModelInterface
         $this->dependencies = $dependencies;
     }
 
+    /**
+     * @param string $dependencie
+     * @return bool
+     */
     public function hasDependencie(string $dependencie): bool
     {
         return isset($this->dependencies[$dependencie]);
     }
 
+    /**
+     * @param string $dependency
+     * @return void
+     */
     public function addDependency(string $dependency): void
     {
         if (!$this->hasDependencie($dependency)) {

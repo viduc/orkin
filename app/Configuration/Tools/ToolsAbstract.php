@@ -77,33 +77,30 @@ abstract class ToolsAbstract implements ModelInterface
         string $attribute,
         array $config
     ): void {
-        switch ($config['type']) {
-            case ToolsConstantes::TYPE_USE_TOOL && $this->toolModel->isUsed:
-                $this->toolModel->$attribute = $this->useTool(
+        $this->toolModel->$attribute = match ($config['type']) {
+            ToolsConstantes::TYPE_USE_TOOL =>
+                $this->toolModel->isUsed && $this->useTool(
+                    $tool . ' ' . $config['identifier'],
+                    $tool . ' ' . $config['translate'],
+                ),
+            ToolsConstantes::TYPE_USE_TOOL_STRING =>
+                $this->toolModel->isUsed ? $this->useTool(
                     $tool.' '.$config['identifier'],
                     $tool.' '.$config['translate'],
-                );
-                break;
-            case ToolsConstantes::TYPE_USE_TOOL_STRING && $this->toolModel->isUsed:
-                $this->toolModel->$attribute = $this->useTool(
-                    $tool.' '.$config['identifier'],
-                    $tool.' '.$config['translate'],
-                ) ? 'true' : 'false';
-                break;
-            case ToolsConstantes::TYPE_ANSWER && $this->toolModel->isUsed:
-                $this->toolModel->$attribute = $this->answer(
-                    $tool.' '.$config['identifier'],
-                    $tool.' '.$config['translate'],
-                    $this->toolModel->$attribute,
-                );
-                break;
-            case ToolsConstantes::TYPE_ANSWER_INTEGER && $this->toolModel->isUsed:
-                $this->toolModel->$attribute = $this->answerInteger(
+                ) ? 'true' : 'false': 'false',
+            ToolsConstantes::TYPE_ANSWER =>
+                $this->toolModel->isUsed ? $this->answer(
                     $tool.' '.$config['identifier'],
                     $tool.' '.$config['translate'],
                     $this->toolModel->$attribute,
-                );
-        }
+                ): $this->toolModel->$attribute,
+            ToolsConstantes::TYPE_ANSWER_INTEGER =>
+                $this->toolModel->isUsed ? $this->answerInteger(
+                    $tool.' '.$config['identifier'],
+                    $tool.' '.$config['translate'],
+                    $this->toolModel->$attribute,
+                ): $this->toolModel->$attribute,
+        };
     }
 
     /**

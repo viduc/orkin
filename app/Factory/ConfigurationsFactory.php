@@ -28,21 +28,14 @@ class ConfigurationsFactory implements FactoryInterface
      */
     public function create(array $params = []): ConfigurationModelAbstract
     {
-        switch ($params['model']) {
-        case 'kahlan':
-            return new KahlanModel();
-        case 'phpcsfixer':
-            return new PhpcsfixerModel();
-        case 'phpcs':
-            return new PhpcsModel();
-        case 'phpmd':
-            return new PhpmdModel();
-        case 'phpstan':
-            return new PhpstanModel();
-        case 'phploc':
-            return new PhplocModel();
-        default:
-            return new PhpunitModel();
-        }
+        return match ($params['model']) {
+        'kahlan' => new KahlanModel(),
+        'phpcsfixer' => new PhpcsfixerModel(),
+        'phpcs' => new PhpcsModel(),
+        'phpmd' => new PhpmdModel(),
+        'phpstan' => new PhpstanModel(),
+        'phploc' => new PhplocModel(),
+        'phpunit' => new PhpunitModel()
+        };
     }
 }

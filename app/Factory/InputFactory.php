@@ -15,6 +15,10 @@ use Viduc\Orkin\Models\InputModel;
 
 class InputFactory implements FactoryInterface
 {
+    /**
+     * @param array $params
+     * @return InputModel
+     */
     final public function create(array $params = []): InputModel
     {
         if (isset($params['message'])) {
