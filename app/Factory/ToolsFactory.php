@@ -38,7 +38,7 @@ class ToolsFactory implements FactoryInterface
     {
         switch ($params['tool']) {
         default:
-            return $this->instanciate('PhpunitTools');
+            return $this->instanciate(PhpunitTools::class);
         case 'kahlan':
             return $this->instanciate('KahlanTools');
         case 'phpcsfixer':
