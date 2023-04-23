@@ -40,17 +40,17 @@ class ToolsFactory implements FactoryInterface
         default:
             return $this->instanciate(PhpunitTools::class);
         case 'kahlan':
-            return $this->instanciate('KahlanTools');
+            return $this->instanciate(KahlanTools::class);
         case 'phpcsfixer':
-            return $this->instanciate('PhpcsfixerTools');
+            return $this->instanciate(PhpcsfixerTools::class);
         case 'phpcs':
-            return $this->instanciate('PhpcsTools');
+            return $this->instanciate(PhpcsTools::class);
         case 'phpmd':
-            return $this->instanciate('PhpmdTools');
+            return $this->instanciate(PhpmdTools::class);
         case 'phpstan':
-            return $this->instanciate('PhpstanTools');
+            return $this->instanciate(PhpstanTools::class);
         case 'phploc':
-            return $this->instanciate('PhplocTools');
+            return $this->instanciate(PhplocTools::class);
         }
     }
 
