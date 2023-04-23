@@ -16,17 +16,17 @@ use Viduc\Orkin\Models\ModelInterface;
 
 class PhpunitTools extends ToolsAbstract
 {
-    final public function configure(): ModelInterface
+    final public function configure(string $tool): ModelInterface
     {
         $phpunit = $this->configurationsFactory->create(['model' => 'phpunit']);
         $phpunit->isUsed = $this->useTool(
             'phpunit',
             'phpunit use'
         );
-        $phpunit->isUsed = $this->useTool(
+        $phpunit->checkreturn = $this->useTool(
             'phpunit checkreturn',
             'phpunit checkreturn'
-        );
+        ) ? 'true' : 'false';
         $phpunit->folderTest = $phpunit->isUsed ? $this->answer(
             'Phpunit folder test',
             'phpunit folder',

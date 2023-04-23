@@ -16,41 +16,6 @@ use Viduc\Orkin\Models\ModelInterface;
 
 class KahlanTools extends ToolsAbstract
 {
-    final public function configure(): ModelInterface
-    {
-        $kahlan = $this->configurationsFactory->create(['model' => 'kahlan']);
-        $kahlan->isUsed = $this->useTool(
-            'kahlan',
-            'kahlan use'
-        );
-        $kahlan->isUsed = $this->useTool(
-            'kahlan checkreturn',
-            'kahlan checkreturn'
-        );
-        $kahlan->folderSpec = $kahlan->isUsed ? $this->answer(
-            'Kahlan folder spec',
-            'kahlan spec',
-            $kahlan->folderSpec
-        ) : $kahlan->folderSpec;
-        $kahlan->reporterConsole = $kahlan->isUsed ? $this->answer(
-            'Kahlan reporter console',
-            'kahlan reporter console',
-            $kahlan->reporterConsole
-        ) : $kahlan->reporterConsole;
-        $kahlan->reporterCoverage = $kahlan->isUsed ? $this->answer(
-            'Kahlan reporter coverage',
-            'kahlan reporter coverage',
-            $kahlan->reporterCoverage
-        ) : $kahlan->reporterCoverage;
-        $kahlan->coverageLevel = $kahlan->isUsed ? $this->answerInteger(
-            'Kahlan coverage level',
-            'kahlan coverage level',
-            $kahlan->coverageLevel
-        ) : $kahlan->coverageLevel;
-
-        return $kahlan;
-    }
-
     final public function setPropertiesConfiguration(
         array $properties,
         ModelInterface $model

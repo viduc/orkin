@@ -87,6 +87,42 @@ abstract class Constantes
         'coverageLevel' => 4,
         'checkreturn' => 'true',
     ];
+    public const TYPE_USE_TOOL = 'useTool';
+    public const TYPE_USE_TOOL_STRING = 'useToolString';
+    public const TYPE_ANSWER = 'answer';
+    public const TYPE_ANSWER_INTEGER = 'answerInteger';
+    public const CONFIGURE_KAHLAN_TOOL = [
+        'isUsed' => [
+            'identifier' => 'use',
+            'translate' => 'use',
+            'type' => self::TYPE_USE_TOOL
+        ],
+        'checkreturn' => [
+            'identifier' => 'checkreturn',
+            'translate' => 'checkreturn',
+            'type' => self::TYPE_USE_TOOL_STRING
+        ],
+        'folderSpec' => [
+            'identifier' => 'folder spec',
+            'translate' => 'spec',
+            'type' => self::TYPE_ANSWER
+        ],
+        'reporterConsole' => [
+            'identifier' => 'reporter console',
+            'translate' => 'reporter console',
+            'type' => self::TYPE_ANSWER
+        ],
+        'reporterCoverage' => [
+            'identifier' => 'reporter coverage',
+            'translate' => 'reporter coverage',
+            'type' => self::TYPE_ANSWER
+        ],
+        'coverageLevel' => [
+            'identifier' => 'coverage level',
+            'translate' => 'coverage level',
+            'type' => self::TYPE_ANSWER_INTEGER
+        ],
+    ];
     public const CONFIG_PHPCSFIXER = [
         'dryrun' => true,
         'checkreturn' => 'true',

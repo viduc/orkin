@@ -46,7 +46,7 @@ class Manual
         foreach (Constantes::LIST_TOOLS as $tool) {
             $this->configurationModel->{$tool.'Model'} = $this->toolsFactory->create(
                 ['tool' => $tool]
-            )->configure();
+            )->configure($tool);
         }
     }
 
