@@ -19,7 +19,7 @@ class IniFile
         foreach ($config as $key => $value) {
             $fileContent .= is_array($value) ?
                 $this->addArrayContent($fileContent, $key, $value) :
-                "$key = ".$this->formatValue($value).PHP_EOL;
+                "$key=".$this->formatValue($value).PHP_EOL;
         }
 
         file_put_contents($file, $fileContent, LOCK_EX);
@@ -31,7 +31,7 @@ class IniFile
         array $value
     ): string {
         foreach ($value as $t => $m) {
-            $content .= "$index[$t] = ".$this->formatValue($m).PHP_EOL;
+            $content .= "$index[$t]=".$this->formatValue($m).PHP_EOL;
         }
 
         return $content;
