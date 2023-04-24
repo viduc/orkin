@@ -17,11 +17,12 @@ abstract class Constantes
     {
         $path = '';
         if (str_contains(__DIR__, 'vendor')) {
+            // @codeCoverageIgnoreStart
             return explode('vendor', __DIR__)[0];
+            // @codeCoverageIgnoreEnd
         }
-        $dir = str_replace('vendor/viduc/orkin', '', __DIR__);
         foreach (array_diff(
-            explode(DIRECTORY_SEPARATOR, $dir),
+            explode(DIRECTORY_SEPARATOR, __DIR__),
             self::FOLDERS_EXCLUDE_ROOT_DIR
         ) as $folder) {
             $path .= $folder.DIRECTORY_SEPARATOR;
