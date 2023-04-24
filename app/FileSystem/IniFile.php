@@ -42,7 +42,7 @@ class IniFile
         array $value
     ): string {
         foreach ($value as $t => $m) {
-            $content .= "$index[$t]=".$this->formatValue($m).PHP_EOL;
+            $content .= "$index.$t=".$this->formatValue($m).PHP_EOL;
         }
 
         return $content;

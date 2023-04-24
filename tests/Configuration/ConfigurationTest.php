@@ -25,6 +25,9 @@ use Viduc\Orkin\Models\Configurations\PhpstanModel;
 use Viduc\Orkin\Models\Configurations\PhpunitModel;
 use Viduc\Orkin\Tests\OrkinTestCase;
 
+/**
+ * @covers Configuration
+ */
 class ConfigurationTest extends OrkinTestCase
 {
     private Configuration $configuration;
