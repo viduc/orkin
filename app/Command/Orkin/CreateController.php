@@ -12,10 +12,12 @@ declare(strict_types=1);
 namespace Viduc\Orkin\Command\Orkin;
 
 use Viduc\Orkin\Command\OrkinAbstract;
+use Viduc\Orkin\Configuration\Configuration;
 use Viduc\Orkin\Constantes\ToolsConstantes;
 
 class CreateController extends OrkinAbstract
 {
+    public Configuration $configuration;
     /**
      * @return void
      */
@@ -31,7 +33,7 @@ class CreateController extends OrkinAbstract
             $this->projectService->configuration->configurationModel =
                 $this->configuration->configurationModel;
             $this->projectService->create();
-            $this->configuration->configureProperties();
+            $this->configuration->persistProperties();
         }
         $this->configuration->persist();
         $this->getPrinter()->info(

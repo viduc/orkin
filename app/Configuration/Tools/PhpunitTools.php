@@ -16,7 +16,7 @@ use Viduc\Orkin\Models\ModelInterface;
 
 class PhpunitTools extends ToolsAbstract
 {
-    final public function setPropertiesConfiguration(
+    public function setPropertiesConfiguration(
         array $properties,
         ModelInterface $model
     ): array {

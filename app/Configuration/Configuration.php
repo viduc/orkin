@@ -22,14 +22,18 @@ use Viduc\Orkin\Models\ConfigurationModel;
 class Configuration
 {
     public ConfigurationModel $configurationModel;
+    public string $propertiesFile;
 
     public function __construct(
         private ConfigurationFactory $factory,
         private Serializer $serializer,
         private ToolsFactory $toolsFactory,
-        private IniFile $iniFile
+        public IniFile $iniFile
     ) {
         $this->configurationModel = $factory->create();
+        $this->propertiesFile = Constantes::getProjectDir()
+            .Constantes::FOLDER_PHING.DIRECTORY_SEPARATOR
+            .Constantes::BUILD_PROPERTIES;
     }
 
     /**
@@ -78,12 +82,9 @@ class Configuration
     /**
      * @return void
      */
-    public function configureProperties(): void
+    public function persistProperties(): void
     {
-        $propertiesFile = Constantes::getProjectDir()
-            .Constantes::FOLDER_PHING.DIRECTORY_SEPARATOR
-            .Constantes::BUILD_PROPERTIES;
-        $buildProperties = parse_ini_file($propertiesFile);
+        $buildProperties = parse_ini_file($this->propertiesFile);
         $buildProperties['quality.folder'] = $this->getQualityPath();
         $buildProperties['src'] = $this->configurationModel->srcFolder;
         $buildProperties['reports.folder'] = $this->configurationModel->reportsFolder;
@@ -97,6 +98,6 @@ class Configuration
             );
         }
 
-        $this->iniFile->writeIniFile($buildProperties, $propertiesFile);
+        $this->iniFile->writeIniFile($buildProperties, $this->propertiesFile);
     }
 }
