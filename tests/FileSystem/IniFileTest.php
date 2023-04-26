@@ -30,7 +30,7 @@ class IniFileTest extends OrkinTestCase
     {
         $config = [
             'test' => 'test',
-            'test2' => 'test2',
+            'test2' => true,
             'test3' => [
                 'test4' => 'test4',
                 'test5' => 'test5',
@@ -41,7 +41,7 @@ class IniFileTest extends OrkinTestCase
         $this->iniFile->writeIniFile($config, $file);
         $this->assertFileExists($file);
         $this->assertStringContainsString('test=test', file_get_contents($file));
-        $this->assertStringContainsString('test2=test2', file_get_contents($file));
+        $this->assertStringContainsString('test2=true', file_get_contents($file));
         $this->assertStringContainsString('test3.test4=test4', file_get_contents($file));
         $this->assertStringContainsString('test3.test5=test5', file_get_contents($file));
         unlink($file);
