@@ -14,6 +14,9 @@ namespace Viduc\Orkin\Configuration\Tools;
 
 use Viduc\Orkin\Models\ModelInterface;
 
+/**
+ * @covers \Viduc\Orkin\Configuration\Tools\TestTools
+ */
 class KahlanTools extends ToolsAbstract
 {
     final public function setPropertiesConfiguration(
