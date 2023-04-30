@@ -27,19 +27,14 @@ class OrkinTestCase extends TestCase
     public Serializer $serializer;
     public Filesystem $filesystem;
 
-    public function __construct()
+    public function setUp(): void
     {
-        parent::__construct();
+        parent::setUp();
         $this->serializer = new Serializer(
             [new ObjectNormalizer()],
             [new YamlEncoder()]
         );
         $this->filesystem = new Filesystem();
-    }
-
-    public function setUp(): void
-    {
-        parent::setUp();
         $this->cleanExecution();
     }
 

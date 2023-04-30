@@ -1,23 +1,22 @@
 <?php
 declare(strict_types=1);
 /**
- * This file is part of the orkin Application.
+ * ORKIN - Quality Tools for PHP.
  *
- * (c) GammaSoftware <http://www.winlassie.com/>
+ * Tristan Fleury <http://viduc.github.com/>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * Licence: GPL v3 https://opensource.org/licenses/gpl-3.0.html
  */
 
 namespace Viduc\Orkin\Constantes;
 
-use Viduc\Orkin\Models\Configurations\KahlanModel;
-use Viduc\Orkin\Models\Configurations\PhpcsfixerModel;
-use Viduc\Orkin\Models\Configurations\PhpcsModel;
-use Viduc\Orkin\Models\Configurations\PhplocModel;
-use Viduc\Orkin\Models\Configurations\PhpmdModel;
-use Viduc\Orkin\Models\Configurations\PhpstanModel;
-use Viduc\Orkin\Models\Configurations\PhpunitModel;
+use Viduc\Orkin\Configuration\Tools\KahlanTools;
+use Viduc\Orkin\Configuration\Tools\PhpcsfixerTools;
+use Viduc\Orkin\Configuration\Tools\PhpcsTools;
+use Viduc\Orkin\Configuration\Tools\PhplocTools;
+use Viduc\Orkin\Configuration\Tools\PhpmdTools;
+use Viduc\Orkin\Configuration\Tools\PhpstanTools;
+use Viduc\Orkin\Configuration\Tools\PhpunitTools;
 
 class ToolsConstantes
 {
@@ -29,6 +28,16 @@ class ToolsConstantes
         'phpmd',
         'phpstan',
         'phploc',
+    ];
+
+    public const LIST_TOOLS_CLASS = [
+        'phpunit' => PhpunitTools::class,
+        'kahlan' => KahlanTools::class,
+        'phpcsfixer' => PhpcsfixerTools::class,
+        'phpcs' => PhpcsTools::class,
+        'phpmd' => PhpmdTools::class,
+        'phpstan' => PhpstanTools::class,
+        'phploc' => PhplocTools::class,
     ];
 
     public const TYPE_USE_TOOL = 'useTool';
