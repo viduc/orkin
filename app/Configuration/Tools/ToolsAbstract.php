@@ -34,7 +34,7 @@ abstract class ToolsAbstract implements ModelInterface
     }
 
     /**
-     * @param string $tool
+     * @param  string $tool
      * @return ConfigurationModelAbstract
      */
     public function configure(string $tool): ConfigurationModelAbstract
@@ -42,14 +42,14 @@ abstract class ToolsAbstract implements ModelInterface
         $this->toolModel = $this->configurationsFactory->create(['model' => $tool]);
 
         foreach ($this->getConfigTool($tool) as $attribute => $config) {
-            $this->getAttributeConfig($tool, $attribute, $config );
+            $this->getAttributeConfig($tool, $attribute, $config);
         }
 
         return $this->toolModel;
     }
 
     /**
-     * @param string $tool
+     * @param  string $tool
      * @return array
      */
     private function getConfigTool(string $tool): array
@@ -67,9 +67,9 @@ abstract class ToolsAbstract implements ModelInterface
     }
 
     /**
-     * @param string $tool
-     * @param string $attribute
-     * @param array $config
+     * @param  string $tool
+     * @param  string $attribute
+     * @param  array  $config
      * @return void
      */
     private function getAttributeConfig(
@@ -104,8 +104,8 @@ abstract class ToolsAbstract implements ModelInterface
     }
 
     /**
-     * @param string $indentifier
-     * @param string $translateId
+     * @param  string $indentifier
+     * @param  string $translateId
      * @return bool
      */
     final public function useTool(string $indentifier, string $translateId): bool
@@ -122,9 +122,9 @@ abstract class ToolsAbstract implements ModelInterface
     }
 
     /**
-     * @param string $indentifier
-     * @param string $translateId
-     * @param string $default
+     * @param  string $indentifier
+     * @param  string $translateId
+     * @param  string $default
      * @return string
      */
     final public function answer(
@@ -145,9 +145,9 @@ abstract class ToolsAbstract implements ModelInterface
     }
 
     /**
-     * @param string $indentifier
-     * @param string $translateId
-     * @param int $default
+     * @param  string $indentifier
+     * @param  string $translateId
+     * @param  int    $default
      * @return int
      */
     final public function answerInteger(

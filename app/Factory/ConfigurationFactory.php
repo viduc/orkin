@@ -24,7 +24,7 @@ class ConfigurationFactory implements FactoryInterface
     }
 
     /**
-     * @param array $params
+     * @param  array $params
      * @return ConfigurationModel
      */
     final public function create(array $params = []): ConfigurationModel

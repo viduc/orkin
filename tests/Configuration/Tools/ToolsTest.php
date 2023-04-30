@@ -19,25 +19,29 @@ use Viduc\Orkin\Configuration\Tools\PhplocTools;
 use Viduc\Orkin\Configuration\Tools\PhpmdTools;
 use Viduc\Orkin\Configuration\Tools\PhpstanTools;
 use Viduc\Orkin\Configuration\Tools\PhpunitTools;
-use Viduc\Orkin\Constantes\Constantes;
-use Viduc\Orkin\Constantes\ToolsConstantes;
 use Viduc\Orkin\Factory\ConfigurationsFactory;
+use Viduc\Orkin\Models\Configurations\KahlanModel;
+use Viduc\Orkin\Models\Configurations\PhpcsModel;
+use Viduc\Orkin\Models\Configurations\PhplocModel;
+use Viduc\Orkin\Models\Configurations\PhpmdModel;
+use Viduc\Orkin\Models\Configurations\PhpstanModel;
+use Viduc\Orkin\Models\Configurations\PhpunitModel;
 use Viduc\Orkin\Printer\Answers;
 use Viduc\Orkin\Tests\OrkinTestCase;
 use Viduc\Orkin\Translations\Translation;
 
-class TestTools extends OrkinTestCase
+class ToolsTest extends OrkinTestCase
 {
     private Answers $answers;
     private ConfigurationsFactory $configurationsFactory;
     private Translation $translation;
-    private PhpunitTools $phpunit;
-    private KahlanTools $kahlan;
-    private PhpcsfixerTools $phpcsfixer;
-    private PhpcsTools $phpcs;
-    private PhpmdTools $phpmd;
-    private PhpstanTools $phpstan;
-    private PhplocTools $phploc;
+    private PhpunitTools $phpunitTools;
+    private KahlanTools $kahlanTools;
+    private PhpcsfixerTools $phpcsfixerTools;
+    private PhpcsTools $phpcsTools;
+    private PhpmdTools $phpmdTools;
+    private PhpstanTools $phpstanTools;
+    private PhplocTools $phplocTools;
 
     public function setUp(): void
     {
@@ -89,34 +93,38 @@ class TestTools extends OrkinTestCase
 
     public function testSetPropertiesConfiguration(): void
     {
-        $this->kahlanTools->isUsed = true;
-        $this->kahlanTools->checkreturn = true;
-        $this->kahlanTools->folderSpec = 'spec';
-        $this->kahlanTools->reporterConsole = 'console';
-        $this->kahlanTools->reporterCoverage = 'coverage';
-        $this->kahlanTools->coverageLevel = 'level';
+        $kahlan = new KahlanModel();
+        $kahlan->isUsed = true;
+        $kahlan->checkreturn = 'true';
+        $kahlan->folderSpec = 'test';
+        $kahlan->reporterConsole = 'test';
+        $kahlan->reporterCoverage = 'test';
+        $kahlan->coverageLevel = 1;
+
         $properties = $this->kahlanTools->setPropertiesConfiguration(
             [],
-            $this->kahlanTools
+            $kahlan
         );
+
         $this->assertEquals(
             [
                 'kahlan.enable' => true,
                 'kahlan.checkreturn' => true,
-                'kahlan.spec' => 'spec',
-                'kahlan.reporter.console' => 'console',
-                'kahlan.reporter.coverage' => 'coverage',
-                'kahlan.reporter.coverage.level' => 'level',
+                'kahlan.spec' => 'test',
+                'kahlan.reporter.console' => 'test',
+                'kahlan.reporter.coverage' => 'test',
+                'kahlan.reporter.coverage.level' => 1,
             ],
             $properties
         );
 
-        $this->phpunitTools->isUsed = true;
-        $this->phpunitTools->checkreturn = true;
-        $this->phpunitTools->folderTest = 'test';
+        $phpunit = new PhpunitModel();
+        $phpunit->isUsed = true;
+        $phpunit->checkreturn = 'true';
+        $phpunit->folderTest = 'test';
         $properties = $this->phpunitTools->setPropertiesConfiguration(
             [],
-            $this->phpunitTools
+            $phpunit
         );
         $this->assertEquals(
             [
@@ -127,12 +135,13 @@ class TestTools extends OrkinTestCase
             $properties
         );
 
-        $this->phpcsfixerTools->isUsed = true;
-        $this->phpcsfixerTools->checkreturn = true;
-        $this->phpcsfixerTools->dryRun = true;
+        $phpcsfixer = new PhpunitModel();
+        $phpcsfixer->isUsed = true;
+        $phpcsfixer->checkreturn = 'true';
+        $phpcsfixer->dryRun = 'true';
         $properties = $this->phpcsfixerTools->setPropertiesConfiguration(
             [],
-            $this->phpcsfixerTools
+            $phpcsfixer
         );
         $this->assertEquals(
             [
@@ -143,11 +152,12 @@ class TestTools extends OrkinTestCase
             $properties
         );
 
-        $this->phpcsTools->isUsed = true;
-        $this->phpcsTools->phpcb = true;
+        $phpcs = new PhpcsModel();
+        $phpcs->isUsed = true;
+        $phpcs->phpcb = true;
         $properties = $this->phpcsTools->setPropertiesConfiguration(
             [],
-            $this->phpcsTools
+            $phpcs
         );
         $this->assertEquals(
             [
@@ -157,13 +167,14 @@ class TestTools extends OrkinTestCase
             $properties
         );
 
-        $this->phpmdTools->isUsed = true;
-        $this->phpmdTools->mode = 'test';
-        $this->phpmdTools->reportType = 'test';
-        $this->phpmdTools->reportFile = 'test';
+        $phpmd = new PhpmdModel();
+        $phpmd->isUsed = true;
+        $phpmd->mode = 'test';
+        $phpmd->reportType = 'test';
+        $phpmd->reportFile = 'test';
         $properties = $this->phpmdTools->setPropertiesConfiguration(
             [],
-            $this->phpmdTools
+            $phpmd
         );
         $this->assertEquals(
             [
@@ -175,26 +186,28 @@ class TestTools extends OrkinTestCase
             $properties
         );
 
-        $this->phpstanTools->isUsed = true;
-        $this->phpstanTools->level = 'test';
-        $this->phpstanTools->xdebug = true;
+        $phpstan = new PhpstanModel();
+        $phpstan->isUsed = true;
+        $phpstan->level = 1;
+        $phpstan->xdebug = true;
         $properties = $this->phpstanTools->setPropertiesConfiguration(
             [],
-            $this->phpstanTools
+            $phpstan
         );
         $this->assertEquals(
             [
                 'phpstan.enable' => true,
-                'phpstan.level' => 'test',
+                'phpstan.level' => '1',
                 'phpstan.xdebug' => true,
             ],
             $properties
         );
 
-        $this->phplocTools->isUsed = true;
+        $phploc = new PhplocModel();
+        $phploc->isUsed = true;
         $properties = $this->phplocTools->setPropertiesConfiguration(
             [],
-            $this->phplocTools
+            $phploc
         );
         $this->assertEquals(
             [

@@ -23,7 +23,7 @@ use Viduc\Orkin\Models\Configurations\PhpunitModel;
 class ConfigurationsFactory implements FactoryInterface
 {
     /**
-     * @param array $params
+     * @param  array $params
      * @return ConfigurationModelAbstract
      */
     public function create(array $params = []): ConfigurationModelAbstract

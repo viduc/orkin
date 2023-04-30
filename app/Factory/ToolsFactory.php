@@ -35,24 +35,24 @@ class ToolsFactory implements FactoryInterface
     }
 
     /**
-     * @param array $params
+     * @param  array $params
      * @return ModelInterface
      */
     public function create(array $params = []): ModelInterface
     {
         return match ($params['tool']) {
-        'phpunit' => $this->instanciate(PhpunitTools::class),
-        'kahlan' => $this->instanciate(KahlanTools::class),
-        'phpcsfixer' =>$this->instanciate(PhpcsfixerTools::class),
-        'phpcs' => $this->instanciate(PhpcsTools::class),
-        'phpmd' => $this->instanciate(PhpmdTools::class),
-        'phpstan' => $this->instanciate(PhpstanTools::class),
-        'phploc' => $this->instanciate(PhplocTools::class)
+            'phpunit' => $this->instanciate(PhpunitTools::class),
+            'kahlan' => $this->instanciate(KahlanTools::class),
+            'phpcsfixer' =>$this->instanciate(PhpcsfixerTools::class),
+            'phpcs' => $this->instanciate(PhpcsTools::class),
+            'phpmd' => $this->instanciate(PhpmdTools::class),
+            'phpstan' => $this->instanciate(PhpstanTools::class),
+            'phploc' => $this->instanciate(PhplocTools::class)
         };
     }
 
     /**
-     * @param string $tool
+     * @param  string $tool
      * @return mixed
      */
     private function instanciate(string $tool): mixed

@@ -26,7 +26,7 @@ class ContainerModel implements ModelInterface
     }
 
     /**
-     * @param string $dependencie
+     * @param  string $dependencie
      * @return bool
      */
     public function hasDependencie(string $dependencie): bool
@@ -35,7 +35,7 @@ class ContainerModel implements ModelInterface
     }
 
     /**
-     * @param string $dependency
+     * @param  string $dependency
      * @return void
      */
     public function addDependency(string $dependency): void
