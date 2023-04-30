@@ -40,7 +40,6 @@ abstract class ToolsAbstract implements ModelInterface
     public function configure(string $tool): ConfigurationModelAbstract
     {
         $this->toolModel = $this->configurationsFactory->create(['model' => $tool]);
-
         foreach ($this->getConfigTool($tool) as $attribute => $config) {
             $this->getAttributeConfig($tool, $attribute, $config);
         }
@@ -62,6 +61,7 @@ abstract class ToolsAbstract implements ModelInterface
             'phpmd' => ToolsConstantes::CONFIGURE_PHPMD_TOOL,
             'phpstan' => ToolsConstantes::CONFIGURE_PHPSTAN_TOOL,
             'phpunit' => ToolsConstantes::CONFIGURE_PHPUNIT_TOOL,
+            'test' => ToolsConstantes::CONFIGURE_TEST_TOOL,
             default => [],
         };
     }

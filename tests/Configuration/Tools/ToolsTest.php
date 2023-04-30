@@ -20,8 +20,11 @@ use Viduc\Orkin\Configuration\Tools\PhplocTools;
 use Viduc\Orkin\Configuration\Tools\PhpmdTools;
 use Viduc\Orkin\Configuration\Tools\PhpstanTools;
 use Viduc\Orkin\Configuration\Tools\PhpunitTools;
+use Viduc\Orkin\Configuration\Tools\ToolsAbstract;
 use Viduc\Orkin\Constantes\ToolsConstantes;
 use Viduc\Orkin\Factory\ConfigurationsFactory;
+use Viduc\Orkin\Models\Configurations\ConfigurationModelAbstract;
+use Viduc\Orkin\Models\ModelInterface;
 use Viduc\Orkin\Printer\Answers;
 use Viduc\Orkin\Tests\OrkinTestCase;
 use Viduc\Orkin\Translations\Translation;
@@ -81,4 +84,53 @@ class ToolsTest extends OrkinTestCase
             );
         }
     }
+
+    public function testConfigure(): void
+    {
+        $this->answers->method('getInputYesOrNo')->willReturn(
+            true
+        );
+        $this->answers->method('getInputString')->willReturn(
+            'false',
+            '0'
+        );
+        $this->configurationsFactory->method('create')->willReturn(
+            new TestModel()
+        );
+        $toolsAbstract = new ToolsAbstractImplementation(
+            $this->answers,
+            $this->configurationsFactory,
+            $this->translation
+        );
+        $actual = $toolsAbstract->configure('test');
+        $this->assertTrue($actual->isUsed);
+        $this->assertEquals('true', $actual->stringTest);
+        $this->assertEquals('false', $actual->answerTest);
+        $this->assertEquals(0, $actual->integerTest);
+    }
+}
+
+class ToolsAbstractImplementation extends ToolsAbstract
+{
+    public function __construct(
+        Answers $answers,
+        ConfigurationsFactory $configurationsFactory,
+        Translation $translation,
+        string $locale = 'en_US'
+    ) {
+        parent::__construct(
+            $answers,
+            $configurationsFactory,
+            $translation,
+            $locale
+        );
+    }
+}
+
+class TestModel extends ConfigurationModelAbstract
+{
+    public string $stringTest = 'true';
+    public string $answerTest = 'false';
+
+    public int $integerTest = 0;
 }

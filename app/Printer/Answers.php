@@ -22,7 +22,7 @@ class Answers
     ) {
     }
 
-    final public function getInputYesOrNo(
+    public function getInputYesOrNo(
         string $identifier,
         string $display = ''
     ): bool {
@@ -41,7 +41,7 @@ class Answers
         return 'y' == $value;
     }
 
-    final public function getInputString(
+    public function getInputString(
         string $identifier,
         string $display = '',
         string $default = ''

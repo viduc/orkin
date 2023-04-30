@@ -196,4 +196,27 @@ class ToolsConstantes
             'type' => self::TYPE_ANSWER
         ],
     ];
+
+    public const CONFIGURE_TEST_TOOL = [
+        'isUsed' => [
+            'identifier' => 'use',
+            'translate' => 'use',
+            'type' => self::TYPE_USE_TOOL
+        ],
+        'stringTest' => [
+            'identifier' => 'test',
+            'translate' => 'test',
+            'type' => self::TYPE_USE_TOOL_STRING
+        ],
+        'answerTest' => [
+            'identifier' => 'answer test',
+            'translate' => 'test',
+            'type' => self::TYPE_ANSWER
+        ],
+        'integerTest' => [
+            'identifier' => 'integer test',
+            'translate' => 'test',
+            'type' => self::TYPE_ANSWER_INTEGER
+        ],
+    ];
 }
