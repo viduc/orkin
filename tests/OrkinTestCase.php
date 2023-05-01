@@ -41,6 +41,7 @@ class OrkinTestCase extends TestCase
     public function tearDown(): void
     {
         parent::tearDown();
+        $this->filesystem = new Filesystem();
         $this->cleanExecution();
     }
     public function cleanExecution(): void

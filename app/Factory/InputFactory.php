@@ -21,10 +21,6 @@ class InputFactory implements FactoryInterface
      */
     final public function create(array $params = []): InputModel
     {
-        if (isset($params['message'])) {
-            return new InputModel($params['message']);
-        }
-
         return new InputModel($params['message']);
     }
 }
