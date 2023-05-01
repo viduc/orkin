@@ -34,10 +34,10 @@ abstract class ToolsAbstract implements ModelInterface
     }
 
     /**
-     * @param  string $tool
-     * @return ConfigurationModelAbstract
+     * @param string $tool
+     * @return ConfigurationModelAbstract|null
      */
-    public function configure(string $tool): ConfigurationModelAbstract
+    public function configure(string $tool): ?ConfigurationModelAbstract
     {
         $this->toolModel = $this->configurationsFactory->create(['model' => $tool]);
         foreach ($this->getConfigTool($tool) as $attribute => $config) {

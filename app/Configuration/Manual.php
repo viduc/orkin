@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 /**
  * ORKIN - Quality Tools for PHP.
@@ -12,7 +11,6 @@ declare(strict_types=1);
 namespace Viduc\Orkin\Configuration;
 
 use Symfony\Component\Translation\Translator;
-use Viduc\Orkin\Constantes\Constantes;
 use Viduc\Orkin\Constantes\ToolsConstantes;
 use Viduc\Orkin\Factory\ConfigurationFactory;
 use Viduc\Orkin\Factory\ToolsFactory;
