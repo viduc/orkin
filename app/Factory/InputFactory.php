@@ -19,7 +19,7 @@ class InputFactory implements FactoryInterface
      * @param  array $params
      * @return InputModel
      */
-    final public function create(array $params = []): InputModel
+    public function create(array $params = []): InputModel
     {
         return new InputModel($params['message']);
     }
