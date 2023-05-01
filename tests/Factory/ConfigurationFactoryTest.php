@@ -15,7 +15,7 @@ use Viduc\Orkin\Factory\ConfigurationFactory;
 use Viduc\Orkin\Models\ConfigurationModel;
 use Viduc\Orkin\Tests\OrkinTestCase;
 
-class FactoryConfigurationTest extends OrkinTestCase
+class ConfigurationFactoryTest extends OrkinTestCase
 {
     private ConfigurationFactory $configurationFactory;
     public function setUp(): void
@@ -25,7 +25,7 @@ class FactoryConfigurationTest extends OrkinTestCase
         $this->configurationFactory->configFile = $this->configFile;
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $this->assertTrue($this->configurationFactory->create()->newConfiguration);
         $model = new ConfigurationModel(['newConfiguration' => false]);

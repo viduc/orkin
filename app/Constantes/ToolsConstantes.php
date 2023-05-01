@@ -17,6 +17,13 @@ use Viduc\Orkin\Configuration\Tools\PhplocTools;
 use Viduc\Orkin\Configuration\Tools\PhpmdTools;
 use Viduc\Orkin\Configuration\Tools\PhpstanTools;
 use Viduc\Orkin\Configuration\Tools\PhpunitTools;
+use Viduc\Orkin\Models\Configurations\KahlanModel;
+use Viduc\Orkin\Models\Configurations\PhpcsfixerModel;
+use Viduc\Orkin\Models\Configurations\PhpcsModel;
+use Viduc\Orkin\Models\Configurations\PhplocModel;
+use Viduc\Orkin\Models\Configurations\PhpmdModel;
+use Viduc\Orkin\Models\Configurations\PhpstanModel;
+use Viduc\Orkin\Models\Configurations\PhpunitModel;
 
 class ToolsConstantes
 {
@@ -38,6 +45,16 @@ class ToolsConstantes
         'phpmd' => PhpmdTools::class,
         'phpstan' => PhpstanTools::class,
         'phploc' => PhplocTools::class,
+    ];
+
+    public const LIST_MODELS_CLASS = [
+        'phpunit' => PhpunitModel::class,
+        'kahlan' => KahlanModel::class,
+        'phpcsfixer' => PhpcsfixerModel::class,
+        'phpcs' => PhpcsModel::class,
+        'phpmd' => PhpmdModel::class,
+        'phpstan' => PhpstanModel::class,
+        'phploc' => PhplocModel::class,
     ];
 
     public const TYPE_USE_TOOL = 'useTool';
