@@ -13,6 +13,9 @@ namespace Viduc\Orkin\Models\Configurations;
 
 use Viduc\Orkin\Constantes\ToolsConstantes;
 
+/**
+ * @codeCoverageIgnore
+ */
 class PhpstanModel extends ConfigurationModelAbstract
 {
     public int $level = ToolsConstantes::CONFIG_PHPSTAN['level'];

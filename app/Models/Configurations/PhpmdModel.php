@@ -13,6 +13,9 @@ namespace Viduc\Orkin\Models\Configurations;
 
 use Viduc\Orkin\Constantes\ToolsConstantes;
 
+/**
+ * @codeCoverageIgnore
+ */
 class PhpmdModel extends ConfigurationModelAbstract
 {
     public string $mode = ToolsConstantes::CONFIG_PHPMD['mode'];

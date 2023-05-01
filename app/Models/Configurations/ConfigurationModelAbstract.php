@@ -13,6 +13,9 @@ namespace Viduc\Orkin\Models\Configurations;
 
 use Viduc\Orkin\Models\ModelInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 abstract class ConfigurationModelAbstract implements ModelInterface
 {
     public bool $isUsed = true;

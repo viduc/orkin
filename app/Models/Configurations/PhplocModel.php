@@ -11,6 +11,9 @@ declare(strict_types=1);
 
 namespace Viduc\Orkin\Models\Configurations;
 
+/**
+ * @codeCoverageIgnore
+ */
 class PhplocModel extends ConfigurationModelAbstract
 {
 }

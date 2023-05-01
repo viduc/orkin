@@ -13,6 +13,9 @@ namespace Viduc\Orkin\Models\Configurations;
 
 use Viduc\Orkin\Constantes\ToolsConstantes;
 
+/**
+ * @codeCoverageIgnore
+ */
 class PhpunitModel extends ConfigurationModelAbstract
 {
     public string $folderTest = ToolsConstantes::CONFIG_PHPUNIT['folderTest'];

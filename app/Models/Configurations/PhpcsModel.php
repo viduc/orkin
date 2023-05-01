@@ -13,6 +13,9 @@ namespace Viduc\Orkin\Models\Configurations;
 
 use Viduc\Orkin\Constantes\ToolsConstantes;
 
+/**
+ * @codeCoverageIgnore
+ */
 class PhpcsModel extends ConfigurationModelAbstract
 {
     public bool $phpcb = ToolsConstantes::CONFIG_PHPCS['phpcb'];

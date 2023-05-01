@@ -13,6 +13,9 @@ namespace Viduc\Orkin\Models\Configurations;
 
 use Viduc\Orkin\Constantes\ToolsConstantes;
 
+/**
+ * @codeCoverageIgnore
+ */
 class KahlanModel extends ConfigurationModelAbstract
 {
     public string $folderSpec = ToolsConstantes::CONFIG_KAHLAN['folderSpec'];

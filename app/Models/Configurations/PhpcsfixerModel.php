@@ -13,6 +13,9 @@ namespace Viduc\Orkin\Models\Configurations;
 
 use Viduc\Orkin\Constantes\ToolsConstantes;
 
+/**
+ * @codeCoverageIgnore
+ */
 class PhpcsfixerModel extends ConfigurationModelAbstract
 {
     public bool $dryRun = ToolsConstantes::CONFIG_PHPCSFIXER['dryrun'];
