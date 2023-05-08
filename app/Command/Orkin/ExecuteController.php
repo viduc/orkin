@@ -18,13 +18,22 @@ use Viduc\Orkin\Constantes\Constantes;
 class ExecuteController extends OrkinAbstract
 {
     public Configuration $configuration;
+    public string $phing;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->phing = Constantes::getProjectDir().
+            'vendor'.DIRECTORY_SEPARATOR.
+            'bin'.DIRECTORY_SEPARATOR.'phing -q';
+    }
+
     /**
      * @return void
      */
     public function handle(): void
     {
         parent::handle();
-        var_dump(Constantes::getOrkintDir());
+        exec($this->phing);
     }
 
 }
