@@ -14,6 +14,7 @@ namespace Viduc\Orkin\Constantes;
 use Minicli\Output\OutputHandler;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Serializer\Encoder\YamlEncoder;
+use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Viduc\Orkin\Configuration\Configuration;
@@ -56,16 +57,6 @@ abstract class ContainerConstantes
         'class' => OutputHandler::class,
         'dependencies' => []
     ];
-    public const YAML_ENCODER = [
-        'id' => 'yamlEncoder',
-        'class' => YamlEncoder::class,
-        'dependencies' => []
-    ];
-    public const OBJECT_NORMALIZER = [
-        'id' => 'objectNormalizer',
-        'class' => ObjectNormalizer::class,
-        'dependencies' => []
-    ];
     public const CONFIGURATIONS_FACTORY = [
         'id' => 'configurationsFactory',
         'class' => ConfigurationsFactory::class,
@@ -81,11 +72,26 @@ abstract class ContainerConstantes
         'class' => IniFile::class,
         'dependencies' => []
     ];
+    public const YAML_ENCODER = [
+        'id' => 'yamlEncoder',
+        'class' => YamlEncoder::class,
+        'dependencies' => []
+    ];
+    public const OBJECT_NORMALIZER = [
+        'id' => 'objectNormalizer',
+        'class' => ObjectNormalizer::class,
+        'dependencies' => []
+    ];
+    public const ARRAY_DENORMALIZER = [
+        'id' => 'arrayDenormalizer',
+        'class' => ArrayDenormalizer::class,
+        'dependencies' => []
+    ];
 
     public const SERIALIZER = [
         'id' => 'serializer',
         'class' => Serializer::class,
-        'dependencies' => [['objectNormalizer'], ['yamlEncoder']]
+        'dependencies' => [['arrayDenormalizer', 'objectNormalizer'], ['yamlEncoder']]
     ];
     public const TRANSLATION = [
         'id' => 'translation',
