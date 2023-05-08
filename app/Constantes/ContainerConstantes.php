@@ -35,6 +35,7 @@ abstract class ContainerConstantes
         self::OUTPUT_HANDLER,
         self::YAML_ENCODER,
         self::OBJECT_NORMALIZER,
+        self::ARRAY_DENORMALIZER,
         self::CONFIGURATIONS_FACTORY,
         self::INPUT_FACTORY,
         self::INI_FILE,
