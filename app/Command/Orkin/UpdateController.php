@@ -54,7 +54,7 @@ class UpdateController extends OrkinAbstract
                 $this->getPrinter()->error(
                     $this->translator->trans(
                         'update tool not found',
-                        [$tool],
+                        ['%tool%' => $tool],
                         'messages',
                         $this->locale
                     ),
