@@ -15,6 +15,9 @@ use Viduc\Orkin\Command\OrkinAbstract;
 use Viduc\Orkin\Configuration\Configuration;
 use Viduc\Orkin\Constantes\ToolsConstantes;
 
+/**
+ * @codeCoverageIgnore
+ */
 class CreateController extends OrkinAbstract
 {
     public Configuration $configuration;

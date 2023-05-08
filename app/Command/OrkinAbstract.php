@@ -20,7 +20,9 @@ use Symfony\Component\Translation\Translator;
 use Viduc\Orkin\Configuration\Configuration;
 use Viduc\Orkin\Configuration\Manual;
 use Viduc\Orkin\Container\OrkinContainer;
+use Viduc\Orkin\Factory\ConfigurationFactory;
 use Viduc\Orkin\Factory\ConfigurationsFactory;
+use Viduc\Orkin\Factory\ToolsFactory;
 use Viduc\Orkin\Printer\Answers;
 use Viduc\Orkin\Services\ProjectService;
 
@@ -41,6 +43,8 @@ abstract class OrkinAbstract extends CommandController
     public Manual $manual;
 
     public ConfigurationsFactory $configurationsFactory;
+    public ConfigurationFactory $configurationFactory;
+    public ToolsFactory $toolsFactory;
 
     /**
      * @throws ContainerExceptionInterface
@@ -56,6 +60,8 @@ abstract class OrkinAbstract extends CommandController
         $this->questions = $this->container->get('questions');
         $this->manual = $this->container->get('manual');
         $this->configurationsFactory = $this->container->get('configurationsFactory');
+        $this->configurationFactory = $this->container->get('configurationFactory');
+        $this->toolsFactory = $this->container->get('toolsFactory');
     }
 
     public function handle(): void
