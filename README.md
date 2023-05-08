@@ -1,5 +1,6 @@
 
 
+
 Viduc/Orkin
 =======  
 
@@ -53,13 +54,13 @@ INSTALLATION
 Vous devez préalablement créer un dossier à la racine de votre projet. Ce dossier contiendra tout les outils et le paramétrage nécessaire. Il est conseillé de nommer ce dossier **quality**.
 
 
-    cd <monprojet>  
-    mkdir quality  
-    cd quality  
+cd <monprojet>  
+mkdir quality  
+cd quality
 
 Installer orkin avec composer:
 
-    composer require viduc/orkin
+composer require viduc/orkin
 
 Lors de l'installation, composer détectera le fichier composer.json de votre projet. Il vous demandera si vous souhaitez l'utilise, répondez non (n)
 
@@ -101,3 +102,16 @@ PARAMÉTRAGE DES OUTILS
 - phpstan:
 - level: Si vous souhaitez utiliser PHPStan mais que votre base de code n'est pas à jour avec un typage fort et les contrôles stricts de PHPStan, vous pouvez actuellement choisir parmi 10 niveaux (0 est le plus lâche et 9 est le plus strict). **défaut: 7**
 - xdebug: PHPStan désactive XDebug s'il est activé pour obtenir de meilleures performances. Si vous avez besoin de déboguer PHPStan lui-même ou vos extensions personnalisées et que vous souhaitez exécuter PHPStan avec XDebug activé, passez cette option. **défaut: false**
+
+EXÉCUTION
+-------  
+Entrez dans le dossier quality (ou autre en fonction du nom du dossier que vous aurez créé) puis lancez cette commande:
+
+    ./vendor/bin/orkin orkin execute
+
+Les outils s’exécuteront avec le paramétrage que vous aurez choisi.
+
+REPORTS
+-------  
+vous trouverez les fichiers de reports dans le dossier reports au format défini lors de la configuration de chaque outil.
+Le rapport de couverture de code sera généré au format clover. Si phpunit et kahlan sont utilisés en même temps, un merge des deux fichiers de reports sera automatiquement effectué. Vous pourrez trouver cependant chaque fichier indépendamment pour ces outils.
