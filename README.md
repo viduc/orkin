@@ -54,13 +54,13 @@ INSTALLATION
 Vous devez préalablement créer un dossier à la racine de votre projet. Ce dossier contiendra tout les outils et le paramétrage nécessaire. Il est conseillé de nommer ce dossier **quality**.
 
 
-cd <monprojet>  
-mkdir quality  
-cd quality
+    cd <monprojet>  
+    mkdir quality  
+    cd quality
 
 Installer orkin avec composer:
 
-composer require viduc/orkin
+    composer require viduc/orkin
 
 Lors de l'installation, composer détectera le fichier composer.json de votre projet. Il vous demandera si vous souhaitez l'utilise, répondez non (n)
 
@@ -68,10 +68,10 @@ CONFIGURATION
 -------  
 Tout en restant dans le dossier d'installation d'orkin, lancer la commande suivante pour créer le projet:
 
-./vendor/bin/orkin orkin create  
+    ./vendor/bin/orkin orkin create  
 Par défaut la langue utilisée est l'anglais, vous pouvez rajouter l'option locale=fr si vous souhaitez utiliser le français pour l'installation:
 
-./vendor/bin.orkin orkin create locale=fr  
+    ./vendor/bin.orkin orkin create locale=fr  
 Il vous sera demandé si vous souhaitez utiliser la configuration par défaut. SI vous utilisez ce mode, tout les outils seront activés avec leur configuration par défaut de renseignée. Sinon vous pouvez choisir de configurer chaque outil de façon unitaire. A chaque fois il vous sera demandé si vous souhaitez activer ou non l'outil puis ces différentes option de paramétrage.
 
 PARAMÉTRAGE DES OUTILS
