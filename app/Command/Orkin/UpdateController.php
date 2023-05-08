@@ -50,6 +50,18 @@ class UpdateController extends OrkinAbstract
     {
         $this->toolsFactory->answers = $this->questions;
         foreach ($tools as $tool) {
+            if (!in_array($tool,ToolsConstantes::LIST_TOOLS)) {
+                $this->getPrinter()->error(
+                    $this->translator->trans(
+                        'update tool not found',
+                        [$tool],
+                        'messages',
+                        $this->locale
+                    ),
+                    true
+                );
+                continue;
+            }
             $this->configuration->configurationModel->{$tool . 'Model'} =
                 $this->toolsFactory->create(['tool' => $tool])->configure($tool);
         }
