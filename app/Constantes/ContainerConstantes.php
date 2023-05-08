@@ -35,7 +35,6 @@ abstract class ContainerConstantes
         self::OUTPUT_HANDLER,
         self::YAML_ENCODER,
         self::OBJECT_NORMALIZER,
-        self::ARRAY_DENORMALIZER,
         self::CONFIGURATIONS_FACTORY,
         self::INPUT_FACTORY,
         self::INI_FILE,
@@ -83,16 +82,11 @@ abstract class ContainerConstantes
         'class' => ObjectNormalizer::class,
         'dependencies' => []
     ];
-    public const ARRAY_DENORMALIZER = [
-        'id' => 'arrayDenormalizer',
-        'class' => ArrayDenormalizer::class,
-        'dependencies' => []
-    ];
 
     public const SERIALIZER = [
         'id' => 'serializer',
         'class' => Serializer::class,
-        'dependencies' => [['objectNormalizer', 'arrayDenormalizer'], ['yamlEncoder']]
+        'dependencies' => [['objectNormalizer'], ['yamlEncoder']]
     ];
     public const TRANSLATION = [
         'id' => 'translation',
