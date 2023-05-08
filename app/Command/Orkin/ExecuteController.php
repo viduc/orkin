@@ -13,6 +13,7 @@ namespace Viduc\Orkin\Command\Orkin;
 
 use Viduc\Orkin\Command\OrkinAbstract;
 use Viduc\Orkin\Configuration\Configuration;
+use Viduc\Orkin\Constantes\Constantes;
 
 class ExecuteController extends OrkinAbstract
 {
@@ -23,7 +24,7 @@ class ExecuteController extends OrkinAbstract
     public function handle(): void
     {
         parent::handle();
-        var_dump($this->configuration->getQualityPath());
+        var_dump(Constantes::getProjectDir());
     }
 
 }
