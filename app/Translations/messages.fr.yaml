@@ -1,4 +1,5 @@
 create default configuration: Voulez vous utiliser la configuration par défaut? (Y/n)
+installation completed: Installation terminée
 name quality folder: 'Donnez un nom pour le dossier quality (default: quality)'
 name src folder: 'Donnez le nom du dossier source (default: src)'
 name report folder: 'Donnez un nom pour le dossier reports (default: reports)'

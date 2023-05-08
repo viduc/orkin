@@ -37,7 +37,12 @@ class CreateController extends OrkinAbstract
         }
         $this->configuration->persist();
         $this->getPrinter()->info(
-            'info',
+            $this->translator->trans(
+                'installation completed',
+                [],
+                'messages',
+                $this->locale
+            ),
             true
         );
         $this->getPrinter()->newline();
