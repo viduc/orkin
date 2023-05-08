@@ -24,7 +24,7 @@ class ExecuteController extends OrkinAbstract
     public function handle(): void
     {
         parent::handle();
-        var_dump(Constantes::getProjectDir());
+        var_dump(Constantes::getOrkintDir());
     }
 
 }
