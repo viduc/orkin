@@ -18,10 +18,25 @@ use Viduc\Orkin\Constantes\ToolsConstantes;
  */
 class KahlanModel extends ConfigurationModelAbstract
 {
-    public string $folderSpec = ToolsConstantes::CONFIG_KAHLAN['folderSpec'];
-    public string $reporterConsole = ToolsConstantes::CONFIG_KAHLAN['reporterConsole'];
-    public string $reporterCoverage = ToolsConstantes::CONFIG_KAHLAN['reporterCoverage'];
-    public int $coverageLevel = ToolsConstantes::CONFIG_KAHLAN['coverageLevel'];
+    public string $folderSpec;
+    public string $reporterConsole;
+    public string $reporterCoverage;
+    public int $coverageLevel;
 
-    public string $checkreturn = ToolsConstantes::CONFIG_KAHLAN['checkreturn'];
+    public string $checkreturn;
+
+    public function __construct(array $config = [])
+    {
+        $this->isUsed = $config['isUsed'] ?? true;
+        $this->folderSpec = $config['folderSpec'] ??
+            ToolsConstantes::CONFIG_KAHLAN['folderSpec'];
+        $this->reporterConsole = $config['reporterConsole'] ??
+            ToolsConstantes::CONFIG_KAHLAN['reporterConsole'];
+        $this->reporterCoverage = $config['reporterCoverage'] ??
+            ToolsConstantes::CONFIG_KAHLAN['reporterCoverage'];
+        $this->coverageLevel = $config['coverageLevel'] ??
+            ToolsConstantes::CONFIG_KAHLAN['coverageLevel'];
+        $this->checkreturn = $config['checkreturn'] ??
+            ToolsConstantes::CONFIG_KAHLAN['checkreturn'];
+    }
 }

@@ -14,6 +14,7 @@ use Symfony\Component\Filesystem\Filesystem;
 use Viduc\Orkin\Configuration\Configuration;
 use Viduc\Orkin\Constantes\Constantes;
 use Viduc\Orkin\Factory\ConfigurationFactory;
+use Viduc\Orkin\Factory\ConfigurationsFactory;
 use Viduc\Orkin\Factory\ToolsFactory;
 use Viduc\Orkin\FileSystem\IniFile;
 use Viduc\Orkin\Services\ProjectService;
@@ -40,11 +41,16 @@ class ProjectServiceTest extends OrkinTestCase
      */
     private ?ToolsFactory $toolsFactory;
     private ?IniFile $iniFile;
+    private ConfigurationsFactory $configurationsFactory;
 
     public function setUp(): void
     {
         parent::setUp();
-        $this->configurationFactory = new ConfigurationFactory($this->serializer);
+        $this->configurationsFactory = new ConfigurationsFactory();
+        $this->configurationFactory = new ConfigurationFactory(
+            $this->serializer,
+            $this->configurationsFactory
+        );
         $this->configurationFactory->configFile = $this->configFile;
         $this->toolsFactory = $this->createMock(ToolsFactory::class);
         $this->iniFile = $this->createMock(IniFile::class);

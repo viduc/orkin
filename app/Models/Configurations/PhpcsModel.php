@@ -18,5 +18,11 @@ use Viduc\Orkin\Constantes\ToolsConstantes;
  */
 class PhpcsModel extends ConfigurationModelAbstract
 {
-    public bool $phpcb = ToolsConstantes::CONFIG_PHPCS['phpcb'];
+    public bool $phpcb;
+
+    public function __construct(array $config = [])
+    {
+        $this->isUsed = $config['isUsed'] ?? true;
+        $this->phpcb = $config['phpcb'] ?? ToolsConstantes::CONFIG_PHPCS['phpcb'];
+    }
 }

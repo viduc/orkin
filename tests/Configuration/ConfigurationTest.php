@@ -14,6 +14,7 @@ use Viduc\Orkin\Configuration\Configuration;
 use Viduc\Orkin\Configuration\Tools\PhpunitTools;
 use Viduc\Orkin\Constantes\Constantes;
 use Viduc\Orkin\Factory\ConfigurationFactory;
+use Viduc\Orkin\Factory\ConfigurationsFactory;
 use Viduc\Orkin\Factory\ToolsFactory;
 use Viduc\Orkin\FileSystem\IniFile;
 use Viduc\Orkin\Models\Configurations\KahlanModel;
@@ -32,6 +33,7 @@ class ConfigurationTest extends OrkinTestCase
 {
     private Configuration $configuration;
     private ConfigurationFactory $configurationFactory;
+    private ConfigurationsFactory $configurationsFactory;
     private ToolsFactory $toolsFactory;
     private IniFile $iniFile;
     private PhpunitTools $phpunitTools;
@@ -39,7 +41,11 @@ class ConfigurationTest extends OrkinTestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->configurationFactory = new ConfigurationFactory($this->serializer);
+        $this->configurationsFactory = new ConfigurationsFactory();
+        $this->configurationFactory = new ConfigurationFactory(
+            $this->serializer,
+            $this->configurationsFactory
+        );
         $this->configurationFactory->configFile = $this->configFile;
 
         $this->phpunitTools = $this->createMock(PhpunitTools::class);

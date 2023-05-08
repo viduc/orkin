@@ -16,4 +16,8 @@ namespace Viduc\Orkin\Models\Configurations;
  */
 class PhplocModel extends ConfigurationModelAbstract
 {
+    public function __construct(array $config = [])
+    {
+        $this->isUsed = $config['isUsed'] ?? true;
+    }
 }

@@ -96,7 +96,7 @@ abstract class ContainerConstantes
     public const CONFIGURATION_FACTORY = [
         'id' => 'configurationFactory',
         'class' => ConfigurationFactory::class,
-        'dependencies' => ['serializer']
+        'dependencies' => ['serializer', 'configurationsFactory']
     ];
     public const QUESTIONS = [
         'id' => 'questions',

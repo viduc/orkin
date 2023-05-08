@@ -18,7 +18,15 @@ use Viduc\Orkin\Constantes\ToolsConstantes;
  */
 class PhpcsfixerModel extends ConfigurationModelAbstract
 {
-    public bool $dryRun = ToolsConstantes::CONFIG_PHPCSFIXER['dryrun'];
+    public bool $dryRun;
+    public string $checkreturn;
 
-    public string $checkreturn = ToolsConstantes::CONFIG_PHPCSFIXER['checkreturn'];
+    public function __construct(array $config = [])
+    {
+        $this->isUsed = $config['isUsed'] ?? true;
+        $this->dryRun = $config['dryRun'] ??
+            ToolsConstantes::CONFIG_PHPCSFIXER['dryrun'];
+        $this->checkreturn = $config['checkreturn'] ??
+            ToolsConstantes::CONFIG_PHPCSFIXER['checkreturn'];
+    }
 }

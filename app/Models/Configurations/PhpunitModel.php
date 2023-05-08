@@ -18,7 +18,15 @@ use Viduc\Orkin\Constantes\ToolsConstantes;
  */
 class PhpunitModel extends ConfigurationModelAbstract
 {
-    public string $folderTest = ToolsConstantes::CONFIG_PHPUNIT['folderTest'];
+    public string $folderTest;
 
-    public string $checkreturn = ToolsConstantes::CONFIG_PHPUNIT['checkreturn'];
+    public string $checkreturn;
+
+    public function __construct(array $config = []) {
+        $this->isUsed = $config['isUsed'] ?? true;
+        $this->folderTest = $config['folderTest'] ??
+            ToolsConstantes::CONFIG_PHPUNIT['folderTest'];
+        $this->checkreturn = $config['checkreturn'] ??
+            ToolsConstantes::CONFIG_PHPUNIT['checkreturn'];
+    }
 }

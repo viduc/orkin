@@ -18,6 +18,15 @@ use Viduc\Orkin\Constantes\ToolsConstantes;
  */
 class PhpstanModel extends ConfigurationModelAbstract
 {
-    public int $level = ToolsConstantes::CONFIG_PHPSTAN['level'];
-    public bool $xdebug = ToolsConstantes::CONFIG_PHPSTAN['xdebug'];
+    public int $level;
+    public bool $xdebug;
+
+    public function __construct(array $config = [])
+    {
+        $this->isUsed = $config['isUsed'] ?? true;
+        $this->level = $config['level'] ??
+            ToolsConstantes::CONFIG_PHPSTAN['level'];
+        $this->xdebug = $config['xdebug'] ??
+            ToolsConstantes::CONFIG_PHPSTAN['xdebug'];
+    }
 }

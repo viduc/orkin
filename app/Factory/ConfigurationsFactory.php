@@ -28,14 +28,15 @@ class ConfigurationsFactory implements FactoryInterface
      */
     public function create(array $params = []): ConfigurationModelAbstract
     {
+        $config = isset($params['config']) ? $params['config'] : [];
         return match ($params['model']) {
-            'kahlan' => new KahlanModel(),
-            'phpcsfixer' => new PhpcsfixerModel(),
-            'phpcs' => new PhpcsModel(),
-            'phpmd' => new PhpmdModel(),
-            'phpstan' => new PhpstanModel(),
-            'phploc' => new PhplocModel(),
-            'phpunit' => new PhpunitModel()
+            'kahlan' => new KahlanModel($config),
+            'phpcsfixer' => new PhpcsfixerModel($config),
+            'phpcs' => new PhpcsModel($config),
+            'phpmd' => new PhpmdModel($config),
+            'phpstan' => new PhpstanModel($config),
+            'phploc' => new PhplocModel($config),
+            'phpunit' => new PhpunitModel($config)
         };
     }
 }

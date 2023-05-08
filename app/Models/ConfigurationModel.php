@@ -27,13 +27,13 @@ class ConfigurationModel implements ModelInterface
     public string $phingFile = '';
     public string $reportsFolder = '';
     public string $srcFolder = '';
-    public ?PhpunitModel $phpunitModel;
-    public ?KahlanModel $kahlanModel;
-    public ?PhpcsfixerModel $phpcsfixerModel;
-    public ?PhpcsModel $phpcsModel;
-    public ?PhpmdModel $phpmdModel;
-    public ?PhpstanModel $phpstanModel;
-    public ?PhplocModel $phplocModel;
+    public PhpunitModel|array|null $phpunitModel;
+    public KahlanModel|array|null $kahlanModel;
+    public PhpcsfixerModel|array|null $phpcsfixerModel;
+    public PhpcsModel|array|null $phpcsModel;
+    public PhpmdModel|array|null $phpmdModel;
+    public PhpstanModel|array|null $phpstanModel;
+    public PhplocModel|array|null $phplocModel;
 
     public function __construct(array $config = [])
     {
