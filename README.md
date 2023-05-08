@@ -1,14 +1,15 @@
 
+
 Viduc/Orkin
 =======  
 
 
 AUTEUR
 ------  
-[![Viduc](https://www.shareicon.net/data/48x48/2016/01/02/229394_cylon_256x256.png)](https://github.com/viduc)  [![Mail](https://www.shareicon.net/data/48x48/2016/03/20/444954_mail_200x200.png)](mailto:viduc@mail.fr?subject=[GitHub]%20Source%20Han%20Sans)  
+[![Viduc](https://www.shareicon.net/data/48x48/2016/01/02/229394_cylon_256x256.png)](https://github.com/viduc) [![Mail](https://www.shareicon.net/data/48x48/2016/03/20/444954_mail_200x200.png)](mailto:viduc@mail.fr?subject=[GitHub]%20Source%20Han%20Sans)  
 STATUT
 ------  
-[![License](http://poser.pugx.org/viduc/orkin/license)](https://packagist.org/packages/viduc/orkin)  ![example workflow](https://github.com/viduc/orkin/actions/workflows/php.yml/badge.svg) [![Latest Stable Version](http://poser.pugx.org/viduc/orkin/v)](https://packagist.org/packages/viduc/orkin)  [![Latest Unstable Version](http://poser.pugx.org/viduc/orkin/v/unstable)](https://packagist.org/packages/viduc/orkin)  [![Total Downloads](http://poser.pugx.org/viduc/orkin/downloads)](https://packagist.org/packages/viduc/orkin)  [![Maintainability](https://api.codeclimate.com/v1/badges/0e4654bced125386dbc4/maintainability)](https://codeclimate.com/github/viduc/orkin/maintainability)  [![Test Coverage](https://api.codeclimate.com/v1/badges/0e4654bced125386dbc4/test_coverage)](https://codeclimate.com/github/viduc/orkin/test_coverage)
+[![License](http://poser.pugx.org/viduc/orkin/license)](https://packagist.org/packages/viduc/orkin) ![example workflow](https://github.com/viduc/orkin/actions/workflows/php.yml/badge.svg) [![Latest Stable Version](http://poser.pugx.org/viduc/orkin/v)](https://packagist.org/packages/viduc/orkin) [![Latest Unstable Version](http://poser.pugx.org/viduc/orkin/v/unstable)](https://packagist.org/packages/viduc/orkin) [![Total Downloads](http://poser.pugx.org/viduc/orkin/downloads)](https://packagist.org/packages/viduc/orkin) [![Maintainability](https://api.codeclimate.com/v1/badges/0e4654bced125386dbc4/maintainability)](https://codeclimate.com/github/viduc/orkin/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/0e4654bced125386dbc4/test_coverage)](https://codeclimate.com/github/viduc/orkin/test_coverage)
 -------  
 
 Copyright [2023] [Tristan FLeury]
@@ -32,8 +33,8 @@ any other work released this way by its authors. You can apply it to
 your programs, too.
 
 DESCRIPTION
--------
-ORKIN est un gestionnaire d’outils d’analyse de code pour Php. Il va permettre d’installer et de configurer les principaux outils utilisés dans l’analyse et l’amélioration du code et ce de façon indépendante de votre code de production. Les versions des librairies utilisées ne seront donc pas en concurrence d’autres librairies que vous pourriez utiliser dans votre code. Seule la version de Php (8.0, 8.1 ou 8.2) sera nécessaire.
+-------  
+ORKIN est un gestionnaire d’outils d’analyse de code pour Php. Il va permettre d’installer et de configurer les principaux outils utilisés dans l’analyse et l’amélioration du code et ce de façon indépendante de votre code de production. Les versions des librairies utilisées ne seront donc pas en concurrence d’autres librairies que vous pourriez utiliser dans votre code. Seule la version de Php (8.0, 8.1 ou 8.2) sera nécessaire.  
 Les outils disponibles sont :
 
 - **phpunit** : [PHPUnit](https://phpunit.de/) est un _framework_ de tests unitaires pour PHP. Il s’inspire de JUnit, la version Java du _framework_. PHPUnit fournit son propre exécutable `phpunit` pour exécuter les tests. Il fournit également une bibliothèque de classes nécessaire pour la rédaction des tests.
@@ -48,50 +49,55 @@ Les outils disponibles sont :
 ORKIN utilise l’outil [phing](https://www.phing.info/) pour paramétrer et exécuter tout les outils. Il est possible d’utiliser tout les outils ou seulement certains au choix. Chaque outil peut être configuré indépendamment.
 
 INSTALLATION
--------
+-------  
 Vous devez préalablement créer un dossier à la racine de votre projet. Ce dossier contiendra tout les outils et le paramétrage nécessaire. Il est conseillé de nommer ce dossier **quality**.
 
-    cd <monprojet>
-    mkdir quality
-    cd quality
+
+    cd <monprojet>  
+    mkdir quality  
+    cd quality  
+
 Installer orkin avec composer:
 
     composer require viduc/orkin
+
+Lors de l'installation, composer détectera le fichier composer.json de votre projet. Il vous demandera si vous souhaitez l'utilise, répondez non (n)
+
 CONFIGURATION
--------
+-------  
 Tout en restant dans le dossier d'installation d'orkin, lancer la commande suivante pour créer le projet:
 
-    ./vendor/bin/orkin orkin create
+./vendor/bin/orkin orkin create  
 Par défaut la langue utilisée est l'anglais, vous pouvez rajouter l'option locale=fr si vous souhaitez utiliser le français pour l'installation:
 
-    ./vendor/bin.orkin orkin create locale=fr
+./vendor/bin.orkin orkin create locale=fr  
 Il vous sera demandé si vous souhaitez utiliser la configuration par défaut. SI vous utilisez ce mode, tout les outils seront activés avec leur configuration par défaut de renseignée. Sinon vous pouvez choisir de configurer chaque outil de façon unitaire. A chaque fois il vous sera demandé si vous souhaitez activer ou non l'outil puis ces différentes option de paramétrage.
 
 PARAMÉTRAGE DES OUTILS
--------
+-------  
 
 - orkin:
-    - quality.folder: nom du dossier utilisé pour orkin (créer avant l'installation). **défaut: quality**
-    - src: nom du dossier source de votre application. **défaut: src**
-    - reports.folder: dossier ou seront enregistrés les rapports d'outils. **défaut: reports**
+- quality.folder: nom du dossier utilisé pour orkin (créer avant l'installation). **défaut: quality**
+- src: nom du dossier source de votre application. **défaut: src**
+- reports.folder: dossier ou seront enregistrés les rapports d'outils. **défaut: reports**
 - phpunit:
-    - checkreturn: vérifie le retour d’exécution et de l'outil et s'arrête si une erreur est retournée. **défaut: true**
-    - folderTest: nom du dossier contenant les tests de votre application: **défaut: tests**
+- checkreturn: vérifie le retour d’exécution et de l'outil et s'arrête si une erreur est retournée. **défaut: true**
+- folderTest: nom du dossier contenant les tests de votre application: **défaut: tests**
 - kahlan:
-    - checkreturn: vérifie le retour d’exécution et de l'outil et s'arrête si une erreur est retournée. **défaut: true**
-    - spec: nom du dossier contenant les spécifications de votre application: **défaut: spec**
-    - reporter.console: Le nom du reporter de texte à utiliser dans la sortie console, les reporters de texte intégrés sont `'dot'`, `'bar'`, `'json'`, `'tap'` & `'verbose'`. **défaut: dot**
-    - reporter.coverage: Le nom du reporter de texte à utiliser dans la sortie texte, les reporters de texte intégrés sont `'dot'`, `'bar'`, `'json'`, `'tap'` & `'verbose'`. **défaut: tap**
-    - reporter.coverage: Générer un rapport de couverture de code. La valeur spécifie le niveau de détail pour le rapport de couverture de code (0-4). **défaut: 4**
+- checkreturn: vérifie le retour d’exécution et de l'outil et s'arrête si une erreur est retournée. **défaut: true**
+- spec: nom du dossier contenant les spécifications de votre application: **défaut: spec**
+- reporter.console: Le nom du reporter de texte à utiliser dans la sortie console, les reporters de texte intégrés sont `'dot'`, `'bar'`, `'json'`, `'tap'` & `'verbose'`. **défaut: dot**
+- reporter.coverage: Le nom du reporter de texte à utiliser dans la sortie texte, les reporters de texte intégrés sont `'dot'`, `'bar'`, `'json'`, `'tap'` & `'verbose'`. **défaut: tap**
+- reporter.coverage: Générer un rapport de couverture de code. La valeur spécifie le niveau de détail pour le rapport de couverture de code (0-4). **défaut: 4**
 - phpcsfixer:
-    - checkreturn: vérifie le retour d’exécution et de l'outil et s'arrête si une erreur est retournée. **défaut: true**
-    - dryrun: corrige ou non les fichiers cible. Il est conseillé d'activer ce mode en local (poste développeur) et de le désactiver en mode CI (intégration continue). **défaut: true**
+- checkreturn: vérifie le retour d’exécution et de l'outil et s'arrête si une erreur est retournée. **défaut: true**
+- dryrun: corrige ou non les fichiers cible. Il est conseillé d'activer ce mode en local (poste développeur) et de le désactiver en mode CI (intégration continue). **défaut: true**
 - phpcs:
-    - phpcb: activer ou désactiver l'outil de correction phpcb. Il est conseillé d'activer ce mode en local (poste développeur) et de le désactiver en mode CI (intégration continue). **défaut: true**
+- phpcb: activer ou désactiver l'outil de correction phpcb. Il est conseillé d'activer ce mode en local (poste développeur) et de le désactiver en mode CI (intégration continue). **défaut: true**
 - phpmd:
-    - mode: règles à appliquer. Les différentes règles disponibles sont: cleancode, codesize, controversial,design, naming et unusedcode. **défaut: cleancode**
-    - reportType: type du fichier de report utilisé. Les différents types sont: xml, text, html, json, ansi, github, gitlab, sarif, checkstyle. **défaut: text**
-    - reportFile: le nom du fichier de report utilisé. **défaut: phpmd.txt**
+- mode: règles à appliquer. Les différentes règles disponibles sont: cleancode, codesize, controversial,design, naming et unusedcode. **défaut: cleancode**
+- reportType: type du fichier de report utilisé. Les différents types sont: xml, text, html, json, ansi, github, gitlab, sarif, checkstyle. **défaut: text**
+- reportFile: le nom du fichier de report utilisé. **défaut: phpmd.txt**
 - phpstan:
-    - level: Si vous souhaitez utiliser PHPStan mais que votre base de code n'est pas à jour avec un typage fort et les contrôles stricts de PHPStan, vous pouvez actuellement choisir parmi 10 niveaux (0 est le plus lâche et 9 est le plus strict). **défaut: 7**
-    - xdebug: PHPStan désactive XDebug s'il est activé pour obtenir de meilleures performances. Si vous avez besoin de déboguer PHPStan lui-même ou vos extensions personnalisées et que vous souhaitez exécuter PHPStan avec XDebug activé, passez cette option. **défaut: false**
+- level: Si vous souhaitez utiliser PHPStan mais que votre base de code n'est pas à jour avec un typage fort et les contrôles stricts de PHPStan, vous pouvez actuellement choisir parmi 10 niveaux (0 est le plus lâche et 9 est le plus strict). **défaut: 7**
+- xdebug: PHPStan désactive XDebug s'il est activé pour obtenir de meilleures performances. Si vous avez besoin de déboguer PHPStan lui-même ou vos extensions personnalisées et que vous souhaitez exécuter PHPStan avec XDebug activé, passez cette option. **défaut: false**
