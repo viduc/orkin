@@ -92,7 +92,7 @@ abstract class ContainerConstantes
     public const SERIALIZER = [
         'id' => 'serializer',
         'class' => Serializer::class,
-        'dependencies' => [['arrayDenormalizer', 'objectNormalizer'], ['yamlEncoder']]
+        'dependencies' => [['objectNormalizer', 'arrayDenormalizer'], ['yamlEncoder']]
     ];
     public const TRANSLATION = [
         'id' => 'translation',
