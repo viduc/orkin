@@ -115,3 +115,17 @@ REPORTS
 -------  
 vous trouverez les fichiers de reports dans le dossier reports au format défini lors de la configuration de chaque outil.
 Le rapport de couverture de code sera généré au format clover. Si phpunit et kahlan sont utilisés en même temps, un merge des deux fichiers de reports sera automatiquement effectué. Vous pourrez trouver cependant chaque fichier indépendamment pour ces outils.
+
+UPDATE
+------- 
+Vous pouvez la configuration des outils, pour ce faire, entrez dans le dossier quality et lancez la commande:
+
+    ./vendor/bin/orkin orkin update
+
+Vous pourrez modifier toute la configuration. Si vous souhaitez ne modifier qu'un outil vous pouvez ajouter le nom à la fin de la ligne:
+
+
+    ./vendor/bin/orkin orkin update phpunit
+Vous pouvez ajouter autant d'outils que vous souhaitez en paramètre:
+
+    ./vendor/bin/orkin orkin update phpunit kahlan ...
