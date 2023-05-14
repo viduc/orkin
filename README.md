@@ -4,7 +4,6 @@
 Viduc/Orkin
 =======  
 
-
 AUTEUR
 ------  
 [![Viduc](https://www.shareicon.net/data/48x48/2016/01/02/229394_cylon_256x256.png)](https://github.com/viduc) [![Mail](https://www.shareicon.net/data/48x48/2016/03/20/444954_mail_200x200.png)](mailto:viduc@mail.fr?subject=[GitHub]%20Source%20Han%20Sans)  
